@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTabs();
   initCountdown();
   highlightActivePage();
+  initHeroParallax();
 });
 
 /**
@@ -44,10 +45,27 @@ function initNavbar() {
     });
 
     // Close menu when clicking navigation links on mobile
-    document.querySelectorAll('.nav-link').forEach(link => {
+    document.querySelectorAll('.nav-link, .dropdown-item').forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('open');
       });
+    });
+  }
+
+  // Dropdown toggle logic
+  const dropdownToggle = document.querySelector('.dropdown-toggle');
+  const dropdown = document.querySelector('.dropdown');
+  if (dropdownToggle && dropdown) {
+    dropdownToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      dropdown.classList.toggle('open');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+      }
     });
   }
 }
@@ -102,10 +120,10 @@ function initRTLMode() {
   // Apply initially
   if (currentDir === 'rtl') {
     document.body.setAttribute('dir', 'rtl');
-    toggleBtn.textContent = 'LTR';
+    toggleBtn.classList.add('rtl-active');
   } else {
     document.body.removeAttribute('dir');
-    toggleBtn.textContent = 'RTL';
+    toggleBtn.classList.remove('rtl-active');
   }
 
   toggleBtn.addEventListener('click', () => {
@@ -113,11 +131,11 @@ function initRTLMode() {
     if (isRTL) {
       document.body.removeAttribute('dir');
       localStorage.setItem('dir', 'ltr');
-      toggleBtn.textContent = 'RTL';
+      toggleBtn.classList.remove('rtl-active');
     } else {
       document.body.setAttribute('dir', 'rtl');
       localStorage.setItem('dir', 'rtl');
-      toggleBtn.textContent = 'LTR';
+      toggleBtn.classList.add('rtl-active');
     }
   });
 }
@@ -128,12 +146,26 @@ function initRTLMode() {
 function highlightActivePage() {
   const path = window.location.pathname;
   const pageName = path.split("/").pop() || 'index.html';
-  
-  document.querySelectorAll('.nav-link').forEach(link => {
+
+  document.querySelectorAll('.nav-link, .dropdown-item').forEach(link => {
     const href = link.getAttribute('href');
     if (href === pageName) {
       link.classList.add('active');
+
+      // If it's a dropdown item, also highlight the parent dropdown-toggle
+      const parentDropdown = link.closest('.dropdown');
+      if (parentDropdown) {
+        const toggle = parentDropdown.querySelector('.dropdown-toggle');
+        if (toggle) toggle.classList.add('active');
+      }
     } else {
+      // Don't remove active if it's dropdown-toggle and has active child
+      if (link.classList.contains('dropdown-toggle')) {
+        const dropdownMenu = link.nextElementSibling;
+        if (dropdownMenu && dropdownMenu.querySelector('.dropdown-item.active')) {
+          return;
+        }
+      }
       link.classList.remove('active');
     }
   });
@@ -144,7 +176,7 @@ function highlightActivePage() {
  */
 function initFormValidations() {
   const forms = document.querySelectorAll('form[data-validate]');
-  
+
   forms.forEach(form => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -245,7 +277,7 @@ function initFAQAccordions() {
       const item = header.closest('.faq-accordion-item');
       const content = item.querySelector('.faq-accordion-content');
       const icon = header.querySelector('.faq-accordion-icon');
-      
+
       const isOpen = item.classList.contains('open');
 
       // Close all other accordions first
@@ -337,21 +369,58 @@ function initCountdown() {
  */
 function showToast(message) {
   let toast = document.querySelector('.toast-msg');
-  
+
   if (!toast) {
     toast = document.createElement('div');
     toast.className = 'toast-msg';
     document.body.appendChild(toast);
   }
-  
+
   toast.innerHTML = `
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
     <span>${message}</span>
   `;
-  
+
   toast.classList.add('show');
-  
+
   setTimeout(() => {
     toast.classList.remove('show');
   }, 4000);
 }
+
+/**
+ * 3D Parallax and Tilt Effect for Hero Section
+ */
+function initHeroParallax() {
+  const viewport = document.querySelector('.hero-viewport');
+  const bg = document.querySelector('.hero-bg-parallax');
+  const content = document.querySelector('.hero-content-3d');
+
+  if (!viewport || !bg || !content) return;
+
+  viewport.addEventListener('mousemove', (e) => {
+    const rect = viewport.getBoundingClientRect();
+
+    // Calculate mouse position relative to center (-0.5 to 0.5)
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+    // Apply translations on background (parallax shift)
+    // Scale must be at least 1.05 to cover margins when translating
+    const bgTranslateX = x * -30; // shift opposite direction of mouse
+    const bgTranslateY = y * -30;
+    bg.style.transform = `scale(1.1) translate(${bgTranslateX}px, ${bgTranslateY}px)`;
+
+    // Apply tilt rotations on 3D text container
+    const tiltX = -y * 4; // rotate around X axis (up/down)
+    const tiltY = x * 4;  // rotate around Y axis (left/right)
+    content.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(10px)`;
+  });
+
+  viewport.addEventListener('mouseleave', () => {
+    // Smooth reset transitions
+    bg.style.transform = 'scale(1.05) translate(0px, 0px)';
+    content.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+  });
+}
+

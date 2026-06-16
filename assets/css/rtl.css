@@ -141,3 +141,10 @@
   right: auto;
   left: 24px;
 }
+
+/* Dropdown Menu alignment */
+[dir="rtl"] .dropdown-menu {
+  left: auto;
+  right: 0;
+}
+

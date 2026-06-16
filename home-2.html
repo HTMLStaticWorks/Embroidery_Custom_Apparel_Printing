@@ -36,14 +36,20 @@
       </a>
       <nav class="navbar-nav">
         <ul class="nav-menu">
-          <li><a href="index.html" class="nav-link">Home 1</a></li>
-          <li><a href="home-2.html" class="nav-link active">Home 2</a></li>
+          <li class="dropdown">
+            <a href="#" class="nav-link dropdown-toggle active">Home <span class="arrow">&#9662;</span></a>
+            <ul class="dropdown-menu">
+              <li><a href="index.html" class="dropdown-item">Home 1</a></li>
+              <li><a href="home-2.html" class="dropdown-item active">Home 2</a></li>
+            </ul>
+          </li>
           <li><a href="about.html" class="nav-link">About</a></li>
           <li><a href="services.html" class="nav-link">Services</a></li>
           <li><a href="design-gallery.html" class="nav-link">Design Gallery</a></li>
           <li><a href="pricing.html" class="nav-link">Pricing</a></li>
           <li><a href="contact.html" class="nav-link">Contact</a></li>
-          <li><a href="login.html" class="nav-link">Login</a></li>
+          <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+          <li><a href="login.html" class="btn btn-login">Login</a></li>
         </ul>
       </nav>
       <div class="navbar-controls">
@@ -52,7 +58,11 @@
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
-        <button id="rtl-toggle" class="ctrl-btn" aria-label="Toggle RTL">RTL</button>
+        <button id="rtl-toggle" class="ctrl-btn" aria-label="Toggle Layout Direction">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 17H4M4 17l4-4M4 17l4 4M4 7h16M20 7l-4-4M20 7l-4 4" />
+          </svg>
+        </button>
         <button class="hamburger" aria-label="Toggle Menu" aria-expanded="false">
           <span></span>
           <span></span>
@@ -62,17 +72,108 @@
     </div>
   </header>
 
-  <!-- Section 1: Hero Section (Mandatory) - Premium Luxury Version -->
-  <section class="section" style="padding: 160px 0 100px; background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1400&auto=format&fit=crop') center/cover no-repeat; color: var(--color-light);">
-    <div class="container" style="text-align: center; max-width: 900px;">
-      <span class="section-subtitle" style="color: var(--color-accent);">Premium Corporate Solutions</span>
-      <h1 style="color: var(--color-light); font-size: 3.5rem; line-height: 1.15; margin-bottom: 24px;">The Ultimate Standard In Branded Apparel</h1>
-      <p style="color: rgba(255, 255, 255, 0.75); font-size: 1.15rem; margin-bottom: 40px; line-height: 1.7; max-width: 750px; margin-left: auto; margin-right: auto;">
+  <!-- Section 1: Hero Section – 3D Animated Premium Version -->
+  <style>
+    /* ── Hero 3D Animations ── */
+    @keyframes h2-badge-in   { 0%{opacity:0;transform:translateY(-28px) rotateX(60deg)} 100%{opacity:1;transform:translateY(0) rotateX(0)} }
+    @keyframes h2-title-in   { 0%{opacity:0;transform:translateY(48px) rotateX(-40deg) scale(0.94)} 100%{opacity:1;transform:translateY(0) rotateX(0) scale(1)} }
+    @keyframes h2-desc-in    { 0%{opacity:0;transform:translateX(-40px) skewX(6deg)} 100%{opacity:1;transform:translateX(0) skewX(0)} }
+    @keyframes h2-btns-in    { 0%{opacity:0;transform:translateY(36px) scale(0.9)} 100%{opacity:1;transform:translateY(0) scale(1)} }
+    @keyframes h2-orb-drift1 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(30px,-40px) scale(1.06)} 66%{transform:translate(-20px,20px) scale(0.96)} }
+    @keyframes h2-orb-drift2 { 0%,100%{transform:translate(0,0) scale(1)} 40%{transform:translate(-35px,25px) scale(1.08)} 70%{transform:translate(18px,-18px) scale(0.97)} }
+    @keyframes h2-orb-drift3 { 0%,100%{transform:translate(0,0) rotate(0deg)} 50%{transform:translate(20px,30px) rotate(120deg)} }
+    @keyframes h2-shimmer    { 0%{left:-100%;opacity:0} 10%{opacity:1} 70%{opacity:1} 100%{left:130%;opacity:0} }
+    @keyframes h2-grid-pulse { 0%,100%{opacity:0.04} 50%{opacity:0.09} }
+
+    /* ── Background 3D slow drift (auto when no mouse) ── */
+    @keyframes h2-bg-drift {
+      0%   { transform: scale(1.15) translate(0px, 0px); }
+      20%  { transform: scale(1.15) translate(-18px, -10px); }
+      40%  { transform: scale(1.15) translate(-30px,  14px); }
+      60%  { transform: scale(1.15) translate( 10px,  22px); }
+      80%  { transform: scale(1.15) translate( 24px,  -8px); }
+      100% { transform: scale(1.15) translate(0px, 0px); }
+    }
+
+    #h2-hero  { perspective: 1400px; }
+    #h2-bg {
+      position: absolute;
+      inset: -8%;
+      background: url('assets/images/home2-hero.png') center/cover no-repeat;
+      transform: scale(1.15);
+      will-change: transform;
+      animation: h2-bg-drift 22s ease-in-out infinite;
+      z-index: 0;
+    }
+    #h2-hero-inner { transform-style: preserve-3d; will-change: transform; }
+
+    .h2-badge  { animation: h2-badge-in  0.7s cubic-bezier(.16,1,.3,1) 0.1s both; }
+    .h2-title  { animation: h2-title-in  0.85s cubic-bezier(.16,1,.3,1) 0.35s both; }
+    .h2-desc   { animation: h2-desc-in   0.75s cubic-bezier(.16,1,.3,1) 0.7s both; }
+    .h2-btns   { animation: h2-btns-in   0.7s cubic-bezier(.16,1,.3,1) 1.0s both; }
+
+    .h2-orb { position:absolute; border-radius:50%; pointer-events:none; filter:blur(2px); }
+    .h2-orb1 { width:380px;height:380px;top:-100px;left:-120px;
+      background:radial-gradient(circle, rgba(220,38,38,0.25) 0%, transparent 70%);
+      animation: h2-orb-drift1 11s ease-in-out infinite; }
+    .h2-orb2 { width:280px;height:280px;bottom:-70px;right:-90px;
+      background:radial-gradient(circle, rgba(59,130,246,0.20) 0%, transparent 70%);
+      animation: h2-orb-drift2 14s ease-in-out infinite; }
+    .h2-orb3 { width:200px;height:200px;top:35%;left:58%;
+      background:radial-gradient(circle, rgba(220,38,38,0.14) 0%, transparent 70%);
+      animation: h2-orb-drift3 18s linear infinite; }
+
+    .h2-grid {
+      position:absolute;inset:0;pointer-events:none;
+      background-image: linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),
+                        linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);
+      background-size: 60px 60px;
+      animation: h2-grid-pulse 5s ease-in-out infinite;
+    }
+    .h2-shimmer-bar {
+      position:absolute;top:0;height:100%;width:60%;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,0.07),transparent);
+      animation: h2-shimmer 4.5s cubic-bezier(.4,0,.6,1) 1.2s 1 forwards;
+      pointer-events:none;z-index:2;
+    }
+
+  </style>
+
+  <section id="h2-hero" style="
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    color: var(--color-light);
+    padding: 100px 0 80px;
+    box-sizing: border-box;
+    background: #0F172A;
+  ">
+    <!-- Independently moving BG image layer -->
+    <div id="h2-bg"></div>
+    <!-- Brighter overlay -->
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,23,42,0.55) 0%,rgba(15,23,42,0.48) 60%,rgba(30,10,10,0.52) 100%);z-index:1;"></div>
+    <!-- Animated grid lines -->
+    <div class="h2-grid" style="z-index:2;"></div>
+    <!-- Floating glow orbs -->
+    <div class="h2-orb h2-orb1" style="z-index:2;"></div>
+    <div class="h2-orb h2-orb2" style="z-index:2;"></div>
+    <div class="h2-orb h2-orb3" style="z-index:2;"></div>
+    <!-- One-time shimmer sweep -->
+    <div class="h2-shimmer-bar" style="z-index:2;"></div>
+
+    <!-- 3D tilt content wrapper -->
+    <div id="h2-hero-inner" class="container" style="text-align:center;max-width:900px;position:relative;z-index:4;">
+      <span class="section-subtitle h2-badge" style="color:var(--color-accent);">Premium Corporate Solutions</span>
+      <h1 class="h2-title" style="color:var(--color-light);font-size:3.5rem;line-height:1.15;margin-bottom:24px;text-shadow:0 4px 32px rgba(0,0,0,0.5);">The Ultimate Standard In Branded Apparel</h1>
+      <p class="h2-desc" style="color:rgba(255,255,255,0.82);font-size:1.15rem;margin-bottom:40px;line-height:1.7;max-width:750px;margin-left:auto;margin-right:auto;">
         We partner with leading enterprises to deliver luxury-grade corporate uniforms, branded accessories, and high-impact event merchandise. Our platform makes contract management and bulk orders completely effortless.
       </p>
-      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-        <a href="services.html" class="btn btn-primary">Discover Services</a>
-        <a href="contact.html" class="btn btn-outline" style="border-color: rgba(255, 255, 255, 0.2); color: var(--color-light);">Book Consultation</a>
+      <div class="h2-btns" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a id="h2-btn-primary" href="services.html" class="btn btn-primary">Discover Services</a>
+        <a id="h2-btn-outline" href="contact.html" class="btn btn-outline">Book Consultation</a>
       </div>
     </div>
   </section>
@@ -80,7 +181,7 @@
   <!-- Section 2: Premium Corporate Merchandise Showcase -->
   <section class="section">
     <div class="container">
-      <div class="container" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center;">
+      <div class="container" style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center;">
         <div class="showcase-content">
           <span class="section-subtitle">Curated Brand Experience</span>
           <h2 style="font-size: 2.25rem; margin-bottom: 20px;">Premium Corporate Merchandise</h2>
@@ -101,7 +202,7 @@
           <a href="contact.html" class="btn btn-primary">Build Your Merch Box</a>
         </div>
         <div class="showcase-image" style="position: relative;">
-          <img src="https://images.unsplash.com/photo-1530587191325-3db32d826c18?q=80&w=800&auto=format&fit=crop" alt="Premium branded corporate merchandise packs" style="width: 100%; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-lg);" loading="lazy">
+          <img src="assets/images/Premium Corporate Merchandise.png" alt="Premium branded corporate merchandise packs" style="width: 100%; min-height: 420px; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-lg); object-fit: cover; display: block;" loading="lazy">
           <div style="position: absolute; top: -20px; right: -20px; width: 100px; height: 100px; background: rgba(220, 38, 38, 0.05); border-radius: 50%; z-index: -1;"></div>
         </div>
       </div>
@@ -118,9 +219,9 @@
       </div>
       <div class="card-grid">
         <!-- Card 1 -->
-        <div class="card-item">
+        <div class="card-item image-full-bleed">
           <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=600&auto=format&fit=crop" alt="Medical scrubs collection" loading="lazy">
+            <img src="assets/images/embroidery customized Medical Scrubs hd images dress.png" alt="Medical scrubs collection" loading="lazy">
           </div>
           <div class="card-body">
             <span class="card-badge">Healthcare</span>
@@ -130,21 +231,21 @@
           </div>
         </div>
         <!-- Card 2 -->
-        <div class="card-item">
+        <div class="card-item image-full-bleed">
           <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=600&auto=format&fit=crop" alt="Hospitality culinary uniforms" loading="lazy">
+            <img src="assets/images/Culinary & Hospitality.png" alt="Hospitality culinary uniforms" loading="lazy">
           </div>
           <div class="card-body">
             <span class="card-badge">Hospitality</span>
-            <h3 class="card-title">Culinary & Hospitality</h3>
+            <h3 class="card-title">Culinary &amp; Hospitality</h3>
             <p class="card-text">Heavy-duty chef coats, cross-back canvas aprons, and breathable servers' shirts tailored for kitchen stresses.</p>
             <a href="services-details.html" class="btn btn-outline btn-block card-btn">Explore Culinary</a>
           </div>
         </div>
         <!-- Card 3 -->
-        <div class="card-item">
+        <div class="card-item image-full-bleed">
           <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=600&auto=format&fit=crop" alt="Executive corporate wear" loading="lazy">
+            <img src="assets/images/Executive Suitings.png" alt="Executive corporate wear" loading="lazy">
           </div>
           <div class="card-body">
             <span class="card-badge">Corporate</span>
@@ -154,14 +255,14 @@
           </div>
         </div>
         <!-- Card 4 -->
-        <div class="card-item">
+        <div class="card-item image-full-bleed">
           <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=600&auto=format&fit=crop" alt="Industrial safety uniforms" loading="lazy">
+            <img src="assets/images/Construction Safety.png" alt="Industrial safety uniforms" loading="lazy">
           </div>
           <div class="card-body">
             <span class="card-badge">Industrial</span>
             <h3 class="card-title">Construction Safety</h3>
-            <p class="card-text">ANSI Class 2 & 3 high-visibility vests, ripstop field jackets, and hardhat labels printed with reflective inks.</p>
+            <p class="card-text">ANSI Class 2 &amp; 3 high-visibility vests, ripstop field jackets, and hardhat labels printed with reflective inks.</p>
             <a href="services-details.html" class="btn btn-outline btn-block card-btn">Explore Safety</a>
           </div>
         </div>
@@ -403,5 +504,90 @@
 
   <!-- Scripts -->
   <script src="assets/js/main.js"></script>
+  <script>
+    /* ── Home-2 Hero: Background Parallax Only ── */
+    (function() {
+      var hero = document.getElementById('h2-hero');
+      var bg   = document.getElementById('h2-bg');
+      if (!hero || !bg) return;
+
+      var bgStrength = 40;
+      var bgTargetX  = 0, bgTargetY  = 0;
+      var bgCurrentX = 0, bgCurrentY = 0;
+      var mouseActive = false;
+      var idleTimer   = null;
+
+      hero.addEventListener('mousemove', function(e) {
+        mouseActive = true;
+        bg.style.animationPlayState = 'paused';
+        clearTimeout(idleTimer);
+        var rect = hero.getBoundingClientRect();
+        var nx = (e.clientX - rect.left) / rect.width  * 2 - 1;
+        var ny = (e.clientY - rect.top)  / rect.height * 2 - 1;
+        bgTargetX = -nx * bgStrength;
+        bgTargetY = -ny * bgStrength;
+        idleTimer = setTimeout(function() {
+          mouseActive = false;
+          bgTargetX = 0; bgTargetY = 0;
+          bg.style.animationPlayState = 'running';
+        }, 2000);
+      });
+
+      hero.addEventListener('mouseleave', function() {
+        mouseActive = false;
+        bgTargetX = 0; bgTargetY = 0;
+        bg.style.animationPlayState = 'running';
+      });
+
+      (function tick() {
+        bgCurrentX += (bgTargetX - bgCurrentX) * 0.06;
+        bgCurrentY += (bgTargetY - bgCurrentY) * 0.06;
+        if (mouseActive) {
+          bg.style.transform = 'scale(1.15) translate(' + bgCurrentX.toFixed(2) + 'px, ' + bgCurrentY.toFixed(2) + 'px)';
+        }
+        requestAnimationFrame(tick);
+      })();
+    })();
+
+    /* ── Hero Button Hover – JS-driven (bypasses inline style specificity) ── */
+    (function() {
+      var btnP = document.getElementById('h2-btn-primary');
+      var btnO = document.getElementById('h2-btn-outline');
+
+      if (btnP) {
+        /* Default state */
+        btnP.style.cssText = 'background-color:#DC2626;color:#ffffff;box-shadow:0 4px 12px rgba(220,38,38,0.25);transition:background-color 0.3s,transform 0.3s,box-shadow 0.3s;';
+        btnP.addEventListener('mouseenter', function() {
+          this.style.backgroundColor = '#B91C1C';
+          this.style.transform = 'translateY(-2px)';
+          this.style.boxShadow = '0 8px 20px rgba(220,38,38,0.4)';
+        });
+        btnP.addEventListener('mouseleave', function() {
+          this.style.backgroundColor = '#DC2626';
+          this.style.transform = 'translateY(0)';
+          this.style.boxShadow = '0 4px 12px rgba(220,38,38,0.25)';
+        });
+      }
+
+      if (btnO) {
+        /* Default state */
+        btnO.style.cssText = 'background-color:transparent;color:#ffffff;border:1px solid rgba(255,255,255,0.3);backdrop-filter:blur(8px);transition:background-color 0.3s,color 0.3s,border-color 0.3s,transform 0.3s,box-shadow 0.3s;';
+        btnO.addEventListener('mouseenter', function() {
+          this.style.backgroundColor = '#FFFFFF';
+          this.style.color = '#0F172A';
+          this.style.borderColor = '#FFFFFF';
+          this.style.transform = 'translateY(-2px)';
+          this.style.boxShadow = '0 8px 20px rgba(255,255,255,0.25)';
+        });
+        btnO.addEventListener('mouseleave', function() {
+          this.style.backgroundColor = 'transparent';
+          this.style.color = '#ffffff';
+          this.style.borderColor = 'rgba(255,255,255,0.3)';
+          this.style.transform = 'translateY(0)';
+          this.style.boxShadow = 'none';
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
