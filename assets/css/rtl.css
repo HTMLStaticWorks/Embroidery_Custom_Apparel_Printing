@@ -1,0 +1,143 @@
+/* RTL Layout Adjustments */
+
+[dir="rtl"] {
+  direction: rtl;
+  unicode-bidi: embed;
+}
+
+/* Typography alignment */
+[dir="rtl"] body,
+[dir="rtl"] p,
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6,
+[dir="rtl"] span,
+[dir="rtl"] input,
+[dir="rtl"] textarea {
+  text-align: right;
+}
+
+/* Section Header alignments */
+[dir="rtl"] .section-title-wrapper {
+  text-align: center;
+}
+
+/* Buttons and Links */
+[dir="rtl"] .btn {
+  flex-direction: row-reverse;
+}
+
+/* Nav alignments */
+[dir="rtl"] .logo {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .logo-text {
+  text-align: right;
+}
+
+[dir="rtl"] .nav-link::after {
+  left: auto;
+  right: 0;
+}
+
+/* Cards buttons and badges alignment */
+[dir="rtl"] .card-badge,
+[dir="rtl"] .card-btn {
+  align-self: flex-start;
+}
+
+[dir="rtl"] .card-text {
+  text-align: right;
+}
+
+/* Timeline alignment flip */
+@media (min-width: 769px) {
+  [dir="rtl"] .timeline::before {
+    left: auto;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  [dir="rtl"] .timeline-item {
+    left: auto;
+    right: 0;
+  }
+
+  [dir="rtl"] .timeline-left {
+    right: 0;
+  }
+
+  [dir="rtl"] .timeline-left::after {
+    right: auto;
+    left: -10px;
+  }
+
+  [dir="rtl"] .timeline-right {
+    right: 50%;
+  }
+
+  [dir="rtl"] .timeline-right::after {
+    left: auto;
+    right: -10px;
+  }
+}
+
+@media (max-width: 768px) {
+  [dir="rtl"] .nav-menu {
+    left: auto;
+    right: -100%;
+  }
+  
+  [dir="rtl"] .nav-menu.open {
+    left: auto;
+    right: 0;
+  }
+  
+  [dir="rtl"] .timeline::before {
+    left: auto;
+    right: 20px;
+  }
+  
+  [dir="rtl"] .timeline-item {
+    padding-left: 0;
+    padding-right: 45px;
+  }
+  
+  [dir="rtl"] .timeline-item::after {
+    left: auto;
+    right: 10px;
+  }
+  
+  [dir="rtl"] .timeline-right {
+    right: 0%;
+  }
+}
+
+/* Footer alignments */
+[dir="rtl"] .footer-col-title::after {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .footer-info-item {
+  flex-direction: row;
+}
+
+[dir="rtl"] .footer-links a:hover {
+  padding-left: 0;
+  padding-right: 6px;
+}
+
+[dir="rtl"] .social-links {
+  justify-content: flex-start;
+}
+
+/* Toast layout */
+[dir="rtl"] .toast-msg {
+  right: auto;
+  left: 24px;
+}

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | 404 Error</title>
+  <meta name="description" content="Oops! The custom apparel resource you are looking for has unravelled. Return to our home page or explore our service catalog.">
+  
+  <!-- Style Sheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <header class="navbar-header">
+    <div class="container navbar-container">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22V12M12 12c2.5 0 4-1.5 4-4s-1.5-4-4-4-4 1.5-4 4 1.5 4 4 4z"></path>
+          <circle cx="12" cy="8" r="1"></circle>
+          <path d="M20 12c-2-2-5-2-8 0s-6 2-8 0"></path>
+        </svg>
+        <div class="logo-text">
+          Embroidery & Apparel
+          <span>B2B & Custom Branding</span>
+        </div>
+      </a>
+      <nav class="navbar-nav">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home 1</a></li>
+          <li><a href="home-2.html" class="nav-link">Home 2</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="design-gallery.html" class="nav-link">Design Gallery</a></li>
+          <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="login.html" class="nav-link">Login</a></li>
+        </ul>
+      </nav>
+      <div class="navbar-controls">
+        <button id="dark-mode-toggle" class="ctrl-btn" aria-label="Toggle Dark Mode">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <button id="rtl-toggle" class="ctrl-btn" aria-label="Toggle RTL">RTL</button>
+        <button class="hamburger" aria-label="Toggle Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container stacking the 5 sections -->
+  <main style="padding-top: 100px;">
+
+    <!-- Section 1: Large 404 Illustration (SVG Spool Unraveling) -->
+    <section class="section" style="padding-bottom: 20px; text-align: center;">
+      <div class="container">
+        <svg width="280" height="200" viewBox="0 0 240 160" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent); margin: 0 auto;">
+          <!-- Spool Core -->
+          <rect x="100" y="30" width="40" height="90" rx="3" fill="none" stroke-dasharray="2 2"></rect>
+          <path d="M90,30 L150,30 M90,120 L150,120" stroke-width="4"></path>
+          <!-- Thread Wrapped -->
+          <rect x="105" y="40" width="30" height="70" fill="currentColor" opacity="0.15"></rect>
+          <path d="M105,45 H135 M105,55 H135 M105,65 H135 M105,75 H135 M105,85 H135 M105,95 H135 M105,105 H135" stroke-width="2"></path>
+          <!-- Unraveling thread forming 404 -->
+          <path d="M120,120 C120,140 70,130 60,150 C50,160 100,165 140,150 C180,135 220,150 220,130" stroke-dasharray="1 1"></path>
+          <text x="50%" y="85" font-size="28" font-family="var(--font-primary)" fill="var(--color-accent)" text-anchor="middle" font-weight="550">404</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Section 2: Error Message -->
+    <section class="section" style="padding: 20px 0; text-align: center;">
+      <div class="container" style="max-width: 600px;">
+        <h2 style="font-size: 2.25rem; margin-bottom: 16px;">This Thread Got Tangled</h2>
+        <p style="color: var(--color-text-muted); font-size: 1.1rem; line-height: 1.6;">
+          Oops! The apparel resource, configuration template, or design file you were searching for has unravelled or doesn't exist.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 4: Search Form -->
+    <section class="section" style="padding: 20px 0;">
+      <div class="container" style="max-width: 500px;">
+        <form class="search-404-form" data-validate style="display: flex; gap: 8px; justify-content: center; align-items: flex-start;">
+          <div class="form-group" style="margin-bottom:0; flex-grow:1;">
+            <input type="text" class="form-input" placeholder="Search services or products..." required style="height: 50px;" aria-label="Search">
+            <span class="form-error-msg" style="text-align: left;">Please enter a search term</span>
+          </div>
+          <button type="submit" class="btn btn-primary" style="height: 50px;">Search</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Section 3: Helpful Links -->
+    <section class="section" style="padding: 20px 0; text-align: center;">
+      <div class="container" style="max-width: 600px;">
+        <h3 style="font-size: 1.25rem; margin-bottom: 20px;">Or explore our main categories:</h3>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a href="services.html" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.9rem;">View Services</a>
+          <a href="pricing.html" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.9rem;">Pricing Matrix</a>
+          <a href="contact.html" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.9rem;">Request Custom Swatch</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Return Home CTA -->
+    <section class="section" style="padding-top: 20px; text-align: center;">
+      <div class="container">
+        <a href="index.html" class="btn btn-primary" style="padding: 14px 36px;">Return to Homepage</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Sticky Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo" style="margin-bottom: 20px;">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent);">
+              <path d="M12 22V12M12 12c2.5 0 4-1.5 4-4s-1.5-4-4-4-4 1.5-4 4 1.5 4 4 4z"></path>
+              <circle cx="12" cy="8" r="1"></circle>
+              <path d="M20 12c-2-2-5-2-8 0s-6 2-8 0"></path>
+            </svg>
+            <div class="logo-text" style="color: var(--color-light);">
+              Embroidery & Apparel
+              <span style="color: rgba(255,255,255,0.6);">B2B & Custom Branding</span>
+            </div>
+          </a>
+          <p class="footer-col-desc">
+            Professional apparel customization streamlining bulk uniform ordering, team wear production, and promotional products with speed and precision.
+          </p>
+          <div class="social-links">
+            <a href="https://facebook.com" class="social-link" target="_blank" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+            <a href="https://instagram.com" class="social-link" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+            <a href="https://linkedin.com" class="social-link" target="_blank" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+            <a href="https://twitter.com" class="social-link" target="_blank" aria-label="X"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+            <a href="https://youtube.com" class="social-link" target="_blank" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
+            <a href="https://pinterest.com" class="social-link" target="_blank" aria-label="Pinterest"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="12" x2="22" y2="12"></line><line x1="12" y1="2" x2="12" y2="22"></line></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home 1</a></li>
+            <li><a href="home-2.html">Home 2</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="pricing.html">Pricing Plans</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Services</h4>
+          <ul class="footer-links">
+            <li><a href="services-details.html">Custom Embroidery</a></li>
+            <li><a href="services-details.html">Screen Printing</a></li>
+            <li><a href="services-details.html">DTF & DTG Printing</a></li>
+            <li><a href="services-details.html">Merchandise Production</a></li>
+            <li><a href="services.html">Apparel Customization</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Newsletter</h4>
+          <p class="newsletter-text">Subscribe to receive layout designs, fabric guides, and bulk corporate discount announcements.</p>
+          <form class="newsletter-form" data-validate>
+            <div class="form-group" style="margin-bottom:0; flex-grow:1;">
+              <input type="email" class="form-input newsletter-input" placeholder="Your corporate email" required aria-label="Email Address">
+              <span class="form-error-msg">Please enter a valid email</span>
+            </div>
+            <button type="submit" class="btn btn-primary" style="padding:12px 18px;">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Embroidery & Custom Apparel Printing. All rights reserved. Made for professional merchandise procurement.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

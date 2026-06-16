@@ -1,0 +1,118 @@
+/* Dark Mode Styling */
+
+body.dark-mode {
+  --color-primary: #F8FAFC;         /* Light Text / Primary elements in dark */
+  --color-secondary: #E2E8F0;       /* Secondary details */
+  --color-bg: #0B1120;              /* Main Deep Dark Background */
+  --color-bg-card: #0F172A;         /* Slate dark card background */
+  --color-text: #E2E8F0;            /* Main body text */
+  --color-text-muted: #94A3B8;      /* Muted descriptions */
+  --color-border: #1E293B;          /* Darker border line */
+  --color-input-bg: #1E293B;        /* Form element bg */
+  --color-shadow: rgba(0, 0, 0, 0.45);
+  
+  --glass-bg: rgba(11, 17, 32, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.05);
+}
+
+/* Specific component tweaks for Dark Mode to look extremely premium */
+body.dark-mode .navbar-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .nav-link {
+  color: var(--color-secondary);
+}
+
+body.dark-mode .nav-link:hover, 
+body.dark-mode .nav-link.active {
+  color: var(--color-light);
+}
+
+body.dark-mode .ctrl-btn {
+  color: var(--color-secondary);
+  border-color: var(--color-border);
+}
+
+body.dark-mode .ctrl-btn:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-bg);
+}
+
+body.dark-mode .hamburger span {
+  background-color: var(--color-secondary);
+}
+
+/* Card adaptive glowing details */
+body.dark-mode .card-item {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .card-item:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 10px 30px -5px rgba(220, 38, 38, 0.15);
+}
+
+/* Sticky Headers & Accents */
+body.dark-mode .page-hero {
+  background-color: #070C16;
+}
+
+body.dark-mode .timeline::before {
+  background-color: var(--color-border);
+}
+
+body.dark-mode .timeline-content {
+  background-color: var(--color-bg-card);
+  border-color: var(--color-border);
+}
+
+body.dark-mode .timeline-item::after {
+  background-color: var(--color-bg-card);
+  border-color: var(--color-accent);
+}
+
+/* Inputs & Form controls */
+body.dark-mode .form-input {
+  border-color: var(--color-border);
+  color: var(--color-light);
+}
+
+body.dark-mode .form-input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.25);
+}
+
+body.dark-mode .btn-outline {
+  border-color: var(--color-border);
+  color: var(--color-light);
+}
+
+body.dark-mode .btn-outline:hover {
+  background-color: var(--color-light);
+  color: #0B1120;
+  border-color: var(--color-light);
+}
+
+/* Text selections & scrollbars in Dark Mode */
+body.dark-mode ::selection {
+  background-color: var(--color-accent);
+  color: var(--color-light);
+}
+
+body.dark-mode ::-webkit-scrollbar {
+  width: 10px;
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 5px;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
