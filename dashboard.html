@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Corporate Bulk Orders Dashboard — BrandCraft Pro</title>
+  <meta name="description" content="Manage bulk orders, track production, upload branding assets, and monitor shipping for your corporate orders at BrandCraft Pro." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="assets/css/dashboard.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     LAYOUT WRAPPER
+     ============================================================ -->
+<div class="dashboard-wrapper">
+
+  <!-- ══════════════════════════════════════════════════════
+       SIDEBAR
+       ══════════════════════════════════════════════════════ -->
+  <aside class="sidebar" id="sidebar">
+
+    <!-- Brand -->
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-icon">🧵</div>
+      <div class="sidebar-brand-text">
+        <span class="brand-name">BrandCraft Pro</span>
+        <span class="brand-sub">Corporate Portal</span>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sidebar-nav">
+
+      <div class="nav-section-label">Main</div>
+
+      <div class="nav-item active" data-section="overview" id="nav-overview">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Dashboard</span>
+      </div>
+
+      <div class="nav-item" data-section="orders" id="nav-orders">
+        <span class="nav-icon">📦</span>
+        <span class="nav-label">Bulk Orders</span>
+        <span class="nav-badge">12</span>
+      </div>
+
+      <div class="nav-item" data-section="branding" id="nav-branding">
+        <span class="nav-icon">🎨</span>
+        <span class="nav-label">Branding Upload</span>
+      </div>
+
+      <div class="nav-section-label">Production</div>
+
+      <div class="nav-item" data-section="production" id="nav-production">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-label">Production Tracking</span>
+      </div>
+
+      <div class="nav-item" data-section="shipping" id="nav-shipping">
+        <span class="nav-icon">🚚</span>
+        <span class="nav-label">Shipping & Delivery</span>
+      </div>
+
+      <div class="nav-item" data-section="approvals" id="nav-approvals">
+        <span class="nav-icon">✅</span>
+        <span class="nav-label">Approval Center</span>
+        <span class="nav-badge">3</span>
+      </div>
+
+      <div class="nav-section-label">Insights</div>
+
+      <div class="nav-item" data-section="notifications" id="nav-notifications">
+        <span class="nav-icon">🔔</span>
+        <span class="nav-label">Notifications</span>
+        <span class="nav-badge">7</span>
+      </div>
+
+      <div class="nav-item" data-section="reports" id="nav-reports">
+        <span class="nav-icon">📊</span>
+        <span class="nav-label">Reports & Analytics</span>
+      </div>
+
+      <div class="nav-section-label">Account</div>
+
+      <div class="nav-item" data-section="settings" id="nav-settings">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-label">Account Settings</span>
+      </div>
+
+    </nav>
+
+    <!-- Sidebar Footer -->
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="user-avatar-sm">JM</div>
+        <div class="sidebar-user-info">
+          <div class="u-name">James Mitchell</div>
+          <div class="u-role">Procurement Manager</div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ══════════════════════════════════════════════════════
+       MAIN CONTENT
+       ══════════════════════════════════════════════════════ -->
+  <main class="main-content">
+
+    <!-- Top Navigation Bar -->
+    <header class="topbar">
+      <button class="topbar-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">☰</button>
+
+      <div class="topbar-breadcrumb">
+        <span>Portal</span>
+        <span class="crumb-sep">›</span>
+        <span class="crumb-current" id="breadcrumbCurrent">Dashboard</span>
+      </div>
+
+      <div class="topbar-spacer"></div>
+
+      <div class="topbar-search">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="Search orders, products…" id="globalSearch" />
+      </div>
+
+      <div class="topbar-actions">
+        <button class="theme-toggle" id="themeToggle" data-tooltip="Toggle Dark Mode" aria-label="Toggle Theme">🌙</button>
+
+        <button class="topbar-btn" data-tooltip="Messages" aria-label="Messages">
+          💬
+        </button>
+
+        <button class="topbar-btn" id="notifBell" data-tooltip="Notifications" aria-label="Notifications" onclick="navigate('notifications')">
+          🔔
+          <span class="notif-dot"></span>
+        </button>
+
+        <div class="topbar-user">
+          <div class="topbar-avatar">JM</div>
+          <div class="topbar-user-info">
+            <div class="tu-name">James Mitchell</div>
+            <div class="tu-role">Nexcore Solutions</div>
+          </div>
+          <span style="color:var(--text-muted);font-size:12px;">▾</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ══════════════════════════════════════════════════
+         PAGE AREA
+         ══════════════════════════════════════════════════ -->
+    <div class="page-area">
+
+      <!-- ════════════════════════════════════════════
+           SECTION 1 — OVERVIEW
+           ════════════════════════════════════════════ -->
+      <section class="dashboard-section active" id="section-overview">
+
+        <!-- Welcome Banner -->
+        <div class="welcome-banner">
+          <div class="welcome-text">
+            <div class="greeting">Good evening 👋</div>
+            <div class="company-name">Nexcore Solutions</div>
+            <div class="welcome-sub">Here's what's happening with your bulk orders today.</div>
+          </div>
+          <div class="welcome-stats">
+            <div class="welcome-stat">
+              <div class="welcome-stat-val">12</div>
+              <div class="welcome-stat-label">Active Orders</div>
+            </div>
+            <div class="welcome-stat">
+              <div class="welcome-stat-val">3</div>
+              <div class="welcome-stat-label">Pending Approvals</div>
+            </div>
+            <div class="welcome-stat">
+              <div class="welcome-stat-val">$84K</div>
+              <div class="welcome-stat-label">This Month</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+          <div class="stat-card" style="--card-color:#3b82f6;--card-bg:#eff6ff;">
+            <div class="stat-card-icon">📦</div>
+            <div class="stat-card-info">
+              <div class="stat-value">12</div>
+              <div class="stat-label">Total Active Orders</div>
+              <div class="stat-change up">▲ 3 vs last month</div>
+            </div>
+          </div>
+          <div class="stat-card" style="--card-color:#f59e0b;--card-bg:#fffbeb;">
+            <div class="stat-card-icon">⚙️</div>
+            <div class="stat-card-info">
+              <div class="stat-value">7</div>
+              <div class="stat-label">In Production</div>
+              <div class="stat-change up">▲ 2 new today</div>
+            </div>
+          </div>
+          <div class="stat-card" style="--card-color:#10b981;--card-bg:#f0fdf4;">
+            <div class="stat-card-icon">🚚</div>
+            <div class="stat-card-info">
+              <div class="stat-value">4</div>
+              <div class="stat-label">Orders Shipped</div>
+              <div class="stat-change up">▲ On schedule</div>
+            </div>
+          </div>
+          <div class="stat-card" style="--card-color:#8b5cf6;--card-bg:#f5f3ff;">
+            <div class="stat-card-icon">✅</div>
+            <div class="stat-card-info">
+              <div class="stat-value">3</div>
+              <div class="stat-label">Pending Approvals</div>
+              <div class="stat-change down">▼ Needs attention</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Grid -->
+        <div class="grid-2-1" style="margin-bottom:20px;">
+
+          <!-- Spending Overview -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title"><span class="title-icon">💰</span>Total Spending Overview</div>
+              <select class="filter-select" style="width:auto;padding:6px 12px;font-size:12px;">
+                <option>This Year</option>
+                <option>Last 6 Months</option>
+                <option>Last Quarter</option>
+              </select>
+            </div>
+            <div class="card-body">
+              <div class="spending-overview">
+                <div class="spending-total">$284,750</div>
+                <div class="spending-period">Total spending in 2025 · <span class="text-success fw-600">▲ 18.4% vs 2024</span></div>
+              </div>
+              <div style="margin-top:20px;">
+                <canvas id="spendingChart" class="chart-container" style="height:220px;"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title"><span class="title-icon">⚡</span>Recent Activity</div>
+              <button class="btn btn-ghost btn-sm">View All</button>
+            </div>
+            <div class="card-body" style="padding:14px 20px;">
+              <div class="activity-timeline">
+
+                <div class="activity-item">
+                  <div class="activity-dot" style="background:rgba(16,185,129,0.12);color:#059669;">✅</div>
+                  <div class="activity-content">
+                    <div class="activity-title">Order #ORD-2847 Shipped</div>
+                    <div class="activity-desc">500 Custom Polo Shirts dispatched via FedEx</div>
+                    <div class="activity-time">2 hours ago</div>
+                  </div>
+                </div>
+
+                <div class="activity-item">
+                  <div class="activity-dot" style="background:rgba(245,158,11,0.12);color:#d97706;">🎨</div>
+                  <div class="activity-content">
+                    <div class="activity-title">Design Approval Required</div>
+                    <div class="activity-desc">Mockup for Q3 Branded Jackets pending review</div>
+                    <div class="activity-time">4 hours ago</div>
+                  </div>
+                </div>
+
+                <div class="activity-item">
+                  <div class="activity-dot" style="background:rgba(59,130,246,0.12);color:#2563eb;">📦</div>
+                  <div class="activity-content">
+                    <div class="activity-title">New Order Created</div>
+                    <div class="activity-desc">#ORD-2851 — 200 Embroidered Caps placed</div>
+                    <div class="activity-time">Yesterday</div>
+                  </div>
+                </div>
+
+                <div class="activity-item">
+                  <div class="activity-dot" style="background:rgba(139,92,246,0.12);color:#7c3aed;">🖼️</div>
+                  <div class="activity-content">
+                    <div class="activity-title">Brand Assets Uploaded</div>
+                    <div class="activity-desc">New logo v3.2 and brand guidelines PDF</div>
+                    <div class="activity-time">2 days ago</div>
+                  </div>
+                </div>
+
+                <div class="activity-item">
+                  <div class="activity-dot" style="background:rgba(16,185,129,0.12);color:#059669;">💳</div>
+                  <div class="activity-content">
+                    <div class="activity-title">Invoice Generated</div>
+                    <div class="activity-desc">INV-4821 for $12,400 ready for download</div>
+                    <div class="activity-time">3 days ago</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Row -->
+        <div class="grid-3">
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title"><span class="title-icon">📊</span>Order Status Split</div>
+            </div>
+            <div class="card-body">
+              <div class="donut-wrap">
+                <canvas id="donutChart" width="120" height="120" class="donut-chart"></canvas>
+                <div class="donut-legend">
+                  <div class="donut-legend-item"><div class="donut-dot" style="background:#3b82f6;"></div><span class="fs-13">In Production (7)</span></div>
+                  <div class="donut-legend-item"><div class="donut-dot" style="background:#10b981;"></div><span class="fs-13">Shipped (4)</span></div>
+                  <div class="donut-legend-item"><div class="donut-dot" style="background:#f59e0b;"></div><span class="fs-13">Pending (3)</span></div>
+                  <div class="donut-legend-item"><div class="donut-dot" style="background:#8b5cf6;"></div><span class="fs-13">Delivered (18)</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title"><span class="title-icon">📅</span>Monthly Volume</div>
+            </div>
+            <div class="card-body">
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span class="fs-13 text-muted">Orders this month</span>
+                <span class="fw-700 fs-14">34</span>
+              </div>
+              <div class="mini-bar-chart" id="miniBarChart"></div>
+              <div style="display:flex;justify-content:space-between;margin-top:6px;">
+                <span class="fs-12 text-muted">Jan</span>
+                <span class="fs-12 text-muted">Jun</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title"><span class="title-icon">💳</span>Spending by Category</div>
+            </div>
+            <div class="card-body" style="padding-top:14px;">
+              <div class="spending-item">
+                <div class="spending-label">Polo Shirts</div>
+                <div class="spending-value">$98K</div>
+                <div class="spending-bar-wrap"><div class="spending-bar" style="width:90%;"></div></div>
+              </div>
+              <div class="spending-item">
+                <div class="spending-label">Embroidery</div>
+                <div class="spending-value">$62K</div>
+                <div class="spending-bar-wrap"><div class="spending-bar" style="width:65%;background:linear-gradient(90deg,#8b5cf6,#a78bfa);"></div></div>
+              </div>
+              <div class="spending-item">
+                <div class="spending-label">Caps & Hats</div>
+                <div class="spending-value">$44K</div>
+                <div class="spending-bar-wrap"><div class="spending-bar" style="width:44%;background:linear-gradient(90deg,#10b981,#34d399);"></div></div>
+              </div>
+              <div class="spending-item">
+                <div class="spending-label">Jackets</div>
+                <div class="spending-value">$38K</div>
+                <div class="spending-bar-wrap"><div class="spending-bar" style="width:38%;background:linear-gradient(90deg,#f59e0b,#fbbf24);"></div></div>
+              </div>
+              <div class="spending-item">
+                <div class="spending-label">Accessories</div>
+                <div class="spending-value">$22K</div>
+                <div class="spending-bar-wrap"><div class="spending-bar" style="width:22%;background:linear-gradient(90deg,#06b6d4,#22d3ee);"></div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ════════════════════════════════════════════
+           SECTION 2 — BULK ORDER MANAGEMENT
+           ════════════════════════════════════════════ -->
+      <section class="dashboard-section" id="section-orders">
+        <div class="page-header">
+          <div class="page-header-left">
+            <h1 class="page-title">Bulk Order Management</h1>
+            <p class="page-subtitle">View, filter, and manage all your corporate bulk orders.</p>
+          </div>
+          <div class="page-header-actions">
+            <button class="btn btn-secondary" onclick="downloadInvoice()">⬇️ Download Invoice</button>
+            <button class="btn btn-secondary" onclick="duplicateOrder()">📋 Duplicate Order</button>
+            <button class="btn btn-primary" onclick="openModal('newOrderModal')">➕ New Bulk Order</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <!-- Search & Filter -->
+          <div class="card-header" style="flex-wrap:wrap;gap:12px;">
+            <div class="search-box" style="flex:1;min-width:200px;">
+              <span class="search-icon">🔍</span>
+              <input type="text" placeholder="Search orders by ID, product…" id="orderSearch" oninput="filterOrders()" />
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <select class="filter-select" id="statusFilter" onchange="filterOrders()">
+                <option value="">All Statuses</option>
+                <option value="In Production">In Production</option>
+                <option value="Shipped">Shipped</option>
+                <option value="Pending Approval">Pending Approval</option>
+                <option value="Delivered">Delivered</option>
+                <option value="Cancelled">Cancelled</option>
+              </select>
+              <select class="filter-select" id="productFilter" onchange="filterOrders()">
+                <option value="">All Products</option>
+                <option value="Polo Shirts">Polo Shirts</option>
+                <option value="Embroidered Caps">Embroidered Caps</option>
+                <option value="Branded Jackets">Branded Jackets</option>
+                <option value="Custom Tees">Custom Tees</option>
+              </select>
+              <button class="btn btn-secondary btn-sm" onclick="resetFilters()">✕ Clear</button>
+            </div>
+          </div>
+
+          <!-- Table -->
+          <div class="table-wrapper">
+            <table class="data-table" id="ordersTable">
+              <thead>
+                <tr>
+                  <th onclick="sortTable('id')">Order ID <span class="sort-icon">↕</span></th>
+                  <th onclick="sortTable('product')">Product <span class="sort-icon">↕</span></th>
+                  <th onclick="sortTable('qty')">Quantity <span class="sort-icon">↕</span></th>
+                  <th onclick="sortTable('total')">Total <span class="sort-icon">↕</span></th>
+                  <th onclick="sortTable('status')">Status <span class="sort-icon">↕</span></th>
+                  <th onclick="sortTable('date')">Order Date <span class="sort-icon">↕</span></th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="ordersTableBody">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination -->
+          <div class="pagination">
+            <span id="paginationInfo">Showing 1–10 of 24 orders</span>
+            <div class="pagination-btns">
+              <button class="page-btn">‹</button>
+              <button class="page-btn active">1</button>
+              <button class="page-btn">2</button>
+              <button class="page-btn">3</button>
+              <button class="page-btn">›</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════
+           SECTION 3 — BRANDING UPLOAD
+           ════════════════════════════════════════════ -->
+      <section class="dashboard-section" id="section-branding">
+        <div class="page-header">
+          <div class="page-header-left">
+            <h1 class="page-title">Logo & Branding Upload Center</h1>
+            <p class="page-subtitle">Upload and manage your company's brand assets securely.</p>
+          </div>
+          <div class="page-header-actions">
+            <button class="btn btn-primary" onclick="document.getElementById('brandUploadInput').click()">⬆️ Upload Files</button>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-bottom:20px;">
+
+          <!-- Upload Zone -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title"><span class="title-icon">📁</span>Upload Assets</div>
+            </div>
+            <div class="card-body">
+              <div class="upload-zone" id="uploadZone" onclick="document.getElementById('brandUploadInput').click()">
+                <input type="file" id="brandUploadInput" multiple accept=".jpg,.jpeg,.png,.svg,.pdf,.ai,.eps" onchange="handleFileUpload(this)" />
+                <div class="upload-zone-icon">☁️</div>
+                <div class="upload-zone-title">Drag & Drop your files here</div>
+                <div class="upload-zone-sub">or click to browse from your computer</div>
+                <div class="upload-zone-types">Supported: PNG, JPG, SVG, PDF, AI, EPS · Max 50MB per file</div>
+              </div>
+
+              <!-- File List -->
+              <div class="file-list" id="uploadedFileList">
+                <div class="file-item">
+                  <div class="file-icon">🖼️</div>
+                  <div class="file-info">
+                    <div class="file-name">nexcore-logo-v3.svg</div>
+                    <div class="file-meta">SVG · 42 KB · Uploaded Jun 14, 2025</div>
+                  </div>
+                  <span class="badge badge-success">Approved</span>
+                  <div class="file-actions">
+                    <button class="btn btn-ghost btn-sm" data-tooltip="Preview">👁️</button>
+                    <button class="btn btn-ghost btn-sm" data-tooltip="Download">⬇️</button>
+                  </div>
+                </div>
+                <div class="file-item">
+                  <div class="file-icon">📄</div>
+                  <div class="file-info">
+                    <div class="file-name">brand-guidelines-2025.pdf</div>
+                    <div class="file-meta">PDF · 3.2 MB · Uploaded Jun 10, 2025</div>
+                  </div>
+                  <span class="badge badge-success">Approved</span>
+                  <div class="file-actions">
+                    <button class="btn btn-ghost btn-sm">👁️</button>
+                    <button class="btn btn-ghost btn-sm">⬇️</button>
+                  </div>
+                </div>
+                <div class="file-item">
+                  <div class="file-icon">🎨</div>
+                  <div class="file-info">
+                    <div class="file-name">jacket-artwork-front.ai</div>
+                    <div class="file-meta">AI · 18.7 MB · Uploaded Jun 16, 2025</div>
+                  </div>
+                  <span class="badge badge-warning">Under Review</span>
+                  <div class="file-actions">
+                    <button class="btn btn-ghost btn-sm">👁️</button>
+                    <button class="btn btn-ghost btn-sm">⬇️</button>
+                  </div>
+                </div>
+                <div class="file-item">
+                  <div class="file-icon">🖼️</div>
+                  <div class="file-info">
+                    <div class="file-name">embroidery-patch-design.eps</div>
+                    <div class="file-meta">EPS · 5.1 MB · Uploaded Jun 15, 2025</div>
+                  </div>
+                  <span class="badge badge-danger">Rejected</span>
+                  <div class="file-actions">
+                    <button class="btn btn-ghost btn-sm">👁️</button>
+                    <button class="btn btn-ghost btn-sm">⬇️</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Version History + Approval Status -->
+          <div style="display:flex;flex-direction:column;gap:20px;">
+
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title"><span class="title-icon">🕐</span>Version History</div>
+              </div>
+              <div class="card-body" style="padding-top:12px;">
+                <div class="version-item">
+                  <span class="version-num">v3.2</span>
+                  <div class="version-info">
+                    <div class="version-name">nexcore-logo-v3.2.svg</div>
+                    <div class="version-date">Jun 14, 2025 · Updated colors to Pantone 286</div>
+                  </div>
+                  <span class="badge badge-success">Current</span>
+                </div>
+                <div class="version-item">
+                  <span class="version-num">v3.1</span>
+                  <div class="version-info">
+                    <div class="version-name">nexcore-logo-v3.1.svg</div>
+                    <div class="version-date">May 28, 2025 · Adjusted kerning</div>
+                  </div>
+                  <span class="badge badge-gray">Archived</span>
+                </div>
+                <div class="version-item">
+                  <span class="version-num">v3.0</span>
+                  <div class="version-info">
+                    <div class="version-name">nexcore-logo-v3.0.svg</div>
+                    <div class="version-date">Apr 02, 2025 · Full rebrand release</div>
+                  </div>
+                  <span class="badge badge-gray">Archived</span>
+                </div>
+                <div class="version-item">
+                  <span class="version-num">v2.4</span>
+                  <div class="version-info">
+                    <div class="version-name">nexcore-logo-v2.4.svg</div>
+                    <div class="version-date">Jan 10, 2025 · Minor icon tweak</div>
+                  </div>
+                  <span class="badge badge-gray">Archived</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title"><span class="title-icon">📋</span>Design Upload Guidelines</div>
+              </div>
+              <div class="card-body" style="padding-top:12px;">
+                <div class="activity-timeline">
+                  <div class="activity-item" style="padding-bottom:14px;">
+                    <div class="activity-dot" style="background:rgba(59,130,246,0.12);color:#2563eb;font-size:14px;">1</div>
+                    <div class="activity-content"><div class="activity-title">Upload vector files (SVG, AI, EPS)</div><div class="activity-desc">Ensures highest quality output for embroidery.</div></div>
+                  </div>
+                  <div class="activity-item" style="padding-bottom:14px;">
+                    <div class="activity-dot" style="background:rgba(59,130,246,0.12);color:#2563eb;font-size:14px;">2</div>
+                    <div class="activity-content"><div class="activity-title">Include Pantone color codes</div><div class="activity-desc">Thread matching requires exact Pantone references.</div></div>
+                  </div>
+                  <div class="activity-item" style="padding-bottom:0;">
+                    <div class="activity-dot" style="background:rgba(59,130,246,0.12);color:#2563eb;font-size:14px;">3</div>
+                    <div class="activity-content"><div class="activity-title">Minimum 300 DPI for raster images</div><div class="activity-desc">Lower resolution results in pixelated prints.</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════
+           SECTION 4 — PRODUCTION TRACKING
+           ════════════════════════════════════════════ -->
+      <section class="dashboard-section" id="section-production">
+        <div class="page-header">
+          <div class="page-header-left">
+            <h1 class="page-title">Production Tracking</h1>
+            <p class="page-subtitle">Monitor manufacturing progress across all your active orders.</p>
+          </div>
+          <div class="page-header-actions">
+            <select class="filter-select" id="productionOrderFilter" onchange="updateProductionView()">
+              <option value="ORD-2847">ORD-2847 — Polo Shirts (500)</option>
+              <option value="ORD-2851">ORD-2851 — Embroidered Caps (200)</option>
+              <option value="ORD-2849">ORD-2849 — Branded Jackets (150)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-bottom:20px;">
+
+          <!-- Progress Stages -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title"><span class="title-icon">⚙️</span>Manufacturing Stages</div>
+              <span class="badge badge-warning">In Production</span>
+            </div>
+            <div class="card-body">
+
+              <div style="margin-bottom:20px;">
+                <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                  <span class="fs-13 fw-600">Overall Progress</span>
+                  <span class="fw-700 text-primary-c">65%</span>
+                </div>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" id="overallProgress" style="width:65%;"></div>
+                </div>
+              </div>
+
+              <div class="production-stages">
+
+                <div class="stage-item done">
+                  <div class="stage-connector">
+                    <div class="stage-dot done">✓</div>
+                    <div class="stage-line"></div>
+                  </div>
+                  <div class="stage-content">
+                    <div class="stage-name">Order Confirmed</div>
+                    <div class="stage-desc">Payment verified and order accepted</div>
+                    <div class="stage-date">📅 Jun 10, 2025</div>
+                  </div>
+                </div>
+
+                <div class="stage-item done">
+                  <div class="stage-connector">
+                    <div class="stage-dot done">✓</div>
+                    <div class="stage-line"></div>
+                  </div>
+                  <div class="stage-content">
+                    <div class="stage-name">Design Approved</div>
+                    <div class="stage-desc">All artwork signed off by both parties</div>
+                    <div class="stage-date">📅 Jun 12, 2025</div>
+                  </div>
+                </div>
+
+                <div class="stage-item done">
+                  <div class="stage-connector">
+                    <div class="stage-dot done">✓</div>
+                    <div class="stage-line"></div>
+                  </div>
+                  <div class="stage-content">
+                    <div class="stage-name">Materials Prepared</div>
+                    <div class="stage-desc">Fabric sourced — 100% Piqué Cotton, Navy</div>
+                    <div class="stage-date">📅 Jun 13, 2025</div>
+                  </div>
+                </div>
+
+                <div class="stage-item">
+                  <div class="stage-connector">
+                    <div class="stage-dot active">⚙</div>
+                    <div class="stage-line"></div>
+                  </div>
+                  <div class="stage-content">
+                    <div class="stage-name active-text">Manufacturing In Progress</div>
+                    <div class="stage-desc">340 of 500 units completed (68%)</div>
+                    <div class="stage-date">🕐 Est. completion: Jun 19, 2025</div>
+                  </div>
+                </div>
+
+                <div class="stage-item">
+                  <div class="stage-connector">
+                    <div class="stage-dot pending">5</div>
+                    <div class="stage-line"></div>
+                  </div>
+                  <div class="stage-content">
+                    <div class="stage-name" style="color:var(--text-muted)">Quality Check</div>
+                    <div class="stage-desc">Final QC inspection — not started</div>
+                  </div>
+                </div>
+
+                <div class="stage-item">
+                  <div class="stage-connector">
+                    <div class="stage-dot pending">6</div>
+                    <div class="stage-line"></div>
+                  </div>
+                  <div class="stage-content">
+                    <div class="stage-name" style="color:var(--text-muted)">Packaging Complete</div>
+                    <div class="stage-desc">Bulk packing in branded boxes</div>
+                  </div>
+                </div>
+
+                <div class="stage-item">
+                  <div class="stage-connector">
+                    <div class="stage-dot pending">7</div>
+                  </div>
+                  <div class="stage-content">
+                    <div class="stage-name" style="color:var(--text-muted)">Ready for Dispatch</div>
+                    <div class="stage-desc">Handover to logistics partner</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Notes + Timeline -->
+          <div style="display:flex;flex-direction:column;gap:20px;">
+
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title"><span class="title-icon">📋</span>Order Details</div>
+              </div>
+              <div class="card-body">
+                <div class="spending-item">
+                  <div class="spending-label">Order ID</div>
+                  <div class="fw-700 text-primary-c">ORD-2847</div>
+                </div>
+                <div class="spending-item">
+                  <div class="spending-label">Product</div>
+                  <div class="fw-600" style="color:var(--text-primary)">Custom Polo Shirts</div>
+                </div>
+                <div class="spending-item">
+                  <div class="spending-label">Quantity</div>
+                  <div class="fw-600" style="color:var(--text-primary)">500 units</div>
+                </div>
+                <div class="spending-item">
+                  <div class="spending-label">Fabric</div>
+                  <div class="fw-600" style="color:var(--text-primary)">100% Piqué Cotton</div>
+                </div>
+                <div class="spending-item">
+                  <div class="spending-label">Color</div>
+                  <div class="fw-600" style="color:var(--text-primary)">Navy Blue (PMS 2768)</div>
+                </div>
+                <div class="spending-item">
+                  <div class="spending-label">Est. Completion</div>
+                  <div class="fw-600 text-warning">Jun 19, 2025</div>
+                </div>
+                <div class="spending-item">
+                  <div class="spending-label">Production Facility</div>
+                  <div class="fw-600" style="color:var(--text-primary)">Plant B — Ahmedabad</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title"><span class="title-icon">📝</span>Production Notes</div>
+                <button class="btn btn-ghost btn-sm">+ Add Note</button>
+              </div>
+              <div class="card-body" style="padding-top:14px;">
+                <div class="activity-timeline">
+                  <div class="activity-item" style="padding-bottom:14px;">
+                    <div class="activity-dot" style="background:rgba(245,158,11,0.12);color:#d97706;">⚠️</div>
+                    <div class="activity-content">
+                      <div class="activity-title">Embroidery thread update</div>
+                      <div class="activity-desc">Thread color PMS 286 substituted with closest match Pantone 2728. Approved by client.</div>
+                      <div class="activity-time">Jun 14, 2025 — Production Team</div>
+                    </div>
+                  </div>
+                  <div class="activity-item" style="padding-bottom:0;">
+                    <div class="activity-dot" style="background:rgba(16,185,129,0.12);color:#059669;">✅</div>
+                    <div class="activity-content">
+                      <div class="activity-title">Prototype sample approved</div>
+                      <div class="activity-desc">Client approved the 3 sample units. Production greenlit for full run.</div>
+                      <div class="activity-time">Jun 12, 2025 — Quality Control</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- All Production Orders -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><span class="title-icon">📦</span>All Production Orders</div>
+          </div>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead><tr>
+                <th>Order ID</th><th>Product</th><th>Quantity</th><th>Stage</th><th>Progress</th><th>Est. Completion</th><th>Status</th>
+              </tr></thead>
+              <tbody>
+                <tr><td class="order-id">ORD-2847</td><td class="td-primary">Custom Polo Shirts</td><td>500</td><td>Manufacturing</td><td><div style="display:flex;align-items:center;gap:8px;"><div class="progress-bar-wrap" style="width:80px;"><div class="progress-bar" style="width:65%;"></div></div><span class="fs-12 fw-600">65%</span></div></td><td>Jun 19, 2025</td><td><span class="badge badge-warning">In Production</span></td></tr>
+                <tr><td class="order-id">ORD-2849</td><td class="td-primary">Branded Jackets</td><td>150</td><td>Design Approved</td><td><div style="display:flex;align-items:center;gap:8px;"><div class="progress-bar-wrap" style="width:80px;"><div class="progress-bar" style="width:30%;"></div></div><span class="fs-12 fw-600">30%</span></div></td><td>Jun 28, 2025</td><td><span class="badge badge-primary">Starting</span></td></tr>
+                <tr><td class="order-id">ORD-2851</td><td class="td-primary">Embroidered Caps</td><td>200</td><td>Order Confirmed</td><td><div style="display:flex;align-items:center;gap:8px;"><div class="progress-bar-wrap" style="width:80px;"><div class="progress-bar" style="width:10%;"></div></div><span class="fs-12 fw-600">10%</span></div></td><td>Jul 05, 2025</td><td><span class="badge badge-primary">Queued</span></td></tr>
+                <tr><td class="order-id">ORD-2843</td><td class="td-primary">Custom Tees</td><td>800</td><td>Quality Check</td><td><div style="display:flex;align-items:center;gap:8px;"><div class="progress-bar-wrap" style="width:80px;"><div class="progress-bar success" style="width:90%;"></div></div><span class="fs-12 fw-600">90%</span></div></td><td>Jun 17, 2025</td><td><span class="badge badge-info">QC Phase</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ════════════════════════════════════════════
+           SECTION 5 — SHIPPING & DELIVERY
+           ════════════════════════════════════════════ -->
+      <section class="dashboard-section" id="section-shipping">
+        <div class="page-header">
+          <div class="page-header-left">
+            <h1 class="page-title">Shipping & Delivery Tracking</h1>
+            <p class="page-subtitle">Track all your shipments and manage delivery addresses.</p>
+          </div>
+          <div class="page-header-actions">
+            <button class="btn btn-secondary" onclick="openModal('addressModal')">📍 Manage Addresses</button>
+          </div>
+        </div>
+
+        <!-- Shipment Cards -->
+        <div class="shipment-cards" style="margin-bottom:24px;">
+
+          <div class="shipment-card">
+            <div class="shipment-card-header">
+              <div>
+                <div class="fw-700 fs-14" style="color:var(--text-primary)">ORD-2843 · Custom Tees</div>
+                <div class="fs-12 text-muted mt-4">800 units · FedEx Priority</div>
+              </div>
+              <span class="badge badge-info">In Transit</span>
+            </div>
+            <div class="tracking-pill">1Z999AA10123456784</div>
+            <div class="delivery-timeline" style="margin-top:16px;">
+              <div class="dt-step done"><div class="dt-dot"></div><div class="dt-label">Dispatched</div></div>
+              <div class="dt-step done"><div class="dt-dot"></div><div class="dt-label">In Transit</div></div>
+              <div class="dt-step active"><div class="dt-dot"></div><div class="dt-label">Out for Delivery</div></div>
+              <div class="dt-step"><div class="dt-dot"></div><div class="dt-label">Delivered</div></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:14px;font-size:12.5px;">
+              <div><span class="text-muted">Dispatched</span> <span class="fw-600">Jun 14</span></div>
+              <div><span class="text-muted">Est. Delivery</span> <span class="fw-600 text-primary-c">Jun 17</span></div>
+            </div>
+            <div style="margin-top:12px;font-size:12.5px;color:var(--text-muted);">📍 2847 Nexcore Blvd, Suite 400, Chicago, IL 60601</div>
+          </div>
+
+          <div class="shipment-card">
+            <div class="shipment-card-header">
+              <div>
+                <div class="fw-700 fs-14" style="color:var(--text-primary)">ORD-2838 · Polo Shirts</div>
+                <div class="fs-12 text-muted mt-4">300 units · UPS Ground</div>
+              </div>
+              <span class="badge badge-success">Delivered</span>
+            </div>
+            <div class="tracking-pill">1Z999AA10987654321</div>
+            <div class="delivery-timeline" style="margin-top:16px;">
+              <div class="dt-step done"><div class="dt-dot"></div><div class="dt-label">Dispatched</div></div>
+              <div class="dt-step done"><div class="dt-dot"></div><div class="dt-label">In Transit</div></div>
+              <div class="dt-step done"><div class="dt-dot"></div><div class="dt-label">Out for Delivery</div></div>
+              <div class="dt-step done"><div class="dt-dot"></div><div class="dt-label">Delivered</div></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:14px;font-size:12.5px;">
+              <div><span class="text-muted">Dispatched</span> <span class="fw-600">Jun 08</span></div>
+              <div><span class="text-muted">Delivered on</span> <span class="fw-600 text-success">Jun 12 ✓</span></div>
+            </div>
+            <div style="margin-top:12px;font-size:12.5px;color:var(--text-muted);">📍 2847 Nexcore Blvd, Suite 400, Chicago, IL 60601</div>
+          </div>
+
+          <div class="shipment-card">
+            <div class="shipment-card-header">
+              <div>
+                <div class="fw-700 fs-14" style="color:var(--text-primary)">ORD-2845 · Branded Mugs</div>
+                <div class="fs-12 text-muted mt-4">400 units · DHL Express</div>
+              </div>
+              <span class="badge badge-primary">Dispatched</span>
+            </div>
+            <div class="tracking-pill">JD014600006261234567</div>
+            <div class="delivery-timeline" style="margin-top:16px;">
+              <div class="dt-step done"><div class="dt-dot"></div><div class="dt-label">Dispatched</div></div>
+              <div class="dt-step active"><div class="dt-dot"></div><div class="dt-label">In Transit</div></div>
+              <div class="dt-step"><div class="dt-dot"></div><div class="dt-label">Out for Delivery</div></div>
+              <div class="dt-step"><div class="dt-dot"></div><div class="dt-label">Delivered</div></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:14px;font-size:12.5px;">
+              <div><span class="text-muted">Dispatched</span> <span class="fw-600">Jun 16</span></div>
+              <div><span class="text-muted">Est. Delivery</span> <span class="fw-600 text-primary-c">Jun 20</span></div>
+            </div>
+            <div style="margin-top:12px;font-size:12.5px;color:var(--text-muted);">📍 550 Corporate Drive, Dallas, TX 75201</div>
+          </div>
+
+        </div>
+
+        <!-- Shipping Addresses -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><span class="title-icon">📍</span>Saved Delivery Addresses</div>
+            <button class="btn btn-primary btn-sm" onclick="openModal('addressModal')">+ Add Address</button>
+          </div>
+          <div class="card-body">
+            <div class="grid-3">
+              <div class="address-card selected">
+                <div class="address-default">Default</div>
+                <div class="address-title">🏢 HQ — Chicago</div>
+                <div class="address-text">2847 Nexcore Blvd, Suite 400<br>Chicago, IL 60601<br>United States</div>
+                <div style="margin-top:12px;display:flex;gap:8px;">
+                  <button class="btn btn-secondary btn-sm">Edit</button>
+                  <button class="btn btn-ghost btn-sm">Delete</button>
+                </div>
+              </div>
+              <div class="address-card">
+                <div class="address-title">🏭 Warehouse — Dallas</div>
+                <div class="address-text">550 Corporate Drive<br>Dallas, TX 75201<br>United States</div>
+                <div style="margin-top:12px;display:flex;gap:8px;">
+                  <button class="btn btn-secondary btn-sm">Edit</button>
+                  <button class="btn btn-ghost btn-sm">Delete</button>
+                </div>
+              </div>
+              <div class="address-card" style="border:2px dashed var(--border);background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;min-height:120px;" onclick="openModal('addressModal')">
+                <div style="text-align:center;color:var(--text-muted);">
+                  <div style="font-size:28px;">➕</div>
+                  <div class="fs-13 mt-8 fw-600">Add New Address</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ════════════════════════════════════════════
+           SECTION 6 — APPROVAL CENTER
+           ════════════════════════════════════════════ -->
+      <section class="dashboard-section" id="section-approvals">
+        <div class="page-header">
+          <div class="page-header-left">
+            <h1 class="page-title">Approval Center</h1>
+            <p class="page-subtitle">Review, approve, or reject design mockups submitted by production.</p>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <button class="tab-btn active" onclick="switchTab(this,'pending-tab')">Pending (3)</button>
+          <button class="tab-btn" onclick="switchTab(this,'approved-tab')">Approved (14)</button>
+          <button class="tab-btn" onclick="switchTab(this,'rejected-tab')">Rejected (2)</button>
+          <button class="tab-btn" onclick="switchTab(this,'history-tab')">History Log</button>
+        </div>
+
+        <!-- Pending -->
+        <div class="tab-pane active" id="pending-tab">
+          <div class="approval-grid">
+
+            <div class="approval-card">
+              <div class="approval-preview">🧥<div style="position:absolute;top:10px;right:10px;"><span class="badge badge-warning">Pending</span></div></div>
+              <div class="approval-card-body">
+                <div class="approval-card-title">Branded Jacket — Front</div>
+                <div class="approval-card-sub">ORD-2849 · Submitted Jun 15, 2025</div>
+                <div class="approval-card-actions">
+                  <button class="btn btn-success btn-sm" onclick="approveDesign(this,'Jacket Front')">✓ Approve</button>
+                  <button class="btn btn-danger btn-sm" onclick="rejectDesign(this,'Jacket Front')">✕ Reject</button>
+                  <button class="btn btn-ghost btn-sm" onclick="openModal('commentModal')">💬 Comment</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="approval-card">
+              <div class="approval-preview">🧢<div style="position:absolute;top:10px;right:10px;"><span class="badge badge-warning">Pending</span></div></div>
+              <div class="approval-card-body">
+                <div class="approval-card-title">Embroidered Cap — Logo</div>
+                <div class="approval-card-sub">ORD-2851 · Submitted Jun 16, 2025</div>
+                <div class="approval-card-actions">
+                  <button class="btn btn-success btn-sm" onclick="approveDesign(this,'Cap Logo')">✓ Approve</button>
+                  <button class="btn btn-danger btn-sm" onclick="rejectDesign(this,'Cap Logo')">✕ Reject</button>
+                  <button class="btn btn-ghost btn-sm" onclick="openModal('commentModal')">💬 Comment</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="approval-card">
+              <div class="approval-preview">👔<div style="position:absolute;top:10px;right:10px;"><span class="badge badge-warning">Pending</span></div></div>
+              <div class="approval-card-body">
+                <div class="approval-card-title">Polo Shirt — Back Print</div>
+                <div class="approval-card-sub">ORD-2847 · Submitted Jun 16, 2025</div>
+                <div class="approval-card-actions">
+                  <button class="btn btn-success btn-sm" onclick="approveDesign(this,'Polo Back')">✓ Approve</button>
+                  <button class="btn btn-danger btn-sm" onclick="rejectDesign(this,'Polo Back')">✕ Reject</button>
+                  <button class="btn btn-ghost btn-sm" onclick="openModal('commentModal')">💬 Comment</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Approved -->
+        <div class="tab-pane" id="approved-tab">
+          <div class="approval-grid" id="approvedGrid">
+            <div class="approval-card">
+              <div class="approval-preview" style="background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(16,185,129,0.04));">👕<div style="position:absolute;top:10px;right:10px;"><span class="badge badge-success">Approved</span></div></div>
+              <div class="approval-card-body">
+                <div class="approval-card-title">Custom Tees — Front Logo</div>
+                <div class="approval-card-sub">ORD-2843 · Approved Jun 10, 2025</div>
+              </div>
+            </div>
+            <div class="approval-card">
+              <div class="approval-preview" style="background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(16,185,129,0.04));">🎽<div style="position:absolute;top:10px;right:10px;"><span class="badge badge-success">Approved</span></div></div>
+              <div class="approval-card-body">
+                <div class="approval-card-title">Polo Shirt — Front Logo</div>
+                <div class="approval-card-sub">ORD-2847 · Approved Jun 12, 2025</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rejected -->
+        <div class="tab-pane" id="rejected-tab">
+          <div class="approval-grid">
+            <div class="approval-card">
+              <div class="approval-preview" style="background:linear-gradient(135deg,rgba(239,68,68,0.08),rgba(239,68,68,0.04));">🖼️<div style="position:absolute;top:10px;right:10px;"><span class="badge badge-danger">Rejected</span></div></div>
+              <div class="approval-card-body">
+                <div class="approval-card-title">Embroidery Patch Design</div>
+                <div class="approval-card-sub">ORD-2848 · Rejected Jun 11, 2025</div>
+                <div class="fs-12 text-danger mt-8">Reason: Color resolution too low for thread mapping.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- History -->
+        <div class="tab-pane" id="history-tab">
+          <div class="card">
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead><tr><th>Design Name</th><th>Order ID</th><th>Action</th><th>Date</th><th>By</th><th>Comment</th></tr></thead>
+                <tbody>
+                  <tr><td class="td-primary">Jacket Front Mockup</td><td class="order-id">ORD-2849</td><td><span class="badge badge-warning">Pending</span></td><td>Jun 15, 2025</td><td>Production Team</td><td class="text-muted">—</td></tr>
+                  <tr><td class="td-primary">Custom Tees Front</td><td class="order-id">ORD-2843</td><td><span class="badge badge-success">Approved</span></td><td>Jun 10, 2025</td><td>James Mitchell</td><td class="text-muted">Looks great, proceed!</td></tr>
+                  <tr><td class="td-primary">Embroidery Patch</td><td class="order-id">ORD-2848</td><td><span class="badge badge-danger">Rejected</span></td><td>Jun 11, 2025</td><td>James Mitchell</td><td class="text-muted">Low resolution file</td></tr>
+                  <tr><td class="td-primary">Polo Logo Front</td><td class="order-id">ORD-2847</td><td><span class="badge badge-success">Approved</span></td><td>Jun 12, 2025</td><td>James Mitchell</td><td class="text-muted">Perfect color match</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ════════════════════════════════════════════
+           SECTION 7 — NOTIFICATIONS
+           ════════════════════════════════════════════ -->
+      <section class="dashboard-section" id="section-notifications">
+        <div class="page-header">
+          <div class="page-header-left">
+            <h1 class="page-title">Notifications Center</h1>
+            <p class="page-subtitle">Stay updated on all production, shipping, and approval activities.</p>
+          </div>
+          <div class="page-header-actions">
+            <button class="btn btn-secondary btn-sm" onclick="markAllRead()">✓ Mark All Read</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><span class="title-icon">🔔</span>All Notifications <span class="badge badge-primary" style="margin-left:8px;">7 unread</span></div>
+            <select class="filter-select" style="width:auto;font-size:12px;padding:6px 12px;">
+              <option>All Types</option>
+              <option>Production</option>
+              <option>Shipping</option>
+              <option>Approvals</option>
+              <option>Messages</option>
+              <option>System</option>
+            </select>
+          </div>
+
+          <div class="notif-list" id="notifList">
+
+            <div class="notif-item unread">
+              <div class="notif-icon" style="background:rgba(245,158,11,0.12);">✅</div>
+              <div class="notif-content">
+                <div class="notif-title">Design Approval Required — Branded Jacket Front</div>
+                <div class="notif-desc">Production team has submitted a mockup for Order ORD-2849. Please review and approve to proceed.</div>
+                <div class="notif-time">2 hours ago · Approval Center</div>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="navigate('approvals')">Review</button>
+            </div>
+
+            <div class="notif-item unread">
+              <div class="notif-icon" style="background:rgba(16,185,129,0.12);">🚚</div>
+              <div class="notif-content">
+                <div class="notif-title">Shipment ORD-2843 Out for Delivery</div>
+                <div class="notif-desc">Your 800 Custom Tees are out for delivery. Estimated arrival today by 6:00 PM.</div>
+                <div class="notif-time">3 hours ago · FedEx Priority</div>
+              </div>
+              <button class="btn btn-secondary btn-sm" onclick="navigate('shipping')">Track</button>
+            </div>
+
+            <div class="notif-item unread">
+              <div class="notif-icon" style="background:rgba(59,130,246,0.12);">⚙️</div>
+              <div class="notif-content">
+                <div class="notif-title">Manufacturing Milestone — ORD-2847</div>
+                <div class="notif-desc">340 of 500 polo shirts completed. Production is on schedule for Jun 19 delivery.</div>
+                <div class="notif-time">5 hours ago · Production Team</div>
+              </div>
+              <button class="btn btn-secondary btn-sm" onclick="navigate('production')">View</button>
+            </div>
+
+            <div class="notif-item">
+              <div class="notif-icon" style="background:rgba(139,92,246,0.12);">💬</div>
+              <div class="notif-content">
+                <div class="notif-title">New Message from Production Manager</div>
+                <div class="notif-desc">Ravi Kumar sent you a message regarding fabric availability for ORD-2849.</div>
+                <div class="notif-time">Yesterday · Direct Message</div>
+              </div>
+              <button class="btn btn-secondary btn-sm">Reply</button>
+            </div>
+
+            <div class="notif-item">
+              <div class="notif-icon" style="background:rgba(16,185,129,0.12);">✅</div>
+              <div class="notif-content">
+                <div class="notif-title">Artwork Approved — Custom Tees Front Logo</div>
+                <div class="notif-desc">Your design for ORD-2843 has been approved and production has started.</div>
+                <div class="notif-time">Jun 10, 2025 · Approval Center</div>
+              </div>
+            </div>
+
+            <div class="notif-item">
+              <div class="notif-icon" style="background:rgba(239,68,68,0.12);">❌</div>
+              <div class="notif-content">
+                <div class="notif-title">Design Rejected — Embroidery Patch</div>
+                <div class="notif-desc">The submitted artwork for ORD-2848 was rejected. Reason: Resolution too low. Please re-upload.</div>
+                <div class="notif-time">Jun 11, 2025 · QC Team</div>
+              </div>
+              <button class="btn btn-danger btn-sm" onclick="navigate('branding')">Re-upload</button>
+            </div>
+
+            <div class="notif-item">
+              <div class="notif-icon" style="background:rgba(6,182,212,0.12);">📢</div>
+              <div class="notif-content">
+                <div class="notif-title">System Announcement — New Features Available</div>
+                <div class="notif-desc">Bulk order export to PDF/Excel is now live. Reports section has been enhanced with new analytics.</div>
+                <div class="notif-time">Jun 8, 2025 · BrandCraft System</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════
+           SECTION 8 — REPORTS & ANALYTICS
+           ════════════════════════════════════════════ -->
+      <section class="dashboard-section" id="section-reports">
+        <div class="page-header">
+          <div class="page-header-left">
+            <h1 class="page-title">Reports & Analytics</h1>
+            <p class="page-subtitle">Deep insights into your order volume, spending, and production efficiency.</p>
+          </div>
+          <div class="page-header-actions">
+            <select class="filter-select">
+              <option>This Year (2025)</option>
+              <option>Last 6 Months</option>
+              <option>Q2 2025</option>
+              <option>Q1 2025</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="stats-grid" style="margin-bottom:24px;">
+          <div class="stat-card" style="--card-color:#3b82f6;--card-bg:#eff6ff;">
+            <div class="stat-card-icon">📈</div>
+            <div class="stat-card-info">
+              <div class="stat-value">246</div>
+              <div class="stat-label">Total Orders YTD</div>
+              <div class="stat-change up">▲ 22% vs 2024</div>
+            </div>
+          </div>
+          <div class="stat-card" style="--card-color:#10b981;--card-bg:#f0fdf4;">
+            <div class="stat-card-icon">💰</div>
+            <div class="stat-card-info">
+              <div class="stat-value">$284K</div>
+              <div class="stat-label">Total Spent YTD</div>
+              <div class="stat-change up">▲ 18.4% growth</div>
+            </div>
+          </div>
+          <div class="stat-card" style="--card-color:#8b5cf6;--card-bg:#f5f3ff;">
+            <div class="stat-card-icon">⚡</div>
+            <div class="stat-card-info">
+              <div class="stat-value">94%</div>
+              <div class="stat-label">On-Time Delivery</div>
+              <div class="stat-change up">▲ 3% improved</div>
+            </div>
+          </div>
+          <div class="stat-card" style="--card-color:#f59e0b;--card-bg:#fffbeb;">
+            <div class="stat-card-icon">⭐</div>
+            <div class="stat-card-info">
+              <div class="stat-value">4.8</div>
+              <div class="stat-label">Avg Quality Score</div>
+              <div class="stat-change up">▲ 0.2 improvement</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="grid-2" style="margin-bottom:20px;">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title"><span class="title-icon">📊</span>Monthly Order Volume</div>
+            </div>
+            <div class="card-body">
+              <canvas id="orderVolumeChart" style="height:240px;"></canvas>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title"><span class="title-icon">💳</span>Spending Analytics</div>
+            </div>
+            <div class="card-body">
+              <canvas id="spendingAnalyticsChart" style="height:240px;"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Download Reports -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title"><span class="title-icon">⬇️</span>Download Reports</div>
+          </div>
+          <div class="card-body">
+            <div class="grid-3">
+              <div class="report-card" onclick="downloadReport('Monthly Orders PDF')">
+                <div class="report-icon">📄</div>
+                <div class="report-info">
+                  <div class="report-title">Monthly Order Report</div>
+                  <div class="report-desc">Detailed order breakdown · PDF</div>
+                </div>
+                <button class="btn btn-primary btn-sm">⬇️ PDF</button>
+              </div>
+              <div class="report-card" onclick="downloadReport('Spending Excel')">
+                <div class="report-icon">📊</div>
+                <div class="report-info">
+                  <div class="report-title">Spending Analytics</div>
+                  <div class="report-desc">Category-wise spend · Excel</div>
+                </div>
+                <button class="btn btn-success btn-sm">⬇️ Excel</button>
+              </div>
+              <div class="report-card" onclick="downloadReport('Production Efficiency')">
+                <div class="report-icon">⚙️</div>
+                <div class="report-info">
+                  <div class="report-title">Production Efficiency</div>
+                  <div class="report-desc">Stage-wise metrics · PDF</div>
+                </div>
+                <button class="btn btn-primary btn-sm">⬇️ PDF</button>
+              </div>
+              <div class="report-card" onclick="downloadReport('Delivery Performance')">
+                <div class="report-icon">🚚</div>
+                <div class="report-info">
+                  <div class="report-title">Delivery Performance</div>
+                  <div class="report-desc">On-time rates by carrier · Excel</div>
+                </div>
+                <button class="btn btn-success btn-sm">⬇️ Excel</button>
+              </div>
+              <div class="report-card" onclick="downloadReport('Invoice Summary')">
+                <div class="report-icon">🧾</div>
+                <div class="report-info">
+                  <div class="report-title">Invoice Summary</div>
+                  <div class="report-desc">All invoices consolidated · PDF</div>
+                </div>
+                <button class="btn btn-primary btn-sm">⬇️ PDF</button>
+              </div>
+              <div class="report-card" onclick="downloadReport('Custom Report')">
+                <div class="report-icon">🛠️</div>
+                <div class="report-info">
+                  <div class="report-title">Custom Report Builder</div>
+                  <div class="report-desc">Define your own metrics · PDF/Excel</div>
+                </div>
+                <button class="btn btn-secondary btn-sm">Configure</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ════════════════════════════════════════════
+           SECTION 9 — ACCOUNT SETTINGS
+           ════════════════════════════════════════════ -->
+      <section class="dashboard-section" id="section-settings">
+        <div class="page-header">
+          <div class="page-header-left">
+            <h1 class="page-title">Account Settings</h1>
+            <p class="page-subtitle">Manage your company profile, billing, team, and preferences.</p>
+          </div>
+          <div class="page-header-actions">
+            <button class="btn btn-primary" onclick="saveSettings()">💾 Save Changes</button>
+          </div>
+        </div>
+
+        <div class="tabs" id="settingsTabs">
+          <button class="tab-btn active" onclick="switchTab(this,'profile-tab')">🏢 Company Profile</button>
+          <button class="tab-btn" onclick="switchTab(this,'billing-tab')">💳 Billing</button>
+          <button class="tab-btn" onclick="switchTab(this,'team-tab')">👥 Team</button>
+          <button class="tab-btn" onclick="switchTab(this,'notif-pref-tab')">🔔 Notifications</button>
+          <button class="tab-btn" onclick="switchTab(this,'security-tab')">🔒 Security</button>
+        </div>
+
+        <!-- Company Profile -->
+        <div class="tab-pane active" id="profile-tab">
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-header"><div class="card-title">Company Information</div></div>
+              <div class="card-body">
+                <div class="form-group"><label class="form-label">Company Name <span class="required">*</span></label><input class="form-control" value="Nexcore Solutions Inc." /></div>
+                <div class="form-row">
+                  <div class="form-group"><label class="form-label">Industry</label><select class="form-control"><option selected>Technology</option><option>Finance</option><option>Healthcare</option><option>Retail</option></select></div>
+                  <div class="form-group"><label class="form-label">Company Size</label><select class="form-control"><option>1–50</option><option>51–200</option><option selected>201–1000</option><option>1000+</option></select></div>
+                </div>
+                <div class="form-group"><label class="form-label">Website</label><input class="form-control" value="https://nexcoresolutions.com" /></div>
+                <div class="form-group"><label class="form-label">Business Address</label><textarea class="form-control" rows="3">2847 Nexcore Blvd, Suite 400
+Chicago, IL 60601, United States</textarea></div>
+                <div class="form-row">
+                  <div class="form-group"><label class="form-label">Phone</label><input class="form-control" value="+1 (312) 555-0192" /></div>
+                  <div class="form-group"><label class="form-label">Tax ID / GST</label><input class="form-control" value="US-48291-NX" /></div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Contact Person</div></div>
+              <div class="card-body">
+                <div class="form-row">
+                  <div class="form-group"><label class="form-label">First Name</label><input class="form-control" value="James" /></div>
+                  <div class="form-group"><label class="form-label">Last Name</label><input class="form-control" value="Mitchell" /></div>
+                </div>
+                <div class="form-group"><label class="form-label">Title / Role</label><input class="form-control" value="Procurement Manager" /></div>
+                <div class="form-group"><label class="form-label">Email Address <span class="required">*</span></label><input class="form-control" type="email" value="j.mitchell@nexcoresolutions.com" /></div>
+                <div class="form-group"><label class="form-label">Mobile</label><input class="form-control" value="+1 (312) 555-8247" /></div>
+                <div class="form-group">
+                  <label class="form-label">Company Logo</label>
+                  <div class="upload-zone" style="padding:24px;" onclick="document.getElementById('logoUpload').click()">
+                    <input type="file" id="logoUpload" accept="image/*" style="display:none;" />
+                    <div style="font-size:32px;">🖼️</div>
+                    <div class="upload-zone-title" style="font-size:14px;margin:8px 0 4px;">Upload Company Logo</div>
+                    <div class="upload-zone-sub">SVG or PNG recommended</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Billing -->
+        <div class="tab-pane" id="billing-tab">
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-header"><div class="card-title">Payment Methods</div><button class="btn btn-primary btn-sm">+ Add Card</button></div>
+              <div class="card-body">
+                <div class="member-row">
+                  <div class="member-avatar" style="background:linear-gradient(135deg,#1e3a8a,#3b82f6);border-radius:8px;font-size:11px;letter-spacing:0;">VISA</div>
+                  <div class="member-info">
+                    <div class="member-name">Visa ending in •••• 4821</div>
+                    <div class="member-email">Expires 08/2027 · Default</div>
+                  </div>
+                  <span class="badge badge-success">Active</span>
+                </div>
+                <div class="member-row">
+                  <div class="member-avatar" style="background:linear-gradient(135deg,#b45309,#f59e0b);border-radius:8px;font-size:10px;letter-spacing:0;">MC</div>
+                  <div class="member-info">
+                    <div class="member-name">Mastercard ending in •••• 2394</div>
+                    <div class="member-email">Expires 03/2026</div>
+                  </div>
+                  <span class="badge badge-gray">Backup</span>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Billing Summary</div></div>
+              <div class="card-body">
+                <div class="spending-item"><div class="spending-label">Current Plan</div><div class="fw-700" style="color:var(--text-primary);">Corporate Pro 🌟</div></div>
+                <div class="spending-item"><div class="spending-label">Monthly Limit</div><div class="fw-700" style="color:var(--text-primary);">$500,000</div></div>
+                <div class="spending-item"><div class="spending-label">Used This Month</div><div class="fw-700 text-primary-c">$84,250</div></div>
+                <div class="spending-item"><div class="spending-label">Next Invoice</div><div class="fw-600" style="color:var(--text-primary);">Jul 01, 2025</div></div>
+                <div class="spending-item"><div class="spending-label">Payment Terms</div><div class="fw-600" style="color:var(--text-primary);">Net 30</div></div>
+                <div style="margin-top:14px;">
+                  <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span class="fs-13 text-muted">Monthly budget used</span><span class="fw-700 fs-13">16.8%</span></div>
+                  <div class="progress-bar-wrap"><div class="progress-bar success" style="width:16.8%;"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team -->
+        <div class="tab-pane" id="team-tab">
+          <div class="card">
+            <div class="card-header"><div class="card-title">Team Members & Permissions</div><button class="btn btn-primary btn-sm" onclick="openModal('inviteModal')">+ Invite Member</button></div>
+            <div class="card-body" style="padding-top:8px;">
+              <div class="member-row">
+                <div class="member-avatar" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">JM</div>
+                <div class="member-info"><div class="member-name">James Mitchell</div><div class="member-email">j.mitchell@nexcoresolutions.com</div></div>
+                <span class="badge badge-primary">Admin</span>
+                <div class="member-actions"><button class="btn btn-ghost btn-sm">Edit</button></div>
+              </div>
+              <div class="member-row">
+                <div class="member-avatar" style="background:linear-gradient(135deg,#7c3aed,#8b5cf6);">SR</div>
+                <div class="member-info"><div class="member-name">Sara Reynolds</div><div class="member-email">s.reynolds@nexcoresolutions.com</div></div>
+                <span class="badge badge-success">Manager</span>
+                <div class="member-actions"><button class="btn btn-ghost btn-sm">Edit</button><button class="btn btn-ghost btn-sm">Remove</button></div>
+              </div>
+              <div class="member-row">
+                <div class="member-avatar" style="background:linear-gradient(135deg,#059669,#10b981);">DK</div>
+                <div class="member-info"><div class="member-name">David Kim</div><div class="member-email">d.kim@nexcoresolutions.com</div></div>
+                <span class="badge badge-info">Viewer</span>
+                <div class="member-actions"><button class="btn btn-ghost btn-sm">Edit</button><button class="btn btn-ghost btn-sm">Remove</button></div>
+              </div>
+              <div class="member-row">
+                <div class="member-avatar" style="background:linear-gradient(135deg,#d97706,#f59e0b);">AP</div>
+                <div class="member-info"><div class="member-name">Anita Patel</div><div class="member-email">a.patel@nexcoresolutions.com</div></div>
+                <span class="badge badge-info">Viewer</span>
+                <div class="member-actions"><button class="btn btn-ghost btn-sm">Edit</button><button class="btn btn-ghost btn-sm">Remove</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notifications Pref -->
+        <div class="tab-pane" id="notif-pref-tab">
+          <div class="card">
+            <div class="card-header"><div class="card-title">Notification Preferences</div></div>
+            <div class="card-body">
+              <div class="setting-row"><div class="setting-info"><div class="setting-title">Production Updates</div><div class="setting-desc">Get notified when manufacturing milestones are reached</div></div><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div>
+              <div class="setting-row"><div class="setting-info"><div class="setting-title">Shipping Alerts</div><div class="setting-desc">Track dispatch, in-transit, and delivery events</div></div><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div>
+              <div class="setting-row"><div class="setting-info"><div class="setting-title">Approval Requests</div><div class="setting-desc">Notify when designs are submitted for approval</div></div><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div>
+              <div class="setting-row"><div class="setting-info"><div class="setting-title">Invoice Notifications</div><div class="setting-desc">Alerts when new invoices are generated</div></div><div class="toggle-switch" onclick="this.classList.toggle('on')"></div></div>
+              <div class="setting-row"><div class="setting-info"><div class="setting-title">New Messages</div><div class="setting-desc">In-app and email notifications for direct messages</div></div><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div>
+              <div class="setting-row"><div class="setting-info"><div class="setting-title">System Announcements</div><div class="setting-desc">Platform updates and new feature announcements</div></div><div class="toggle-switch" onclick="this.classList.toggle('on')"></div></div>
+              <div class="setting-row"><div class="setting-info"><div class="setting-title">Email Digest</div><div class="setting-desc">Receive a daily summary email of all activities</div></div><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Security -->
+        <div class="tab-pane" id="security-tab">
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-header"><div class="card-title">Change Password</div></div>
+              <div class="card-body">
+                <div class="form-group"><label class="form-label">Current Password</label><input class="form-control" type="password" placeholder="••••••••" /></div>
+                <div class="form-group"><label class="form-label">New Password</label><input class="form-control" type="password" placeholder="••••••••" /></div>
+                <div class="form-group"><label class="form-label">Confirm New Password</label><input class="form-control" type="password" placeholder="••••••••" /></div>
+                <button class="btn btn-primary w-full" style="justify-content:center;">Update Password</button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Security Settings</div></div>
+              <div class="card-body">
+                <div class="setting-row"><div class="setting-info"><div class="setting-title">Two-Factor Authentication</div><div class="setting-desc">Add an extra layer of security with 2FA</div></div><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div>
+                <div class="setting-row"><div class="setting-info"><div class="setting-title">Login Alerts</div><div class="setting-desc">Email me on new device logins</div></div><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div>
+                <div class="setting-row"><div class="setting-info"><div class="setting-title">Session Timeout</div><div class="setting-desc">Auto-logout after 30 minutes of inactivity</div></div><div class="toggle-switch" onclick="this.classList.toggle('on')"></div></div>
+                <div style="margin-top:20px;">
+                  <button class="btn btn-danger w-full" style="justify-content:center;">🚪 Log Out All Sessions</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div><!-- /.page-area -->
+  </main>
+</div><!-- /.dashboard-wrapper -->
+
+<!-- ============================================================
+     MODALS
+     ============================================================ -->
+
+<!-- New Order Modal -->
+<div class="modal-overlay" id="newOrderModal" onclick="closeModalOverlay(event,'newOrderModal')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">➕ Create New Bulk Order</div>
+      <button class="modal-close" onclick="closeModal('newOrderModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group"><label class="form-label">Product Type <span class="required">*</span></label>
+        <select class="form-control">
+          <option value="">Select product…</option>
+          <option>Custom Polo Shirts</option><option>Embroidered Caps</option><option>Branded Jackets</option>
+          <option>Custom T-Shirts</option><option>Branded Hoodies</option><option>Custom Accessories</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Quantity <span class="required">*</span></label><input class="form-control" type="number" min="50" placeholder="Min. 50 units" /></div>
+        <div class="form-group"><label class="form-label">Size Range</label><select class="form-control"><option>XS–3XL (Mixed)</option><option>S–XL</option><option>M–2XL</option><option>One Size</option></select></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Primary Color</label><input class="form-control" placeholder="e.g. Navy Blue / PMS 2768" /></div>
+        <div class="form-group"><label class="form-label">Fabric / Material</label><select class="form-control"><option>100% Piqué Cotton</option><option>80/20 Cotton-Poly</option><option>Performance Dry-Fit</option><option>100% Polyester</option></select></div>
+      </div>
+      <div class="form-group"><label class="form-label">Decoration Method</label>
+        <select class="form-control">
+          <option>Embroidery (Logo/Text)</option><option>Screen Print</option><option>Digital Print (DTG)</option><option>Heat Transfer</option><option>Sublimation</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">Required Delivery Date</label><input class="form-control" type="date" /></div>
+      <div class="form-group"><label class="form-label">Shipping Address</label>
+        <select class="form-control">
+          <option>HQ — Chicago (Default)</option><option>Warehouse — Dallas</option><option>+ Add New Address</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">Special Instructions</label><textarea class="form-control" rows="3" placeholder="Any specific notes, color codes, placement details…"></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('newOrderModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="submitOrder()">Place Bulk Order →</button>
+    </div>
+  </div>
+</div>
+
+<!-- Comment Modal -->
+<div class="modal-overlay" id="commentModal" onclick="closeModalOverlay(event,'commentModal')">
+  <div class="modal" style="max-width:480px;">
+    <div class="modal-header">
+      <div class="modal-title">💬 Add Comment / Feedback</div>
+      <button class="modal-close" onclick="closeModal('commentModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group"><label class="form-label">Design</label><input class="form-control" value="Branded Jacket — Front Mockup" readonly style="background:var(--bg-table-alt);" /></div>
+      <div class="form-group"><label class="form-label">Your Feedback</label>
+        <div class="comment-box">
+          <textarea placeholder="Describe what needs to be changed or why you're approving/rejecting…"></textarea>
+          <div class="comment-box-footer"><button class="btn btn-primary btn-sm">Send Feedback</button></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('commentModal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Address Modal -->
+<div class="modal-overlay" id="addressModal" onclick="closeModalOverlay(event,'addressModal')">
+  <div class="modal" style="max-width:480px;">
+    <div class="modal-header">
+      <div class="modal-title">📍 Add Delivery Address</div>
+      <button class="modal-close" onclick="closeModal('addressModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group"><label class="form-label">Address Label <span class="required">*</span></label><input class="form-control" placeholder="e.g. HQ Chicago, Warehouse Dallas" /></div>
+      <div class="form-group"><label class="form-label">Street Address <span class="required">*</span></label><input class="form-control" placeholder="Street, Suite/Unit" /></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">City</label><input class="form-control" placeholder="City" /></div>
+        <div class="form-group"><label class="form-label">State / Province</label><input class="form-control" placeholder="State" /></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">ZIP / Postal Code</label><input class="form-control" placeholder="ZIP" /></div>
+        <div class="form-group"><label class="form-label">Country</label><select class="form-control"><option>United States</option><option>Canada</option><option>United Kingdom</option><option>India</option></select></div>
+      </div>
+      <div class="form-group"><label class="form-label">Contact Phone</label><input class="form-control" placeholder="+1 (___) ___-____" /></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('addressModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="closeModal('addressModal');showToast('Address saved successfully!','success')">Save Address</button>
+    </div>
+  </div>
+</div>
+
+<!-- Invite Member Modal -->
+<div class="modal-overlay" id="inviteModal" onclick="closeModalOverlay(event,'inviteModal')">
+  <div class="modal" style="max-width:440px;">
+    <div class="modal-header">
+      <div class="modal-title">📧 Invite Team Member</div>
+      <button class="modal-close" onclick="closeModal('inviteModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group"><label class="form-label">Email Address <span class="required">*</span></label><input class="form-control" type="email" placeholder="colleague@company.com" /></div>
+      <div class="form-group"><label class="form-label">Role / Permission Level</label>
+        <select class="form-control">
+          <option>Viewer (Read-only)</option><option>Manager (Approve, Comment)</option><option>Admin (Full Access)</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">Personal Message (optional)</label><textarea class="form-control" rows="3" placeholder="Hi, I'm inviting you to our BrandCraft Pro portal…"></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('inviteModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="closeModal('inviteModal');showToast('Invitation sent successfully! ✉️','success')">Send Invitation</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toastContainer" style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:999;display:flex;flex-direction:column;gap:10px;align-items:center;pointer-events:none;"></div>
+
+<!-- Script -->
+<script src="assets/js/dashboard.js"></script>
+</body>
+</html>
