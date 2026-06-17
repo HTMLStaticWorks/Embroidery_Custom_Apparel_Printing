@@ -17,6 +17,14 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/dark-mode.css">
   <link rel="stylesheet" href="assets/css/rtl.css">
+  <style>
+    @keyframes heroTextReveal {
+      0% { opacity: 0; transform: translateY(25px); filter: blur(4px); letter-spacing: 0.05em; }
+      100% { opacity: 1; transform: translateY(0); filter: blur(0); letter-spacing: normal; }
+    }
+    .animated-hero-title { animation: heroTextReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
 </head>
 <body>
 
@@ -31,7 +39,6 @@
         </svg>
         <div class="logo-text">
           Embroidery & Apparel
-          <span>B2B & Custom Branding</span>
         </div>
       </a>
       <nav class="navbar-nav">
@@ -73,23 +80,30 @@
   </header>
 
   <!-- Section 1: Article Banner -->
-  <section class="page-hero" style="background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.9)), url('https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat; padding: 160px 0 90px;">
+  <section class="page-hero" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); padding: 180px 0 120px; text-align: center;">
     <div class="container" style="max-width: 900px;">
-      <span style="display: inline-block; background-color: var(--color-accent); color: var(--color-light); padding: 4px 10px; border-radius: var(--border-radius-sm); font-size: 0.75rem; font-weight: 550; margin-bottom: 20px; text-transform: uppercase;">Uniform Guide</span>
-      <h1 style="color: var(--color-light); font-size: 2.75rem; line-height: 1.25; margin-bottom: 20px;">Ultimate Guide to B2B Uniform Sourcing & Compliance</h1>
-      <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; font-size: 0.95rem; color: rgba(255, 255, 255, 0.75);">
-        <div>Published by <strong>Sarah Lin</strong></div>
+      <span id="article-badge" style="display: inline-block; background-color: var(--color-accent); color: var(--color-light); padding: 4px 10px; border-radius: var(--border-radius-sm); font-size: 0.75rem; font-weight: 550; margin-bottom: 20px; text-transform: uppercase;">Uniform Guide</span>
+      <h1 class="animated-hero-title" id="article-title" style="color: var(--color-light); font-size: 2.75rem; line-height: 1.25; margin-bottom: 20px;">Ultimate Guide to B2B Uniform Sourcing &amp; Compliance</h1>
+      <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; font-size: 0.95rem; color: rgba(255, 255, 255, 0.75); justify-content: center;">
+        <div>Published by <strong id="article-author">Sarah Lin</strong></div>
         <div style="width: 4px; height: 4px; background-color: rgba(255,255,255,0.3); border-radius: 50%;"></div>
-        <div>June 15, 2026</div>
+        <div id="article-date">June 15, 2026</div>
         <div style="width: 4px; height: 4px; background-color: rgba(255,255,255,0.3); border-radius: 50%;"></div>
-        <div>12 Min Read</div>
+        <div id="article-readtime">12 Min Read</div>
       </div>
     </div>
   </section>
 
+  <!-- Section 1.5: Featured Image (Below Hero Section) -->
+  <section class="featured-image-section" style="padding: 60px 0 0; text-align: center; background-color: var(--color-bg);">
+    <div class="container" style="max-width: 800px;">
+      <img id="article-featured-image" src="assets/images/B2B Uniform Sourcing &amp; Compliance.png" alt="Ultimate Guide to B2B Uniform Sourcing & Compliance" style="border-radius: var(--border-radius-lg); width: 100%; height: auto; max-height: 500px; object-fit: cover; box-shadow: var(--shadow-lg); display: block; margin: 0 auto;" loading="lazy">
+    </div>
+  </section>
+
   <!-- Section 2: Article Content -->
-  <section class="section">
-    <div class="container" style="max-width: 800px; line-height: 1.8; font-size: 1.05rem;">
+  <section class="section" style="padding-top: 40px;">
+    <div class="container" id="article-content" style="max-width: 800px; line-height: 1.8; font-size: 1.05rem;">
       <p style="margin-bottom: 24px; font-size: 1.15rem; color: var(--color-primary); font-weight: 500;">
         Planning a comprehensive corporate uniform update requires balancing durability, comfort, cost, and brand visual guidelines. Managing procurement schedules across branches without automated dashboards is usually a manual hassle.
       </p>
@@ -118,75 +132,15 @@
         <h2 class="section-title">Garment & Machine Details</h2>
         <p class="section-desc">Take a look inside our high-volume B2B decoration workshop.</p>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
-        <img src="https://images.unsplash.com/photo-1605493744187-93b2143b6e17?q=80&w=400&auto=format&fit=crop" alt="Stitching closeup" style="border-radius: var(--border-radius-md); width: 100%; aspect-ratio: 1; object-fit: cover;" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=400&auto=format&fit=crop" alt="Printing closeup" style="border-radius: var(--border-radius-md); width: 100%; aspect-ratio: 1; object-fit: cover;" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1595079676339-1534801ad6cf?q=80&w=400&auto=format&fit=crop" alt="Multihead embroidery system" style="border-radius: var(--border-radius-md); width: 100%; aspect-ratio: 1; object-fit: cover;" loading="lazy">
-        <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=400&auto=format&fit=crop" alt="Finished polo shirts" style="border-radius: var(--border-radius-md); width: 100%; aspect-ratio: 1; object-fit: cover;" loading="lazy">
+      <div id="gallery-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+        <img id="gallery-img-1" src="https://images.unsplash.com/photo-1605493744187-93b2143b6e17?q=80&w=400&auto=format&fit=crop" alt="Stitching closeup" style="border-radius: var(--border-radius-md); width: 100%; aspect-ratio: 1; object-fit: cover;" loading="lazy">
+        <img id="gallery-img-2" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=400&auto=format&fit=crop" alt="Printing closeup" style="border-radius: var(--border-radius-md); width: 100%; aspect-ratio: 1; object-fit: cover;" loading="lazy">
+        <img id="gallery-img-3" src="https://images.unsplash.com/photo-1595079676339-1534801ad6cf?q=80&w=400&auto=format&fit=crop" alt="Multihead embroidery system" style="border-radius: var(--border-radius-md); width: 100%; aspect-ratio: 1; object-fit: cover;" loading="lazy">
+        <img id="gallery-img-4" src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=400&auto=format&fit=crop" alt="Finished polo shirts" style="border-radius: var(--border-radius-md); width: 100%; aspect-ratio: 1; object-fit: cover;" loading="lazy">
       </div>
     </div>
   </section>
 
-  <!-- Section 4: Related Articles (4 Cards) -->
-  <section class="section">
-    <div class="container">
-      <div class="section-title-wrapper">
-        <span class="section-subtitle">Related Content</span>
-        <h2 class="section-title">Recommended Guides</h2>
-        <p class="section-desc">Expand your custom apparel knowledge with these helpful guides.</p>
-      </div>
-      <div class="card-grid">
-        <!-- Card 1 -->
-        <div class="card-item">
-          <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=600&auto=format&fit=crop" alt="Polo fabrics close-up" loading="lazy">
-          </div>
-          <div class="card-body">
-            <span class="card-badge">Fabrics</span>
-            <h3 class="card-title">Polyester vs. Ringspun Cotton</h3>
-            <p class="card-text">Learn how fabric blends impact thread density and printing adherence. Select the right blank for active environments.</p>
-            <a href="design-details.html" class="btn btn-outline btn-block card-btn">Read Article</a>
-          </div>
-        </div>
-        <!-- Card 2 -->
-        <div class="card-item">
-          <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1605493744187-93b2143b6e17?q=80&w=600&auto=format&fit=crop" alt="Embroidery needles working" loading="lazy">
-          </div>
-          <div class="card-body">
-            <span class="card-badge">Embroidery</span>
-            <h3 class="card-title">Preparing Vector Art for Stitching</h3>
-            <p class="card-text">A brief checklist for marketing designers converting high-res files into stitch coordinates.</p>
-            <a href="design-details.html" class="btn btn-outline btn-block card-btn">Read Article</a>
-          </div>
-        </div>
-        <!-- Card 3 -->
-        <div class="card-item">
-          <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=600&auto=format&fit=crop" alt="Polo shirts colors swatches" loading="lazy">
-          </div>
-          <div class="card-body">
-            <span class="card-badge">Design Trends</span>
-            <h3 class="card-title">Top 5 Corporate Merch Trends</h3>
-            <p class="card-text">From high-end utility backpacks to vintage distress printing, discover what teams actually want to wear.</p>
-            <a href="design-details.html" class="btn btn-outline btn-block card-btn">Read Article</a>
-          </div>
-        </div>
-        <!-- Card 4 -->
-        <div class="card-item">
-          <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1578587018452-892bacefd3f2?q=80&w=600&auto=format&fit=crop" alt="Screen print ink layering" loading="lazy">
-          </div>
-          <div class="card-body">
-            <span class="card-badge">Printing</span>
-            <h3 class="card-title">Screen Printing Color Limitations</h3>
-            <p class="card-text">A simple breakdown of how color count impacts bulk mesh screen setups and direct B2B pricing configurations.</p>
-            <a href="design-details.html" class="btn btn-outline btn-block card-btn">Read Article</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Section 5: Comment Form -->
   <section class="section" style="background-color: var(--color-bg-card); border-top: 1px solid var(--color-border);">
@@ -210,7 +164,9 @@
           <textarea id="comment-message" class="form-input" rows="5" placeholder="Share your thoughts on this guide..." required></textarea>
           <span class="form-error-msg">Please write a message</span>
         </div>
-        <button type="submit" class="btn btn-primary">Post Comment</button>
+        <div style="display: flex; justify-content: center;">
+          <button type="submit" class="btn btn-primary">Post Comment</button>
+        </div>
       </form>
     </div>
   </section>
@@ -221,26 +177,25 @@
       <div class="footer-grid">
         <div>
           <a href="index.html" class="logo" style="margin-bottom: 20px;">
-            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent);">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 22V12M12 12c2.5 0 4-1.5 4-4s-1.5-4-4-4-4 1.5-4 4 1.5 4 4 4z"></path>
               <circle cx="12" cy="8" r="1"></circle>
               <path d="M20 12c-2-2-5-2-8 0s-6 2-8 0"></path>
             </svg>
-            <div class="logo-text" style="color: var(--color-light);">
+            <div class="logo-text">
               Embroidery & Apparel
-              <span style="color: rgba(255,255,255,0.6);">B2B & Custom Branding</span>
             </div>
           </a>
           <p class="footer-col-desc">
             Professional apparel customization streamlining bulk uniform ordering, team wear production, and promotional products with speed and precision.
           </p>
-          <div class="social-links">
+                    <div class="social-links">
             <a href="https://facebook.com" class="social-link" target="_blank" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
             <a href="https://instagram.com" class="social-link" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
             <a href="https://linkedin.com" class="social-link" target="_blank" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
-            <a href="https://twitter.com" class="social-link" target="_blank" aria-label="X"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+            <a href="https://twitter.com" class="social-link" target="_blank" aria-label="X"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
             <a href="https://youtube.com" class="social-link" target="_blank" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
-            <a href="https://pinterest.com" class="social-link" target="_blank" aria-label="Pinterest"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="12" x2="22" y2="12"></line><line x1="12" y1="2" x2="12" y2="22"></line></svg></a>
           </div>
         </div>
         <div>
@@ -283,5 +238,621 @@
 
   <!-- Scripts -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Dynamic Details Page Loader Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const articleData = {
+        "b2b-sourcing": {
+          title: "Ultimate Guide to B2B Uniform Sourcing & Compliance",
+          badge: "Uniform Guide",
+          author: "Sarah Lin",
+          date: "June 15, 2026",
+          readTime: "12 Min Read",
+          featuredImage: "assets/images/B2B Uniform Sourcing & Compliance.png",
+          content: `
+            <p style="margin-bottom: 24px; font-size: 1.15rem; color: var(--color-primary); font-weight: 500;">
+              Planning a comprehensive corporate uniform update requires balancing durability, comfort, cost, and brand visual guidelines. Managing procurement schedules across branches without automated dashboards is usually a manual hassle.
+            </p>
+            <p style="margin-bottom: 24px;">
+              First, consider fabric density. Industrial washing involves hot water loops that cause standard cotton threads to shrink, pulling the embroidered logo boundaries and creating wrinkles. This is why B2B apparel usually relies on custom poly-cotton blends (65% polyester, 35% ringspun cotton) or moisture-wicking synthetic fabrics.
+            </p>
+            <blockquote style="border-left: 4px solid var(--color-accent); padding: 16px 24px; background-color: var(--color-bg-card); font-style: italic; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; margin-bottom: 30px; font-weight: 500;">
+              "Always request a digitized stitch proof swatch sample on the actual fabric selection before running the entire production batch. Stitch paths behave differently on mesh polos than on canvas work jackets."
+            </blockquote>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Logo Placements & Digitizing Rules</h3>
+            <p style="margin-bottom: 24px;">
+              Standard logo width for left chest positions is 3.5 inches to 4 inches. To keep text readable, letter heights should never fall below 0.25 inches. If your brand vector contains fine elements, DTF transfers are generally recommended over embroidery to avoid thick thread clusters.
+            </p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">The Logistics Checklist</h3>
+            <p style="margin-bottom: 24px;">
+              Ensure your custom apparel supplier supports split shipping, allowing division of corporate billing while distributing tracking coordinates to individual local operations managers. This simplifies bulk contract ordering while keeping local teams equipped.
+            </p>
+          `,
+          gallery: [
+            "https://images.unsplash.com/photo-1605493744187-93b2143b6e17?q=80&w=400&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=400&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1595079676339-1534801ad6cf?q=80&w=400&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=400&auto=format&fit=crop"
+          ]
+        },
+        "polyester-cotton": {
+          title: "Polyester vs. Ringspun Cotton: Selecting the Right Blend",
+          badge: "Fabrics",
+          author: "Sarah Lin",
+          date: "June 14, 2026",
+          readTime: "8 Min Read",
+          featuredImage: "assets/images/Polyester vs. Ringspun Cotton.png",
+          content: `
+            <p style="margin-bottom: 24px; font-size: 1.15rem; color: var(--color-primary); font-weight: 500;">
+              Choosing the correct fabric blend is critical for uniform durability and print clarity. Find out which fits your workplace.
+            </p>
+            <p style="margin-bottom: 24px;">
+              When choosing corporate apparel, the choice between 100% ringspun cotton and synthetic polyester has massive long-term implications. Ringspun cotton is exceptionally soft, breathable, and offers a premium print surface. However, under high-temperature commercial laundry cycles, pure cotton is prone to shrinking, which can cause embroidered logos to warp and pucker.
+            </p>
+            <blockquote style="border-left: 4px solid var(--color-accent); padding: 16px 24px; background-color: var(--color-bg-card); font-style: italic; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; margin-bottom: 30px; font-weight: 500;">
+              "For active field environments, choose moisture-wicking synthetics. For corporate events and sales reps, ringspun cotton offers an unmatched premium look."
+            </blockquote>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Performance & Durability Comparison</h3>
+            <p style="margin-bottom: 24px;">
+              Polyester, on the other hand, is highly durable, retains its color under UV exposure, and resists wrinkles. However, it requires specialized low-bleed inks during screen printing to prevent dye migration. For most B2B uniforms, we recommend a 65/35 poly-cotton blend, combining the breathability of cotton with the performance and structure of polyester.
+            </p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Stitch Density Adjustments</h3>
+            <p style="margin-bottom: 24px;">
+              Our digitizing team manually adjusts stitch densities depending on the fabric chosen. Mesh polo shirts require heavier underlay stitches to prevent the logo from sinking into the fabric, while smooth cotton tees can handle finer, high-density satin stitches.
+            </p>
+          `,
+          gallery: [
+            "assets/images/spec_threads.png",
+            "assets/images/blank_polo.png",
+            "assets/images/spec_ink.png",
+            "assets/images/workflow_stock_sourcing.png"
+          ]
+        },
+        "vector-art": {
+          title: "Preparing Vector Art for Stitching: Artwork Submission Guide",
+          badge: "Embroidery",
+          author: "Marcus Vance",
+          date: "June 12, 2026",
+          readTime: "7 Min Read",
+          featuredImage: "assets/images/Preparing Vector Art for Stitching.png",
+          content: `
+            <p style="margin-bottom: 24px; font-size: 1.15rem; color: var(--color-primary); font-weight: 500;">
+              Transforming a digital graphic into a physical stitch pattern requires precision. Learn how to optimize your vectors.
+            </p>
+            <p style="margin-bottom: 24px;">
+              Embroidery machines do not read pixels or vector curves directly; they rely on coordinate-based stitch paths. Digitizing is the process of converting artwork into these machine instructions. To achieve clean results, vector artwork must be clean, with minimized layers, closed paths, and no overlapping transparencies.
+            </p>
+            <blockquote style="border-left: 4px solid var(--color-accent); padding: 16px 24px; background-color: var(--color-bg-card); font-style: italic; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; margin-bottom: 30px; font-weight: 500;">
+              "Manual digitization by our artwork coordinators ensures that stitch direction, pull compensation, and density are tailored to your target garment."
+            </blockquote>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Fonts and Fine Details</h3>
+            <p style="margin-bottom: 24px;">
+              Fonts and fine details are particularly sensitive. The minimum recommended height for text in embroidery is 0.25 inches. Anything smaller will cause threads to cluster, making the text unreadable. We recommend converting all text to outlines (curves) and using solid, high-contrast colors rather than gradients.
+            </p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Alternative Printing Solutions</h3>
+            <p style="margin-bottom: 24px;">
+              If your logo features complex color gradients or extremely fine details, we may recommend Direct To Film (DTF) transfers or screen printing instead. This ensures all fine elements are preserved without creating bulky, uncomfortable thread patches.
+            </p>
+          `,
+          gallery: [
+            "assets/images/service_vectorization.png",
+            "assets/images/workflow_digitizing_setup.png",
+            "assets/images/spec_threads.png",
+            "assets/images/service_embroidery.png"
+          ]
+        },
+        "merch-trends": {
+          title: "Top 5 Corporate Merch Trends: What Teams Actually Want",
+          badge: "Design Trends",
+          author: "Elena Rostova",
+          date: "June 10, 2026",
+          readTime: "9 Min Read",
+          featuredImage: "assets/images/Top 5 Corporate Merch Trends dress hd images.png",
+          content: `
+            <p style="margin-bottom: 24px; font-size: 1.15rem; color: var(--color-primary); font-weight: 500;">
+              Corporate merchandise is moving away from cheap giveaways and transitioning to premium, retail-grade wear.
+            </p>
+            <p style="margin-bottom: 24px;">
+              Modern teams want apparel they would wear outside of work hours. We are seeing a major shift toward high-performance retail brands, technical outerwear, and modern cuts. Insulated puff vests, softshell jackets, and sleek quarter-zips are replacing standard boxy crewnecks.
+            </p>
+            <blockquote style="border-left: 4px solid var(--color-accent); padding: 16px 24px; background-color: var(--color-bg-card); font-style: italic; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; margin-bottom: 30px; font-weight: 500;">
+              "High-quality, useful merchandise has a 3x higher retention rate, ensuring your brand stays visible for years."
+            </blockquote>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Subtle and Minimalist Branding</h3>
+            <p style="margin-bottom: 24px;">
+              Subtle branding is another major trend. Instead of massive chest prints, companies are opting for tone-on-tone embroidery, minimal sleeve placements, or subtle hem tags. This makes the merchandise feel like a premium retail item rather than a walking billboard, boosting employee adoption.
+            </p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Eco-friendly Sourcing</h3>
+            <p style="margin-bottom: 24px;">
+              Eco-friendly fabrics and ethical manufacturing are also top priorities. Transitioning to certified organic cotton and recycled polyester threads not only supports corporate sustainability goals but also resonates strongly with modern workforces.
+            </p>
+          `,
+          gallery: [
+            "assets/images/blank_jacket.png",
+            "assets/images/blank_cap.png",
+            "assets/images/ethical_sourcing.png",
+            "assets/images/Corporate Jackets.png"
+          ]
+        },
+        "color-limitations": {
+          title: "Understanding Screen Printing Color Limitations & Mesh Setups",
+          badge: "Printing",
+          author: "Dominic Torres",
+          date: "June 08, 2026",
+          readTime: "10 Min Read",
+          featuredImage: "assets/images/Screen Printing Color Limitations.png",
+          content: `
+            <p style="margin-bottom: 24px; font-size: 1.15rem; color: var(--color-primary); font-weight: 500;">
+              Screen printing offers unmatched durability for bulk orders, but requires understanding how colors impact cost.
+            </p>
+            <p style="margin-bottom: 24px;">
+              In screen printing, each color in a design requires its own custom mesh screen, film positive, and ink station setup. This means that a 1-color design has minimal setup cost, while a 6-color design requires six separate setups. For B2B orders, reducing the color count is the most effective way to lower unit costs.
+            </p>
+            <blockquote style="border-left: 4px solid var(--color-accent); padding: 16px 24px; background-color: var(--color-bg-card); font-style: italic; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; margin-bottom: 30px; font-weight: 500;">
+              "Optimizing screen setups by utilizing garment color as a negative space can reduce color counts without sacrificing visual impact."
+            </blockquote>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">The Dark Garment Underbase Rule</h3>
+            <p style="margin-bottom: 24px;">
+              For dark-colored garments, a base white layer (underbase) is required first so that subsequent colors stand out vibrantly. This means a 3-color print on a black shirt actually requires a 4-screen setup. If your design has complex photo-realistic colors, Direct To Film (DTF) or Dye Sublimation may be more cost-effective.
+            </p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Ink Selection & Curing</h3>
+            <p style="margin-bottom: 24px;">
+              We use high-opacity plastisol and water-based inks that guarantee wash-fastness and vibrant color reproduction. Our technicians calibrate mesh tension and curing temperature to prevent cracking or peeling over time.
+            </p>
+          `,
+          gallery: [
+            "assets/images/service_screenprinting.png",
+            "assets/images/Screen Printing-2.png",
+            "assets/images/Screen Printing-3.png",
+            "assets/images/spec_ink.png"
+          ]
+        },
+        "screen-printing": {
+          title: "Custom Screen Printing: High-Opacity Bulk Production",
+          badge: "Screen Printing",
+          author: "Dominic Torres",
+          date: "June 05, 2026",
+          readTime: "6 Min Read",
+          featuredImage: "assets/images/Screen Printing-1.png",
+          content: `
+            <p style="margin-bottom: 24px; font-size: 1.15rem; color: var(--color-primary); font-weight: 500;">
+              High-opacity prints ideal for bulk orders. Perfect for bold logos and multi-color artwork on tees, polos, and workwear.
+            </p>
+            <p style="margin-bottom: 24px;">
+              Screen printing remains the industry standard for large runs of custom apparel. Our automatic press machines apply vibrant, thick layers of ink that are heat-cured to lock into the fabric fibers. This ensures maximum longevity, resisting fading and cracking even after hundreds of commercial wash cycles.
+            </p>
+            <blockquote style="border-left: 4px solid var(--color-accent); padding: 16px 24px; background-color: var(--color-bg-card); font-style: italic; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; margin-bottom: 30px; font-weight: 500;">
+              "Perfect for bold graphics and high-density color designs that need to stand out on dark cotton fabrics."
+            </blockquote>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Automatic Screen Presses</h3>
+            <p style="margin-bottom: 24px;">
+              We use high-grade screens and precision squeegees to achieve clean lines and crisp edges. Whether it's a corporate event t-shirt or field work uniforms, screen printing delivers a professional finish at a highly competitive unit price for volume production.
+            </p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Specialty Screen Inks</h3>
+            <p style="margin-bottom: 24px;">
+              We offer specialty inks including puff inks, metallic shimmers, and water-based soft-hand inks to customize the exact texture and visual style of your prints.
+            </p>
+          `,
+          gallery: [
+            "assets/images/service_screenprinting.png",
+            "assets/images/Screen Printing-2.png",
+            "assets/images/Screen Printing-3.png",
+            "assets/images/spec_ink.png"
+          ]
+        },
+        "dtf-transfers": {
+          title: "Direct To Film (DTF) Transfers: Vibrant Full-Color Detail",
+          badge: "DTF Printing",
+          author: "Elena Rostova",
+          date: "June 04, 2026",
+          readTime: "6 Min Read",
+          featuredImage: "assets/images/Direct To Film-1.png",
+          content: `
+            <p style="margin-bottom: 24px; font-size: 1.15rem; color: var(--color-primary); font-weight: 500;">
+              Vibrant, full-color transfers that bond directly to fabric. Excellent for detailed gradients and photorealistic designs.
+            </p>
+            <p style="margin-bottom: 24px;">
+              Direct To Film (DTF) represents the latest innovation in apparel printing. Designs are printed in high resolution onto a specialized PET film using elastic water-based inks, coated with a hot-melt adhesive powder, and then heat-transferred onto the garment. This allows for rich gradients and hyper-detailed designs.
+            </p>
+            <blockquote style="border-left: 4px solid var(--color-accent); padding: 16px 24px; background-color: var(--color-bg-card); font-style: italic; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; margin-bottom: 30px; font-weight: 500;">
+              "DTF is the ultimate solution for complex brand logos that feature gradients, shadows, and thin borders."
+            </blockquote>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Soft & Stretchable Quality</h3>
+            <p style="margin-bottom: 24px;">
+              Unlike traditional screen printing, DTF does not require separate screens for each color, making it highly cost-effective for small runs or complex multi-color artwork. The prints are thin, soft to the touch, and stretch with the fabric without cracking.
+            </p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Fabric Compatibility</h3>
+            <p style="margin-bottom: 24px;">
+              DTF transfers bond extremely well to both natural cotton and synthetic polyester, giving you maximum flexibility in choosing blanks for your team's uniforms.
+            </p>
+          `,
+          gallery: [
+            "assets/images/service_dtf.png",
+            "assets/images/Direct To Film-2.png",
+            "assets/images/Direct To Film-3.png",
+            "assets/images/Direct To Garment-1.png"
+          ]
+        },
+        "dye-sublimation": {
+          title: "Dye Sublimation Prints: Edge-to-Edge Performance Wear",
+          badge: "Dye Sublimation",
+          author: "Marcus Vance",
+          date: "June 03, 2026",
+          readTime: "5 Min Read",
+          featuredImage: "assets/images/Dye Sublimation-2.png",
+          content: `
+            <p style="margin-bottom: 24px; font-size: 1.15rem; color: var(--color-primary); font-weight: 500;">
+              All-over, edge-to-edge prints on polyester. Ideal for sportswear, team jerseys, and promotional merchandise.
+            </p>
+            <p style="margin-bottom: 24px;">
+              Dye sublimation uses heat to chemically bond specialized inks directly into the synthetic polyester fibers of the fabric. Instead of sitting on top of the garment like screen print ink, the dye becomes a part of the fabric itself, meaning it will never fade, crack, peel, or run.
+            </p>
+            <blockquote style="border-left: 4px solid var(--color-accent); padding: 16px 24px; background-color: var(--color-bg-card); font-style: italic; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; margin-bottom: 30px; font-weight: 500;">
+              "Get unlimited color count, seamless gradients, and full-bleed coverage across the entire surface of your garment."
+            </blockquote>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Breathable Activewear</h3>
+            <p style="margin-bottom: 24px;">
+              This technique is ideal for custom jerseys, athletic uniforms, and moisture-wicking activewear. Because the print does not clog the fabric pores, sublimated garments retain 100% of their breathability and performance properties, keeping your team cool and dry.
+            </p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Color and Fabric Limitations</h3>
+            <p style="margin-bottom: 24px;">
+              Note that sublimation printing is strictly compatible with white or very light-colored polyester fabrics, as the inks are transparent and rely on the background color for visibility.
+            </p>
+          `,
+          gallery: [
+            "assets/images/Dye Sublimation-1.png",
+            "assets/images/Dye Sublimation-3.png",
+            "assets/images/workflow_stock_sourcing.png",
+            "assets/images/modern_innovation.png"
+          ]
+        },
+        "polo-shirts": {
+          title: "Custom Polo Shirts: Embroidered Professional Teamwear",
+          badge: "Custom Apparel",
+          author: "Sarah Lin",
+          date: "June 02, 2026",
+          readTime: "8 Min Read",
+          featuredImage: "assets/images/Custom Polo Shirts.png",
+          content: `
+            <p style="margin-bottom: 24px; font-size: 1.15rem; color: var(--color-primary); font-weight: 500;">
+              Premium cotton-poly blend polos detailed with custom chest embroidery. Elevate your corporate image.
+            </p>
+            <p style="margin-bottom: 24px;">
+              Embroidered polo shirts are the cornerstone of B2B corporate uniforms. Our premium pique and interlock polos are selected for their comfort, breathability, and durability under repeated washings. Perfect for front-desk staff, sales representatives, and outdoor events.
+            </p>
+            <blockquote style="border-left: 4px solid var(--color-accent); padding: 16px 24px; background-color: var(--color-bg-card); font-style: italic; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; margin-bottom: 30px; font-weight: 500;">
+              "Combine comfort with classic styling. Our range features moisture-wicking active polos and heavy-knit corporate options."
+            </blockquote>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Polo Knit Stabilizers</h3>
+            <p style="margin-bottom: 24px;">
+              Our digitization experts calibrate stitch files specifically for polo fabrics. We apply stabilizer backings to prevent the knit fabric from puckering around the embroidery, ensuring your company logo stays flat, clean, and professional for the life of the garment.
+            </p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Thread Varieties</h3>
+            <p style="margin-bottom: 24px;">
+              We offer multiple thread types including classic shiny rayon and ultra-durable poly-neon, pantone-matched to fit your exact brand style guidelines.
+            </p>
+          `,
+          gallery: [
+            "assets/images/blank_polo.png",
+            "assets/images/spec_threads.png",
+            "assets/images/Absolute Quality.png",
+            "assets/images/client_first_service.png"
+          ]
+        },
+        "active-caps": {
+          title: "Premium Active Caps: High-Performance Branded Headwear",
+          badge: "Headwear",
+          author: "Marcus Vance",
+          date: "May 30, 2026",
+          readTime: "8 Min Read",
+          featuredImage: "assets/images/Premium Active Caps.png",
+          content: `
+            <p style="margin-bottom: 24px; font-size: 1.15rem; color: var(--color-primary); font-weight: 500;">
+              Classic structured and unstructured caps detailed with 3D puff embroidery or clean custom prints.
+            </p>
+            <p style="margin-bottom: 24px;">
+              Branded caps are highly visible, making them excellent promotional items and team accessories. We offer a curated selection of headwear, from unstructured dad hats to flat-bill snapbacks, constructed from durable cotton twill or breathable mesh panels.
+            </p>
+            <blockquote style="border-left: 4px solid var(--color-accent); padding: 16px 24px; background-color: var(--color-bg-card); font-style: italic; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; margin-bottom: 30px; font-weight: 500;">
+              "A highly visible branding asset. Perfect for outdoor crews, casual uniforms, and merchandise giveaways."
+            </blockquote>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">3D Puff Embroidery</h3>
+            <p style="margin-bottom: 24px;">
+              For embroidery on caps, we use specialized round frames on our multi-head machines. This allows us to stitch across the curved front panels, panels, and sides. 3D puff embroidery uses a foam backing layer to raise your logo, creating a striking, premium retail appearance.
+            </p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Panel Boundaries</h3>
+            <p style="margin-bottom: 24px;">
+              We offer fine adjustments to ensure logos fit perfectly within the hat panel borders without overlapping seam lines.
+            </p>
+          `,
+          gallery: [
+            "assets/images/blank_cap.png",
+            "assets/images/spec_threads.png",
+            "assets/images/workflow_embroidery_machine.png",
+            "assets/images/Absolute Quality.png"
+          ]
+        },
+        "corporate-merch": {
+          title: "Premium Corporate Merchandise: Custom Swags & Gift Sets",
+          badge: "Merchandise",
+          author: "Elena Rostova",
+          date: "May 28, 2026",
+          readTime: "8 Min Read",
+          featuredImage: "assets/images/Premium Corporate Merchandise.png",
+          content: `
+            <p style="margin-bottom: 24px; font-size: 1.15rem; color: var(--color-primary); font-weight: 500;">
+              Curated gift sets, high-end bags, and customized office essentials designed to elevate your brand presence.
+            </p>
+            <p style="margin-bottom: 24px;">
+              Make a memorable impression with retail-grade corporate merchandise. We help you build complete merchandise kits, including embroidered backpacks, custom notebook portfolios, engraved tumblers, and branded hoodies. Perfect for onboarding new hires or client gifting.
+            </p>
+            <blockquote style="border-left: 4px solid var(--color-accent); padding: 16px 24px; background-color: var(--color-bg-card); font-style: italic; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; margin-bottom: 30px; font-weight: 500;">
+              "Elevate your brand beyond standard apparel. High-quality merchandise shows attention to detail and builds corporate culture."
+            </blockquote>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Brand Style Guidelines</h3>
+            <p style="margin-bottom: 24px;">
+              We maintain strict quality control across different printing processes, ensuring that the logo color and alignment match perfectly across different materials (textiles, plastics, and metals).
+            </p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">On-Demand Fulfillment</h3>
+            <p style="margin-bottom: 24px;">
+              Our digital inventory dashboard lets you store designs and re-order custom merchandise bundles on demand, direct to your office locations.
+            </p>
+          `,
+          gallery: [
+            "assets/images/ethical_sourcing.png",
+            "assets/images/workflow_packing_shipping.png",
+            "assets/images/absolute_quality.png",
+            "assets/images/modern_innovation.png"
+          ]
+        },
+        "workwear": {
+          title: "Commercial Workwear: Heavy-Duty Industrial Uniforms",
+          badge: "Workwear",
+          author: "Marcus Vance",
+          date: "May 25, 2026",
+          readTime: "8 Min Read",
+          featuredImage: "assets/images/Commercial Workwear.png",
+          content: `
+            <p style="margin-bottom: 24px; font-size: 1.15rem; color: var(--color-primary); font-weight: 500;">
+              Flame-resistant, reinforced, and field-tested safety apparel engineered for heavy utility environments.
+            </p>
+            <p style="margin-bottom: 24px;">
+              Industrial uniforms must withstand dirt, grease, friction, and constant commercial hot-water washing. We source heavy-duty utility trousers, canvas jackets, and reinforced shirts from leading workwear brands, custom-branded with heavy-duty embroidery.
+            </p>
+            <blockquote style="border-left: 4px solid var(--color-accent); padding: 16px 24px; background-color: var(--color-bg-card); font-style: italic; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; margin-bottom: 30px; font-weight: 500;">
+              "Combine safety compliance with professional team branding. Rugged garments built to work as hard as your crew does."
+            </blockquote>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Chemical and Wash Resistance</h3>
+            <p style="margin-bottom: 24px;">
+              Our embroidery threads are selected for chemical resistance and color retention, ensuring your company logo remains visible and professional even under severe work conditions.
+            </p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Reinforced Stitching</h3>
+            <p style="margin-bottom: 24px;">
+              We can print or embroider on specialized high-durability fabrics, ensuring complete adherence to safety and mechanical specifications.
+            </p>
+          `,
+          gallery: [
+            "assets/images/workflow_stock_sourcing.png",
+            "assets/images/spec_threads.png",
+            "assets/images/absolute_quality.png",
+            "assets/images/workflow_embroidery_machine.png"
+          ]
+        },
+        "safety-uniforms": {
+          title: "Construction Safety Uniforms: High-Visibility Compliance",
+          badge: "Safety Wear",
+          author: "Marcus Vance",
+          date: "May 22, 2026",
+          readTime: "7 Min Read",
+          featuredImage: "assets/images/Construction Safety.png",
+          content: `
+            <p style="margin-bottom: 24px; font-size: 1.15rem; color: var(--color-primary); font-weight: 500;">
+              ANSI-certified high-visibility vests, shirts, and jackets with reflective strips and custom company logos.
+            </p>
+            <p style="margin-bottom: 24px;">
+              Keep your crews safe and compliant with our high-visibility uniform line. Featuring fluorescent lime and orange fabrics with certified retroreflective stripes, these garments are engineered to meet safety standards while displaying your company branding.
+            </p>
+            <blockquote style="border-left: 4px solid var(--color-accent); padding: 16px 24px; background-color: var(--color-bg-card); font-style: italic; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; margin-bottom: 30px; font-weight: 500;">
+              "Safety wear doesn't mean compromising on branding. Professional safety uniforms that keep your logo visible on-site."
+            </blockquote>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Reflective Panel Printing</h3>
+            <p style="margin-bottom: 24px;">
+              We offer clean screen printing and custom embroidered patches for safety uniforms. Our customization processes are designed to not obstruct or damage the reflective backing materials, keeping safety at the forefront.
+            </p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Breathable Structures</h3>
+            <p style="margin-bottom: 24px;">
+              All materials are selected for breathability and lightweight structure, ensuring workers remain comfortable during hot, active shifts.
+            </p>
+          `,
+          gallery: [
+            "assets/images/workflow_stock_sourcing.png",
+            "assets/images/absolute_quality.png",
+            "assets/images/spec_ink.png",
+            "assets/images/client_first_service.png"
+          ]
+        },
+        "hospitality": {
+          title: "Culinary & Hospitality: Elegant Restaurant & Hotel Uniforms",
+          badge: "Hospitality",
+          author: "Sarah Lin",
+          date: "May 20, 2026",
+          readTime: "8 Min Read",
+          featuredImage: "assets/images/Culinary & Hospitality.png",
+          content: `
+            <p style="margin-bottom: 24px; font-size: 1.15rem; color: var(--color-primary); font-weight: 500;">
+              Tailored chef coats, waitstaff aprons, and front-desk suiting customized with fine branding.
+            </p>
+            <p style="margin-bottom: 24px;">
+              First impressions are vital in hospitality. Our hospitality uniform collections include professional double-breasted chef coats, durable server aprons, and clean front-desk uniforms designed to give your establishment a unified, high-end appearance.
+            </p>
+            <blockquote style="border-left: 4px solid var(--color-accent); padding: 16px 24px; background-color: var(--color-bg-card); font-style: italic; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; margin-bottom: 30px; font-weight: 500;">
+              "Uniforms that match the style of your dining room. Premium fabrics, durable construction, and elegant embroidery details."
+            </blockquote>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Soil-Release Fabrics</h3>
+            <p style="margin-bottom: 24px;">
+              We focus on soil-release fabrics and comfortable cuts that allow for full range of motion. Elegant embroidered accents on chef collars or apron pockets add a subtle, premium branding detail that customers notice.
+            </p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Wash Durability</h3>
+            <p style="margin-bottom: 24px;">
+              Our embroidery threads are highly resistant to bleaching agents and intensive stain-releasing wash cycles, keeping your uniform assets in rotation longer.
+            </p>
+          `,
+          gallery: [
+            "assets/images/Executive Suitings.png",
+            "assets/images/spec_threads.png",
+            "assets/images/workflow_packing_shipping.png",
+            "assets/images/absolute_quality.png"
+          ]
+        },
+        "education": {
+          title: "Education & Athletics: Smart School & Team Sports Uniforms",
+          badge: "Education",
+          author: "Dominic Torres",
+          date: "May 18, 2026",
+          readTime: "8 Min Read",
+          featuredImage: "assets/images/Education & Athletics.png",
+          content: `
+            <p style="margin-bottom: 24px; font-size: 1.15rem; color: var(--color-primary); font-weight: 500;">
+              Custom embroidered school blazers, pique polo uniforms, and high-performance team jerseys.
+            </p>
+            <p style="margin-bottom: 24px;">
+              We provide complete uniform solutions for schools, universities, and athletic teams. From classic structured school blazers with gold bullion crests to sweat-wicking active shirts with full-bleed sublimation prints, we cater to all levels of academic and sports programs.
+            </p>
+            <blockquote style="border-left: 4px solid var(--color-accent); padding: 16px 24px; background-color: var(--color-bg-card); font-style: italic; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; margin-bottom: 30px; font-weight: 500;">
+              "Promote team spirit and school identity with high-performance sportswear and classic campus uniform tailoring."
+            </blockquote>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Youth Comfort & Safety</h3>
+            <p style="margin-bottom: 24px;">
+              Our youth-friendly materials are selected for skin comfort, color fastness, and durability. Whether it's physical education wear or official campus uniforms, we handle small sizing variations with complete precision.
+            </p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Institutional Ordering</h3>
+            <p style="margin-bottom: 24px;">
+              Our online dashboard allows schools to manage parent orders, bulk team ordering, and custom distribution logistics seamlessly.
+            </p>
+          `,
+          gallery: [
+            "assets/images/Education & Athletics customise dress.png",
+            "assets/images/Dye Sublimation-2.png",
+            "assets/images/blank_polo.png",
+            "assets/images/workflow_packing_shipping.png"
+          ]
+        },
+        "healthcare": {
+          title: "Healthcare & Biotech: Antimicrobial Scrubs & Lab Coats",
+          badge: "Healthcare",
+          author: "Sarah Lin",
+          date: "May 15, 2026",
+          readTime: "8 Min Read",
+          featuredImage: "assets/images/Healthcare & Biotech.png",
+          content: `
+            <p style="margin-bottom: 24px; font-size: 1.15rem; color: var(--color-primary); font-weight: 500;">
+              Professional medical scrubs, laboratory coats, and nursing uniforms customized with clean department branding.
+            </p>
+            <p style="margin-bottom: 24px;">
+              Medical uniforms demand high functionality, extreme durability, and hygienic fabrics. Our scrubs are crafted from antimicrobial, four-way stretch fabrics that offer moisture control and odor resistance for long medical shifts.
+            </p>
+            <blockquote style="border-left: 4px solid var(--color-accent); padding: 16px 24px; background-color: var(--color-bg-card); font-style: italic; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; margin-bottom: 30px; font-weight: 500;">
+              "Hygienic, comfortable scrubs designed for healthcare professionals, featuring precision branding that builds patient trust."
+            </blockquote>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Precision Medical Embroidery</h3>
+            <p style="margin-bottom: 24px;">
+              We embroider department logos, hospital seals, and staff names with clean, flat stitch paths that minimize skin friction. We also offer Direct To Film prints on stretch fabrics to keep the shirts flexible and lightweight.
+            </p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Institutional Logistics</h3>
+            <p style="margin-bottom: 24px;">
+              We supply institutional contracts with recurring uniform replenishment cycles, ensuring your medical and research staff are always equipped.
+            </p>
+          `,
+          gallery: [
+            "assets/images/embroidery customized Medical Scrubs hd images dress.png",
+            "assets/images/spec_threads.png",
+            "assets/images/workflow_packing_shipping.png",
+            "assets/images/absolute_quality.png"
+          ]
+        },
+        "corporate": {
+          title: "Technology & Corporate: Sleek Modern Business Dress Codes",
+          badge: "Corporate",
+          author: "Elena Rostova",
+          date: "May 12, 2026",
+          readTime: "8 Min Read",
+          featuredImage: "assets/images/Technology & Corporate.png",
+          content: `
+            <p style="margin-bottom: 24px; font-size: 1.15rem; color: var(--color-primary); font-weight: 500;">
+              Modern quarter-zips, lightweight jackets, and executive shirts for tech teams and corporate operations.
+            </p>
+            <p style="margin-bottom: 24px;">
+              Modern business dress codes lean towards comfortable, premium, and functional clothing. Our corporate collections feature premium knit polos, stretch oxford shirts, and tech-fleece pullovers from leading brands, embellished with subtle, high-density embroidery.
+            </p>
+            <blockquote style="border-left: 4px solid var(--color-accent); padding: 16px 24px; background-color: var(--color-bg-card); font-style: italic; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; margin-bottom: 30px; font-weight: 500;">
+              "Sleek, professional corporate apparel that teams actually want to wear in and out of the office."
+            </blockquote>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Minimalist Stitch Paths</h3>
+            <p style="margin-bottom: 24px;">
+              Our tone-on-tone embroidery options provide a subtle, luxury finish that aligns with modern corporate aesthetics. We ensure that sizing, thread color, and placement are uniform across every single batch.
+            </p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 16px; color: var(--color-primary); font-weight: 550;">Voucher Distribution</h3>
+            <p style="margin-bottom: 24px;">
+              Through our online dashboard, corporate clients can distribute merchandise vouchers to remote employees, streamlining national and global distribution.
+            </p>
+          `,
+          gallery: [
+            "assets/images/blank_jacket.png",
+            "assets/images/Corporate Jackets.png",
+            "assets/images/absolute_quality.png",
+            "assets/images/client_first_service.png"
+          ]
+        }
+      };
+
+      const params = new URLSearchParams(window.location.search);
+      const articleId = params.get('id');
+
+      if (articleId && articleData[articleId]) {
+        const data = articleData[articleId];
+        
+        // Update Title Tag
+        document.title = `${data.title} | Embroidery & Custom Apparel Printing`;
+        
+        // Update Hero Details
+        const badgeEl = document.getElementById('article-badge');
+        const titleEl = document.getElementById('article-title');
+        const authorEl = document.getElementById('article-author');
+        const dateEl = document.getElementById('article-date');
+        const readtimeEl = document.getElementById('article-readtime');
+        
+        if (badgeEl) badgeEl.textContent = data.badge;
+        if (titleEl) titleEl.innerHTML = data.title;
+        if (authorEl) authorEl.textContent = data.author;
+        if (dateEl) dateEl.textContent = data.date;
+        if (readtimeEl) readtimeEl.textContent = data.readTime;
+        
+        // Update Featured Image below Hero
+        const featuredImgEl = document.getElementById('article-featured-image');
+        if (featuredImgEl) {
+          featuredImgEl.src = data.featuredImage;
+          featuredImgEl.alt = data.title;
+        }
+        
+        // Update Article Body Content
+        const contentEl = document.getElementById('article-content');
+        if (contentEl) {
+          contentEl.innerHTML = data.content;
+        }
+        
+        // Update 4 Close-Up Gallery Images
+        if (data.gallery && data.gallery.length >= 4) {
+          for (let i = 1; i <= 4; i++) {
+            const imgEl = document.getElementById(`gallery-img-${i}`);
+            if (imgEl) {
+              imgEl.src = data.gallery[i - 1];
+              imgEl.alt = `${data.title} Detail ${i}`;
+            }
+          }
+        }
+      }
+    });
+  </script>
 </body>
 </html>

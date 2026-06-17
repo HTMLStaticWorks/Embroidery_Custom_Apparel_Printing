@@ -62,6 +62,19 @@
     transform: translateX(50%);
   }
 
+  [dir="rtl"] .timeline-line-fill {
+    left: auto;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  [dir="rtl"] .timeline-needle {
+    left: auto;
+    right: 50%;
+    margin-left: auto;
+    margin-right: -9px;
+  }
+
   [dir="rtl"] .timeline-item {
     left: auto;
     right: 0;
@@ -100,6 +113,18 @@
   [dir="rtl"] .timeline::before {
     left: auto;
     right: 20px;
+  }
+
+  [dir="rtl"] .timeline-line-fill {
+    left: auto;
+    right: 20px;
+  }
+
+  [dir="rtl"] .timeline-needle {
+    left: auto;
+    right: 20px;
+    margin-left: auto;
+    margin-right: -9px;
   }
   
   [dir="rtl"] .timeline-item {

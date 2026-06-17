@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services | Embroidery & Custom Apparel Printing</title>
-  <meta name="description" content="Explore our main B2B apparel branding services including custom embroidery, screen printing, direct-to-film transfers, and custom graphic vectors.">
-  
+  <meta name="description"
+    content="Explore our main B2B apparel branding services including custom embroidery, screen printing, direct-to-film transfers, and custom graphic vectors.">
+
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Services | Embroidery & Custom Apparel Printing">
-  <meta property="og:description" content="Explore our main B2B apparel branding services including custom embroidery, screen printing, direct-to-film, and graphic vectors.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1595079676339-1534801ad6cf?q=80&w=1200&auto=format&fit=crop">
+  <meta property="og:description"
+    content="Explore our main B2B apparel branding services including custom embroidery, screen printing, direct-to-film, and graphic vectors.">
+  <meta property="og:image"
+    content="https://images.unsplash.com/photo-1595079676339-1534801ad6cf?q=80&w=1200&auto=format&fit=crop">
   <meta property="og:url" content="https://customapparelprinting.com/services">
   <meta property="og:type" content="website">
 
@@ -17,21 +21,1151 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/dark-mode.css">
   <link rel="stylesheet" href="assets/css/rtl.css">
+  <!-- Page Specific Style for Hero Animation -->
+  <style>
+    @keyframes heroTextReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(25px);
+        filter: blur(4px);
+        letter-spacing: 0.05em;
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+        letter-spacing: normal;
+      }
+    }
+
+    .animated-hero-title {
+      animation: heroTextReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+    }
+
+    /* Premium B2B Configurator Styles */
+    .configurator-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+      margin-top: 50px;
+    }
+
+    .configurator-preview-col {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-lg);
+      padding: 30px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .configurator-canvas {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+      aspect-ratio: 1;
+      border-radius: var(--border-radius-md);
+      background: #F1F5F9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+    }
+
+    .configurator-canvas img {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+      transition: opacity 0.3s ease;
+    }
+
+    .logo-marker {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(220, 38, 38, 0.2);
+      border: 2px solid var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .logo-marker-inner {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      box-shadow: 0 0 10px var(--color-accent);
+    }
+
+    .logo-marker::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px solid var(--color-accent);
+      animation: pulseMarker 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulseMarker {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(1.6);
+        opacity: 0;
+      }
+    }
+
+    .configurator-controls-col {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .configurator-title-wrapper {
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 15px;
+    }
+
+    .configurator-title-wrapper h3 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--color-primary);
+    }
+
+    .configurator-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .configurator-label {
+      font-size: 0.85rem;
+      font-weight: 550;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+    }
+
+    .configurator-options-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .configurator-btn-select {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-sm);
+      padding: 12px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--color-text);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .configurator-btn-select:hover {
+      border-color: var(--color-accent);
+      background: var(--color-bg-card);
+    }
+
+    .configurator-btn-select.active {
+      border-color: var(--color-accent);
+      background: rgba(220, 38, 38, 0.05);
+      color: var(--color-accent);
+      box-shadow: inset 0 0 0 1px var(--color-accent);
+    }
+
+    .slider-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slider-value {
+      font-size: 1.2rem;
+      font-weight: 550;
+      color: var(--color-accent);
+    }
+
+    .range-slider {
+      width: 100%;
+      height: 6px;
+      -webkit-appearance: none;
+      background: var(--color-border);
+      border-radius: 4px;
+      outline: none;
+    }
+
+    .range-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      transition: transform 0.1s;
+    }
+
+    .range-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    /* Pricing Output Card */
+    .pricing-summary-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-md);
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .pricing-metrics {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .pricing-metric-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+    }
+
+    .pricing-metric-item.total-price {
+      font-size: 1.15rem;
+      font-weight: 550;
+      color: var(--color-primary);
+      border-top: 1px solid var(--color-border);
+      padding-top: 8px;
+      margin-top: 4px;
+    }
+
+    .pricing-metric-item.total-price span {
+      color: var(--color-accent);
+    }
+
+    .pricing-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    @media (max-width: 991px) {
+      .configurator-wrapper {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .configurator-preview-col {
+        padding: 20px;
+      }
+      .configurator-controls-col {
+        padding: 20px;
+        gap: 20px;
+      }
+      .configurator-options-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .pricing-summary-card {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 16px;
+      }
+    }
+
+    /* Interactive Order Wizard Styles */
+    .order-steps-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 800px;
+      margin: 40px auto;
+      position: relative;
+      gap: 10px;
+    }
+
+    .order-step-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      z-index: 2;
+      transition: var(--transition-smooth);
+    }
+
+    .order-step-nav-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--color-bg-card);
+      border: 2px solid var(--color-border);
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 550;
+      font-size: 1.1rem;
+      transition: var(--transition-smooth);
+    }
+
+    .order-step-nav-text {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      font-weight: 550;
+      color: var(--color-text-muted);
+      transition: var(--transition-smooth);
+    }
+
+    .order-step-nav-line {
+      flex-grow: 1;
+      height: 2px;
+      background: var(--color-border);
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .order-step-nav-item.active .order-step-nav-circle {
+      border-color: var(--color-accent);
+      background: var(--color-accent);
+      color: var(--color-light);
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
+    }
+
+    .order-step-nav-item.active .order-step-nav-text {
+      color: var(--color-accent);
+    }
+
+    .order-step-nav-item.completed .order-step-nav-circle {
+      border-color: var(--color-accent);
+      background: var(--color-bg-card);
+      color: var(--color-accent);
+    }
+
+    .order-step-panels {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-lg);
+      padding: 50px;
+      box-shadow: var(--shadow-md);
+      min-height: 380px;
+      margin-top: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .order-step-panel {
+      display: none;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .order-step-panel.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .order-step-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .order-step-badge {
+      display: inline-block;
+      color: var(--color-accent);
+      font-size: 0.78rem;
+      font-weight: 550;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .order-step-title {
+      font-size: 1.75rem;
+      font-weight: 500;
+      margin-bottom: 16px;
+      color: var(--color-primary);
+    }
+
+    .order-step-text {
+      color: var(--color-text-muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .order-step-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .order-step-list li {
+      font-size: 0.95rem;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+    }
+
+    .order-step-list li span {
+      color: var(--color-accent);
+      font-weight: 550;
+    }
+
+    /* Order Step Visual Area */
+    .order-step-visual {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-md);
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animations & Visual Boxes */
+
+    /* Upload Box */
+    .visual-upload-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 80%;
+    }
+
+    .upload-arrow {
+      font-size: 2.5rem;
+      color: var(--color-accent);
+      animation: bounceArrow 1.5s infinite ease-in-out;
+    }
+
+    .upload-progress-bar {
+      width: 100%;
+      height: 6px;
+      background: var(--color-border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .upload-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--color-accent);
+      border-radius: 4px;
+      animation: fillProgress 3s infinite ease-out;
+    }
+
+    .upload-status {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      font-weight: 500;
+    }
+
+    @keyframes bounceArrow {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes fillProgress {
+      0% {
+        width: 0%;
+      }
+
+      75%,
+      100% {
+        width: 100%;
+      }
+    }
+
+    /* Art Vector Box */
+    .visual-art-box {
+      width: 75%;
+      height: 75%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .vector-mesh {
+      width: 100%;
+      height: 100%;
+    }
+
+    .animated-path {
+      stroke: var(--color-accent);
+      stroke-dasharray: 240;
+      stroke-dashoffset: 240;
+      animation: drawPath 4s infinite linear;
+    }
+
+    .vector-point {
+      transform-origin: center;
+      animation: pulsePoint 2s infinite ease-in-out;
+    }
+
+    .point-2 {
+      animation-delay: 0.5s;
+    }
+
+    .point-3 {
+      animation-delay: 1s;
+    }
+
+    .point-4 {
+      animation-delay: 1.5s;
+    }
+
+    @keyframes drawPath {
+      0% {
+        stroke-dashoffset: 240;
+      }
+
+      50%,
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes pulsePoint {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.4);
+        opacity: 0.7;
+      }
+    }
+
+    /* Stitch Box */
+    .visual-stitch-box {
+      position: relative;
+      width: 80%;
+      height: 80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .needle-machine {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 60px;
+      background: var(--color-text-muted);
+      animation: stitchNeedle 0.4s infinite ease-in-out;
+    }
+
+    .needle-body::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: -2px;
+      width: 8px;
+      height: 8px;
+      background: var(--color-primary);
+      border-radius: 50%;
+    }
+
+    .sewn-fabric {
+      width: 90%;
+      height: 40%;
+      background: var(--color-bg-card);
+      border: 2px dashed var(--color-border);
+      border-radius: var(--border-radius-sm);
+      margin-top: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .sewn-logo {
+      font-size: 1rem;
+      font-weight: 550;
+      color: var(--color-accent);
+      border: 2px solid var(--color-accent);
+      padding: 6px 12px;
+      border-radius: 4px;
+      transform: rotate(-5deg);
+      animation: logoReveal 3s infinite ease-in-out;
+      opacity: 0;
+    }
+
+    @keyframes stitchNeedle {
+
+      0%,
+      100% {
+        transform: translate(-50%, 0);
+      }
+
+      50% {
+        transform: translate(-50%, 12px);
+      }
+    }
+
+    @keyframes logoReveal {
+
+      0%,
+      25% {
+        opacity: 0;
+        transform: rotate(-5deg) scale(0.8);
+      }
+
+      50%,
+      100% {
+        opacity: 1;
+        transform: rotate(-5deg) scale(1);
+      }
+    }
+
+    /* Shipping Box */
+    .visual-shipping-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 80%;
+    }
+
+    .box-container {
+      width: 60px;
+      height: 60px;
+      position: relative;
+      animation: bounceBox 2s infinite ease-in-out;
+    }
+
+    .box-lid {
+      width: 64px;
+      height: 12px;
+      background: var(--color-accent);
+      border-radius: 2px;
+      position: absolute;
+      top: 0;
+      left: -2px;
+    }
+
+    .box-body {
+      width: 60px;
+      height: 48px;
+      background: var(--color-primary);
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0 0 4px 4px;
+    }
+
+    .box-logo {
+      color: var(--color-light);
+      font-size: 1.2rem;
+    }
+
+    .shipping-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      animation: pulseDot 1.2s infinite ease-in-out;
+    }
+
+    .dot-2 {
+      animation-delay: 0.2s;
+    }
+
+    .dot-3 {
+      animation-delay: 0.4s;
+    }
+
+    .delivery-badge {
+      font-size: 0.8rem;
+      font-weight: 550;
+      color: var(--color-text-muted);
+    }
+
+    @keyframes bounceBox {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0);
+      }
+
+      50% {
+        transform: translateY(-10px) rotate(3deg);
+      }
+    }
+
+    @keyframes pulseDot {
+
+      0%,
+      100% {
+        transform: scale(0.6);
+        opacity: 0.4;
+      }
+
+      50% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+    }
+
+    /* Responsive adjustments for Order Steps */
+    @media (max-width: 768px) {
+      .order-steps-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding-left: 20px;
+      }
+
+      .order-step-nav-line {
+        width: 2px;
+        height: 30px;
+        margin-left: 24px;
+        margin-bottom: 0;
+      }
+
+      .order-step-nav-item {
+        flex-direction: row;
+        gap: 15px;
+        align-items: center;
+      }
+
+      .order-step-nav-text {
+        margin-top: 0;
+      }
+
+      .order-step-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .order-step-panels {
+        padding: 30px 20px;
+      }
+    }
+
+    /* Custom Spec Accordion Section */
+    .spec-accordion-section {
+      background-color: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      padding: 80px 0;
+      overflow: hidden;
+    }
+
+    .spec-accordion-container {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .spec-header {
+      max-width: 800px;
+      margin: 0 auto 20px;
+      text-align: center;
+    }
+
+    .spec-accordion-wrapper {
+      display: flex;
+      width: 100%;
+      height: 480px;
+      gap: 20px;
+      overflow: hidden;
+    }
+
+    .spec-panel {
+      flex: 1;
+      height: 100%;
+      border-radius: var(--border-radius-md);
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 30px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .spec-panel::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.1) 0%, rgba(15, 23, 42, 0.55) 50%, rgba(15, 23, 42, 0.92) 100%);
+      z-index: 2;
+      opacity: 0.85;
+      transition: opacity 0.5s ease, background 0.5s ease;
+    }
+
+    .spec-panel:hover,
+    .spec-panel.active {
+      flex: 2.5;
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .spec-panel:hover::after,
+    .spec-panel.active::after {
+      opacity: 0.95;
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 0%, rgba(15, 23, 42, 0.45) 45%, rgba(15, 23, 42, 0.88) 100%);
+    }
+
+    /* Panel Content styling */
+    .spec-panel-content {
+      position: relative;
+      z-index: 3;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .spec-panel-icon-box {
+      width: 60px;
+      height: 60px;
+      border-radius: var(--border-radius-sm);
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      color: var(--color-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      transition: all 0.5s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .spec-panel:hover .spec-panel-icon-box,
+    .spec-panel.active .spec-panel-icon-box {
+      background: var(--color-accent);
+      color: var(--color-light);
+      border-color: var(--color-accent);
+      transform: scale(1.1);
+      box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+    }
+
+    .spec-panel-title {
+      font-size: 1.4rem;
+      font-weight: 550;
+      color: var(--color-light) !important;
+      margin-bottom: 12px;
+      white-space: nowrap;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .spec-panel-desc {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.6;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 0.4s ease 0.1s, max-height 0.4s ease;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    .spec-panel:hover .spec-panel-desc,
+    .spec-panel.active .spec-panel-desc {
+      opacity: 1;
+      max-height: 120px;
+      margin-top: 10px;
+    }
+
+    /* Image Background Area */
+    .spec-panel-visual {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.7;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      z-index: 1;
+    }
+
+    .spec-panel-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .spec-panel:hover .spec-panel-visual,
+    .spec-panel.active .spec-panel-visual {
+      opacity: 1;
+    }
+
+    .spec-panel:hover .spec-panel-visual img,
+    .spec-panel.active .spec-panel-visual img {
+      transform: scale(1.06);
+    }
+
+    /* Mobile responsive accordion fallback */
+    @media (max-width: 768px) {
+      .spec-accordion-wrapper {
+        flex-direction: column;
+        height: auto;
+        gap: 15px;
+      }
+
+      .spec-panel {
+        height: 180px;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .spec-panel:hover,
+      .spec-panel.active {
+        flex: none;
+        height: 240px;
+      }
+
+      .spec-panel-desc {
+        max-height: 0;
+      }
+
+      .spec-panel:hover .spec-panel-desc,
+      .spec-panel.active .spec-panel-desc {
+        max-height: 80px;
+      }
+
+      .spec-panel-icon-box {
+        margin-bottom: 12px;
+      }
+    }
+
+    /* Service Hub Navigation Section */
+    .services-hub-section {
+      background: var(--color-bg);
+      padding: 90px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .services-hub-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .service-hub-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-md);
+      padding: 35px 30px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-hub-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--color-accent);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.3s ease;
+    }
+
+    .service-hub-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--color-accent);
+    }
+
+    .service-hub-card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .service-hub-card-icon {
+      color: var(--color-accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .service-hub-card-title {
+      font-size: 1.3rem;
+      font-weight: 550;
+      margin-bottom: 12px;
+      color: var(--color-primary);
+      text-align: center;
+    }
+
+    .service-hub-card-desc {
+      font-size: 0.92rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    .service-hub-card-btn {
+      margin-top: auto;
+      width: 220px;
+      max-width: 100%;
+      height: 44px;
+      font-size: 0.85rem;
+      font-weight: 550;
+      border: 1px solid var(--color-border);
+      color: var(--color-secondary);
+      background: transparent;
+      border-radius: var(--border-radius-sm);
+      transition: var(--transition-smooth);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-left: auto;
+      margin-right: auto;
+      white-space: nowrap;
+      box-sizing: border-box;
+    }
+
+    .service-hub-card:hover .service-hub-card-btn {
+      background: var(--color-accent);
+      color: var(--color-light);
+      border-color: var(--color-accent);
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+    }
+
+    @media (max-width: 1024px) {
+      .services-hub-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .services-hub-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Key Service Benefits Card Styles */
+    .benefit-card {
+      padding: 30px;
+      border-radius: var(--border-radius-md);
+      border: 1px solid var(--color-border);
+      background: var(--color-bg);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-md);
+      background: var(--color-bg-card);
+    }
+
+    .benefit-card svg {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .benefit-card:hover svg {
+      transform: scale(1.12);
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
 </head>
+
 <body>
 
   <!-- Sticky Navbar -->
   <header class="navbar-header">
     <div class="container navbar-container">
       <a href="index.html" class="logo">
-        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 22V12M12 12c2.5 0 4-1.5 4-4s-1.5-4-4-4-4 1.5-4 4 1.5 4 4 4z"></path>
           <circle cx="12" cy="8" r="1"></circle>
           <path d="M20 12c-2-2-5-2-8 0s-6 2-8 0"></path>
         </svg>
         <div class="logo-text">
           Embroidery & Apparel
-          <span>B2B & Custom Branding</span>
         </div>
       </a>
       <nav class="navbar-nav">
@@ -54,12 +1188,14 @@
       </nav>
       <div class="navbar-controls">
         <button id="dark-mode-toggle" class="ctrl-btn" aria-label="Toggle Dark Mode">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
         <button id="rtl-toggle" class="ctrl-btn" aria-label="Toggle Layout Direction">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 17H4M4 17l4-4M4 17l4 4M4 7h16M20 7l-4-4M20 7l-4 4" />
           </svg>
         </button>
@@ -72,73 +1208,110 @@
     </div>
   </header>
 
-  <!-- Page Hero (Breadcrumb Header) - Section 1 -->
-  <section class="page-hero">
+  <!-- Page Hero (Header) - Section 1 -->
+  <section class="page-hero" style="padding: 220px 0 160px; text-align: center;">
     <div class="container">
-      <h1 class="page-hero-title">Our Decoration Services</h1>
-      <div class="breadcrumb">
-        <a href="index.html">Home</a>
-        <span class="breadcrumb-separator">/</span>
-        <span>Services</span>
-      </div>
+      <h1 class="page-hero-title animated-hero-title" style="margin-bottom: 0;">Our Decoration Services</h1>
     </div>
   </section>
 
-  <!-- Section 2: 4 Main Services (4 Cards) -->
+  <!-- Section 2: Interactive Uniform Configurator & Cost Estimator -->
   <section class="section">
     <div class="container">
-      <div class="section-title-wrapper">
-        <span class="section-subtitle">What We Do</span>
-        <h2 class="section-title">Core Garment Branding</h2>
-        <p class="section-desc">We combine advanced automation, clean setups, and manual QA to ensure every print and stitch is flawless.</p>
+      <div class="section-title-wrapper" style="text-align: center; max-width: 650px; margin: 0 auto 50px;">
+        <span class="section-subtitle">Design Studio Mockup</span>
+        <h2 class="section-title">B2B Uniform Configurator</h2>
+        <p class="section-desc">Select a garment, color placement, branding method, and volume to visualize print
+          layouts and calculate wholesale cost matrices instantly.</p>
       </div>
-      <div class="card-grid">
-        <!-- Card 1 -->
-        <div class="card-item">
-          <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1595079676339-1534801ad6cf?q=80&w=600&auto=format&fit=crop" alt="Precision embroidery stitch work" loading="lazy">
+
+      <div class="configurator-wrapper">
+        <!-- Preview Window -->
+        <div class="configurator-preview-col">
+          <div class="configurator-canvas">
+            <img id="garmentPreview" src="assets/images/blank_polo.png" alt="Blank polo shirt preview">
+            <div id="logoMarker" class="logo-marker" style="top: 40%; left: 38%;">
+              <div class="logo-marker-inner"></div>
+            </div>
           </div>
-          <div class="card-body">
-            <span class="card-badge">Embroidery</span>
-            <h3 class="card-title">Custom Embroidery</h3>
-            <p class="card-text">Heavy-duty, high density stitching using colorfast polyester thread. Perfect for company logos on polo shirts, jackets, and caps.</p>
-            <a href="services-details.html" class="btn btn-outline btn-block card-btn">Embroidery Details</a>
-          </div>
-        </div>
-        <!-- Card 2 -->
-        <div class="card-item">
-          <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop" alt="Screen printing process" loading="lazy">
-          </div>
-          <div class="card-body">
-            <span class="card-badge">Printing</span>
-            <h3 class="card-title">Screen Printing</h3>
-            <p class="card-text">Traditional ink mesh printing for high-volume promotional runs. Durable, rich colors and Pantone-matched prints.</p>
-            <a href="services-details.html" class="btn btn-outline btn-block card-btn">Screen Print Details</a>
+          <div style="margin-top: 20px; text-align: center;">
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 550;">
+              * Pulse marker shows the exact logo boundary position
+            </p>
           </div>
         </div>
-        <!-- Card 3 -->
-        <div class="card-item">
-          <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1605493744187-93b2143b6e17?q=80&w=600&auto=format&fit=crop" alt="Direct to film transfers" loading="lazy">
+
+        <!-- Configuration Selector Controls -->
+        <div class="configurator-controls-col">
+          <div class="configurator-title-wrapper">
+            <h3>Configuration Options</h3>
           </div>
-          <div class="card-body">
-            <span class="card-badge">Digital Transfers</span>
-            <h3 class="card-title">Direct To Film (DTF)</h3>
-            <p class="card-text">High-resolution, stretch-resistant transfers for multi-color logos, gradients, and custom placement on sleeve cuffs.</p>
-            <a href="services-details.html" class="btn btn-outline btn-block card-btn">DTF Transfer Details</a>
+
+          <!-- Group 1: Garment Type -->
+          <div class="configurator-group">
+            <span class="configurator-label">1. Select Garment Blank</span>
+            <div class="configurator-options-grid">
+              <button class="configurator-btn-select garment-btn active" data-garment="polo"
+                data-img="assets/images/blank_polo.png">Polo Shirt</button>
+              <button class="configurator-btn-select garment-btn" data-garment="jacket"
+                data-img="assets/images/blank_jacket.png">Zipper Jacket</button>
+              <button class="configurator-btn-select garment-btn" data-garment="cap"
+                data-img="assets/images/blank_cap.png">Structured Cap</button>
+            </div>
           </div>
-        </div>
-        <!-- Card 4 -->
-        <div class="card-item">
-          <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=600&auto=format&fit=crop" alt="Custom apparel design vectorisation" loading="lazy">
+
+          <!-- Group 2: Branding Method -->
+          <div class="configurator-group">
+            <span class="configurator-label">2. Branding Method</span>
+            <div class="configurator-options-grid">
+              <button class="configurator-btn-select method-btn active" data-method="embroidery">Embroidery</button>
+              <button class="configurator-btn-select method-btn" data-method="screen">Screen Print</button>
+              <button class="configurator-btn-select method-btn" data-method="dtf">DTF Transfer</button>
+            </div>
           </div>
-          <div class="card-body">
-            <span class="card-badge">Artwork Setup</span>
-            <h3 class="card-title">Graphic Vectorization</h3>
-            <p class="card-text">We manually convert your raster drawings into embroidery paths and clean vectors to ensure clean production boundaries.</p>
-            <a href="services-details.html" class="btn btn-outline btn-block card-btn">Vector Services Details</a>
+
+          <!-- Group 3: Logo Placement -->
+          <div class="configurator-group">
+            <span class="configurator-label">3. Logo Placement</span>
+            <div class="configurator-options-grid" id="placementOptions">
+              <button class="configurator-btn-select placement-btn active" data-placement="chest">Left Chest</button>
+              <button class="configurator-btn-select placement-btn" data-placement="sleeve">Right Sleeve</button>
+              <button class="configurator-btn-select placement-btn" data-placement="collar">Back Collar</button>
+            </div>
+          </div>
+
+          <!-- Group 4: Quantity Slider -->
+          <div class="configurator-group">
+            <div class="slider-header">
+              <span class="configurator-label">4. Order Quantity (MOQ: 12)</span>
+              <span class="slider-value" id="qtyVal">100</span>
+            </div>
+            <input type="range" class="range-slider" id="qtySlider" min="12" max="500" value="100">
+          </div>
+
+          <!-- Pricing Estimates -->
+          <div class="pricing-summary-card">
+            <div class="pricing-metrics">
+              <div class="pricing-metric-item">
+                <span>Unit Price:</span>
+                <strong id="unitPrice">$15.00</strong>
+              </div>
+              <div class="pricing-metric-item">
+                <span>Setup/Digitizing:</span>
+                <strong id="setupFee">$35.00</strong>
+              </div>
+              <div class="pricing-metric-item total-price">
+                <span>Estimated Total:</span>
+                <strong id="totalPrice">$1,535.00</strong>
+              </div>
+            </div>
+            <div class="pricing-cta">
+              <a href="contact.html" class="btn btn-primary btn-block" style="font-size: 0.9rem;">Submit for Sample
+                Run</a>
+              <span style="font-size: 0.75rem; text-align: center; color: var(--color-text-muted); font-weight: 500;">
+                Est. Delivery: <span id="deliveryDays">7 to 10 Days</span>
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -146,79 +1319,276 @@
   </section>
 
   <!-- Section 3: Customization Options -->
-  <section class="section" style="background-color: var(--color-bg-card); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
-    <div class="container" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center;">
-      <div>
+  <section class="spec-accordion-section">
+    <div class="container spec-accordion-container">
+      <div class="spec-header">
         <span class="section-subtitle">Tailored Specifications</span>
-        <h2 style="font-size: 2.25rem; margin-bottom: 20px;">Design & Customization Options</h2>
-        <p style="color: var(--color-text-muted); font-size: 1.05rem; margin-bottom: 20px; line-height: 1.7;">
-          Our decoration processes are fully adaptable to specific corporate, culinary, or athletic requirements. Select the exact details that fit your brand identity.
+        <h2 class="section-title" style="margin-bottom: 20px;">Design & Customization Options</h2>
+        <p
+          style="color: var(--color-text-muted); font-size: 1.05rem; margin-bottom: 16px; line-height: 1.7; max-width: 700px; margin-left: auto; margin-right: auto;">
+          Our decoration processes are fully adaptable to specific corporate, culinary, or athletic requirements. Select
+          the exact details that fit your brand identity.
         </p>
-        <p style="color: var(--color-text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 24px;">
-          From heavy-duty polyester threads designed for industrial washers, to eco-friendly water-based screen printing inks, we optimize variables for garment life.
+        <p
+          style="color: var(--color-text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 24px; max-width: 700px; margin-left: auto; margin-right: auto;">
+          From heavy-duty polyester threads designed for industrial washers, to eco-friendly water-based screen printing
+          inks, we optimize variables for garment life.
         </p>
         <a href="pricing.html" class="btn btn-primary">Check Setup Pricing</a>
       </div>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-        <div style="padding: 24px; border-radius: var(--border-radius-md); background: var(--color-bg); border: 1px solid var(--color-border);">
-          <h4 style="font-size: 1.15rem; margin-bottom: 10px;">Thread Selections</h4>
-          <p style="color: var(--color-text-muted); font-size: 0.9rem;">Classic polyester, high-sheen rayon, metallic gold/silver, and flame-retardant industrial threads.</p>
+
+      <div class="spec-accordion-wrapper">
+        <!-- Panel 1: Thread Selections -->
+        <div class="spec-panel active" data-index="0">
+          <div class="spec-panel-visual">
+            <img src="assets/images/spec_threads.png"
+              alt="Thread Selections: Spools of colorful embroidery threads in a workshop">
+          </div>
+          <div class="spec-panel-content">
+            <div class="spec-panel-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22V12M12 12c2.5 0 4-1.5 4-4s-1.5-4-4-4-4 1.5-4 4 1.5 4 4 4z"></path>
+                <circle cx="12" cy="8" r="1"></circle>
+              </svg>
+            </div>
+            <h4 class="spec-panel-title">Thread Selections</h4>
+            <div class="spec-panel-desc">
+              Classic polyester, high-sheen rayon, metallic gold/silver, and flame-retardant industrial threads.
+            </div>
+          </div>
         </div>
-        <div style="padding: 24px; border-radius: var(--border-radius-md); background: var(--color-bg); border: 1px solid var(--color-border);">
-          <h4 style="font-size: 1.15rem; margin-bottom: 10px;">Ink Materials</h4>
-          <p style="color: var(--color-text-muted); font-size: 0.9rem;">Standard plastisol, breathable water-based inks, discharge prints, and reflective safety overlays.</p>
+
+        <!-- Panel 2: Ink Materials -->
+        <div class="spec-panel" data-index="1">
+          <div class="spec-panel-visual">
+            <img src="assets/images/spec_ink.png"
+              alt="Ink Materials: Vibrant screen printing inks ready for squeezing onto mesh">
+          </div>
+          <div class="spec-panel-content">
+            <div class="spec-panel-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
+            <h4 class="spec-panel-title">Ink Materials</h4>
+            <div class="spec-panel-desc">
+              Standard plastisol, breathable water-based inks, discharge prints, and reflective safety overlays.
+            </div>
+          </div>
         </div>
-        <div style="padding: 24px; border-radius: var(--border-radius-md); background: var(--color-bg); border: 1px solid var(--color-border);">
-          <h4 style="font-size: 1.15rem; margin-bottom: 10px;">Placement Options</h4>
-          <p style="color: var(--color-text-muted); font-size: 0.9rem;">Left chest, back neck, sleeves, cuffs, hat sides, pockets, and custom seams.</p>
+
+        <!-- Panel 3: Placement Options -->
+        <div class="spec-panel" data-index="2">
+          <div class="spec-panel-visual">
+            <img src="assets/images/workflow_digitizing_setup.png"
+              alt="Placement Options: Digital logo layout setup and alignment process">
+          </div>
+          <div class="spec-panel-content">
+            <div class="spec-panel-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </div>
+            <h4 class="spec-panel-title">Placement Options</h4>
+            <div class="spec-panel-desc">
+              Left chest, back neck, sleeves, cuffs, hat sides, pockets, and custom seams.
+            </div>
+          </div>
         </div>
-        <div style="padding: 24px; border-radius: var(--border-radius-md); background: var(--color-bg); border: 1px solid var(--color-border);">
-          <h4 style="font-size: 1.15rem; margin-bottom: 10px;">Special Finishes</h4>
-          <p style="color: var(--color-text-muted); font-size: 0.9rem;">3D puff embroidery, loop pile chenille patches, vintage distressed printing, and dye sublimation transfers.</p>
+
+        <!-- Panel 4: Special Finishes -->
+        <div class="spec-panel" data-index="3">
+          <div class="spec-panel-visual">
+            <img src="assets/images/workflow_embroidery_machine.png"
+              alt="Special Finishes: Computer guided multi-head embroidery machines creating premium textures">
+          </div>
+          <div class="spec-panel-content">
+            <div class="spec-panel-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                </polygon>
+              </svg>
+            </div>
+            <h4 class="spec-panel-title">Special Finishes</h4>
+            <div class="spec-panel-desc">
+              3D puff embroidery, loop pile chenille patches, vintage distressed printing, and dye sublimation
+              transfers.
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 4: Bulk Order Process -->
+  <!-- Section 4: Bulk Order Process (Interactive Animated Wizard) -->
   <section class="section">
     <div class="container">
       <div class="section-title-wrapper">
         <span class="section-subtitle">Simplified Ordering</span>
         <h2 class="section-title">The Bulk Order Process</h2>
-        <p class="section-desc">How we eliminate back-and-forth communication to get your apparel produced exactly to specification.</p>
+        <p class="section-desc">How we eliminate back-and-forth communication to get your apparel produced exactly to
+          specification.</p>
       </div>
-      <div class="timeline">
-        <!-- Timeline Item 1 -->
-        <div class="timeline-item timeline-left">
-          <div class="timeline-content">
-            <span class="timeline-step">Step 01</span>
-            <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Select Blanks & Upload</h3>
-            <p style="color: var(--color-text-muted); font-size: 0.95rem;">Browse our corporate apparel catalog, select sizes, colors, and upload your brand logo files.</p>
+
+      <div class="order-steps-nav">
+        <div class="order-step-nav-item active" data-step="1">
+          <div class="order-step-nav-circle">01</div>
+          <span class="order-step-nav-text">Configuration</span>
+        </div>
+        <div class="order-step-nav-line"></div>
+        <div class="order-step-nav-item" data-step="2">
+          <div class="order-step-nav-circle">02</div>
+          <span class="order-step-nav-text">Art Setup</span>
+        </div>
+        <div class="order-step-nav-line"></div>
+        <div class="order-step-nav-item" data-step="3">
+          <div class="order-step-nav-circle">03</div>
+          <span class="order-step-nav-text">Stitch Sample</span>
+        </div>
+        <div class="order-step-nav-line"></div>
+        <div class="order-step-nav-item" data-step="4">
+          <div class="order-step-nav-circle">04</div>
+          <span class="order-step-nav-text">Bulk Run</span>
+        </div>
+      </div>
+
+      <div class="order-step-panels">
+        <!-- Panel 1: Configuration -->
+        <div class="order-step-panel active" id="orderStep1">
+          <div class="order-step-grid">
+            <div class="order-step-info">
+              <span class="order-step-badge">Stage 01: Setup</span>
+              <h3 class="order-step-title">Select Apparel & Upload Graphics</h3>
+              <p class="order-step-text">
+                Browse our catalog of premium polo shirts, jackets, caps, or workwear blanks. Select your desired
+                quantities, colorways, and sizes. Then, upload your branding artwork in high-resolution vector or raster
+                formats.
+              </p>
+              <ul class="order-step-list">
+                <li><span>✔</span> Over 150+ blank clothing styles stocked</li>
+                <li><span>✔</span> Direct upload for AI, EPS, PDF, and PNG files</li>
+                <li><span>✔</span> Automated sizing and color inventory checks</li>
+              </ul>
+            </div>
+            <div class="order-step-visual">
+              <div class="visual-upload-box">
+                <div class="upload-arrow">&#8593;</div>
+                <div class="upload-progress-bar">
+                  <div class="upload-progress-fill"></div>
+                </div>
+                <span class="upload-status">Uploading logo_vector.ai (100%)</span>
+              </div>
+            </div>
           </div>
         </div>
-        <!-- Timeline Item 2 -->
-        <div class="timeline-item timeline-right">
-          <div class="timeline-content">
-            <span class="timeline-step">Step 02</span>
-            <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Stitch Proof Verification</h3>
-            <p style="color: var(--color-text-muted); font-size: 0.95rem;">Our artwork team maps out the stitch lines and color schemes, sending you a high-definition proof.</p>
+
+        <!-- Panel 2: Art Setup -->
+        <div class="order-step-panel" id="orderStep2">
+          <div class="order-step-grid">
+            <div class="order-step-info">
+              <span class="order-step-badge">Stage 02: Calibration</span>
+              <h3 class="order-step-title">Manual Digitizing & Stitch Mapping</h3>
+              <p class="order-step-text">
+                Our professional design digitizers inspect your uploaded logos. We manually map out the vector lines
+                into embroidery stitch paths or print separations to avoid loose threads, misalignments, or lettering
+                blurring.
+              </p>
+              <ul class="order-step-list">
+                <li><span>✔</span> High-fidelity manual vectorization</li>
+                <li><span>✔</span> Calibration for specific fabric backing</li>
+                <li><span>✔</span> Digital color separation using Pantone guidelines</li>
+              </ul>
+            </div>
+            <div class="order-step-visual">
+              <div class="visual-art-box">
+                <svg class="vector-mesh" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="40" stroke="var(--color-border)" stroke-width="1" fill="none"
+                    stroke-dasharray="4" />
+                  <path d="M50 10 L50 90 M10 50 L90 50" stroke="var(--color-border)" stroke-width="0.5" />
+                  <path class="animated-path" d="M30 30 Q50 20 70 30 T70 70 Q50 80 30 70 Z" stroke="var(--color-accent)"
+                    stroke-width="2" fill="none" />
+                  <circle class="vector-point point-1" cx="30" cy="30" r="3" fill="var(--color-primary)" />
+                  <circle class="vector-point point-2" cx="70" cy="30" r="3" fill="var(--color-primary)" />
+                  <circle class="vector-point point-3" cx="70" cy="70" r="3" fill="var(--color-primary)" />
+                  <circle class="vector-point point-4" cx="30" cy="70" r="3" fill="var(--color-primary)" />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
-        <!-- Timeline Item 3 -->
-        <div class="timeline-item timeline-left">
-          <div class="timeline-content">
-            <span class="timeline-step">Step 03</span>
-            <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Precision Run</h3>
-            <p style="color: var(--color-text-muted); font-size: 0.95rem;">Once approved, our computerized multi-head machines perform the print or stitch run concurrently.</p>
+
+        <!-- Panel 3: Stitch Sample -->
+        <div class="order-step-panel" id="orderStep3">
+          <div class="order-step-grid">
+            <div class="order-step-info">
+              <span class="order-step-badge">Stage 03: Validation</span>
+              <h3 class="order-step-title">HD Swatch Preview & Approval</h3>
+              <p class="order-step-text">
+                Before running the full batch, we sew a physical stitch proof on a fabric swatch. We send you a
+                high-definition photo proof for validation. For contracts over 200 items, we mail the physical swatch
+                directly to your office.
+              </p>
+              <ul class="order-step-list">
+                <li><span>✔</span> Real-world sewn preview confirmation</li>
+                <li><span>✔</span> Direct check of thread sheen and thickness</li>
+                <li><span>✔</span> Unlimited revisions until setup is approved</li>
+              </ul>
+            </div>
+            <div class="order-step-visual">
+              <div class="visual-stitch-box">
+                <div class="needle-machine">
+                  <div class="needle-body"></div>
+                  <div class="needle-thread"></div>
+                </div>
+                <div class="sewn-fabric">
+                  <div class="sewn-line line-1"></div>
+                  <div class="sewn-line line-2"></div>
+                  <div class="sewn-logo">★ APPROVED</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <!-- Timeline Item 4 -->
-        <div class="timeline-item timeline-right">
-          <div class="timeline-content">
-            <span class="timeline-step">Step 04</span>
-            <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Packaging & Tracking</h3>
-            <p style="color: var(--color-text-muted); font-size: 0.95rem;">Each uniform is individually steam-pressed, QA-inspected, and delivered with split-shipping tracking.</p>
+
+        <!-- Panel 4: Bulk Run -->
+        <div class="order-step-panel" id="orderStep4">
+          <div class="order-step-grid">
+            <div class="order-step-info">
+              <span class="order-step-badge">Stage 04: Production</span>
+              <h3 class="order-step-title">Multi-Head Production & QC</h3>
+              <p class="order-step-text">
+                Once approved, your order goes into production on our computer-guided Tajima embroidery lines or screen
+                printing carousels. Every single apparel piece is individually steam-pressed, folded, polybagged, and
+                sent with split-tracking.
+              </p>
+              <ul class="order-step-list">
+                <li><span>✔</span> Concurrent multi-head computerized manufacturing</li>
+                <li><span>✔</span> Independent optical thread break detection</li>
+                <li><span>✔</span> QC checked under high-lux light panels</li>
+              </ul>
+            </div>
+            <div class="order-step-visual">
+              <div class="visual-shipping-box">
+                <div class="box-container">
+                  <div class="box-lid"></div>
+                  <div class="box-body">
+                    <div class="box-logo">★</div>
+                  </div>
+                </div>
+                <div class="shipping-dots">
+                  <div class="dot dot-1"></div>
+                  <div class="dot dot-2"></div>
+                  <div class="dot dot-3"></div>
+                </div>
+                <span class="delivery-badge">Shipped via DHL</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -226,28 +1596,141 @@
   </section>
 
   <!-- Section 5: Service Benefits -->
-  <section class="section" style="background-color: var(--color-bg-card); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+  <section class="section"
+    style="background-color: var(--color-bg-card); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
     <div class="container">
       <div class="section-title-wrapper">
         <span class="section-subtitle">Corporate Advantages</span>
         <h2 class="section-title">Key Service Benefits</h2>
-        <p class="section-desc">Designed to support procurement managers, HR directors, and event coordinators with ongoing contract systems.</p>
+        <p class="section-desc">Designed to support procurement managers, HR directors, and event coordinators with
+          ongoing contract systems.</p>
       </div>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
-        <div style="padding: 30px; border-radius: var(--border-radius-md); border: 1px solid var(--color-border); background: var(--color-bg);">
-          <div style="color: var(--color-accent); font-size: 2rem; margin-bottom: 20px;">✓</div>
-          <h3 style="font-size: 1.25rem; margin-bottom: 12px;">Zero Digitization Fees</h3>
-          <p style="color: var(--color-text-muted); font-size: 0.95rem;">All B2B uniform contracts over 100 pieces include free professional vector conversion and embroidery setups.</p>
+        <div class="benefit-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent); margin: 0 auto 20px auto; display: block;">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="M9 14h6M9 10h5.5a1.5 1.5 0 0 0 0-3H9v8"></path>
+            <line x1="7" y1="13" x2="17" y2="7"></line>
+          </svg>
+          <h3 style="font-size: 1.25rem; margin-bottom: 12px; white-space: nowrap;">Zero Digitization Fees</h3>
+          <p style="color: var(--color-text-muted); font-size: 0.95rem;">All B2B uniform contracts over 100 pieces
+            include free professional vector conversion and embroidery setups.</p>
         </div>
-        <div style="padding: 30px; border-radius: var(--border-radius-md); border: 1px solid var(--color-border); background: var(--color-bg);">
-          <div style="color: var(--color-accent); font-size: 2rem; margin-bottom: 20px;">✓</div>
-          <h3 style="font-size: 1.25rem; margin-bottom: 12px;">Pre-production Sample</h3>
-          <p style="color: var(--color-text-muted); font-size: 0.95rem;">Get a physical sewn swatch sample mailed to your office for approval before launching a large-scale uniform batch.</p>
+        <div class="benefit-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent); margin: 0 auto 20px auto; display: block;">
+            <path d="M6 2L3 6v4h3v10h12V10h3V6l-3-4h-4a2 2 0 0 0-4 0H6z"></path>
+            <path d="M9 13l2 2 4-4"></path>
+          </svg>
+          <h3 style="font-size: 1.25rem; margin-bottom: 12px; white-space: nowrap;">Pre-production Sample</h3>
+          <p style="color: var(--color-text-muted); font-size: 0.95rem;">Get a physical sewn swatch sample mailed to
+            your office for approval before launching a large-scale uniform batch.</p>
         </div>
-        <div style="padding: 30px; border-radius: var(--border-radius-md); border: 1px solid var(--color-border); background: var(--color-bg);">
-          <div style="color: var(--color-accent); font-size: 2rem; margin-bottom: 20px;">✓</div>
-          <h3 style="font-size: 1.25rem; margin-bottom: 12px;">Guaranteed Turnaround</h3>
-          <p style="color: var(--color-text-muted); font-size: 0.95rem;">Clear production slot schedules with real-time updates. Standard orders ship within 7 to 10 business days.</p>
+        <div class="benefit-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent); margin: 0 auto 20px auto; display: block;">
+            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l.73-.73"></path>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <h3 style="font-size: 1.25rem; margin-bottom: 12px; white-space: nowrap;">Guaranteed Turnaround</h3>
+          <p style="color: var(--color-text-muted); font-size: 0.95rem;">Clear production slot schedules with real-time
+            updates. Standard orders ship within 7 to 10 business days.</p>
+        </div>
+        <div class="benefit-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent); margin: 0 auto 20px auto; display: block;">
+            <path d="M21 10a9 9 0 0 0-18 0v3a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3"></path>
+            <path d="M19 12v1a3 3 0 0 1-3 3h-2"></path>
+            <path d="M2 20a6 6 0 0 1 12.13-1.68"></path>
+            <circle cx="12" cy="10" r="4"></circle>
+          </svg>
+          <h3 style="font-size: 1.25rem; margin-bottom: 12px; white-space: nowrap;">Dedicated Support</h3>
+          <p style="color: var(--color-text-muted); font-size: 0.95rem;">A single point of contact with a dedicated production coordinator overseeing your artwork approvals and shipping schedules.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Choose Your Service Navigation -->
+  <section class="services-hub-section">
+    <div class="container">
+      <div class="section-title-wrapper">
+        <span class="section-subtitle">Branding Methods</span>
+        <h2 class="section-title">Explore Detailed Service Specifications</h2>
+        <p class="section-desc">Select a specific branding service below to view detailed setups, pricing, fabrics, and production standards.</p>
+      </div>
+
+      <div class="services-hub-grid">
+        <!-- Card 1: Custom Embroidery -->
+        <div class="service-hub-card">
+          <div class="service-hub-card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22V12M12 12c2.5 0 4-1.5 4-4s-1.5-4-4-4-4 1.5-4 4 1.5 4 4 4z"></path>
+              <circle cx="12" cy="8" r="1"></circle>
+            </svg>
+          </div>
+          <h3 class="service-hub-card-title">Custom Embroidery</h3>
+          <p class="service-hub-card-desc">High-precision computerized stitch work for structured caps, corporate polos, outerwear jackets, and custom badges.</p>
+          <a href="services-details.html#embroidery" class="service-hub-card-btn">
+            View Embroidery Specs
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Card 2: Screen Printing -->
+        <div class="service-hub-card">
+          <div class="service-hub-card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <h3 class="service-hub-card-title">Screen Printing</h3>
+          <p class="service-hub-card-desc">Traditional multi-color screen printing carousel setup utilizing durable plastisols and soft, breathable water-based inks.</p>
+          <a href="services-details.html#screenprinting" class="service-hub-card-btn">
+            View Printing Specs
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Card 3: DTF & DTG Digital Prints -->
+        <div class="service-hub-card">
+          <div class="service-hub-card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="9" cy="9" r="2"></circle>
+              <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
+            </svg>
+          </div>
+          <h3 class="service-hub-card-title">DTF & DTG Digital</h3>
+          <p class="service-hub-card-desc">Direct-to-Film and Direct-to-Garment full-color layouts perfect for complex graphic designs, photo prints, and fast setups.</p>
+          <a href="services-details.html#dtf" class="service-hub-card-btn">
+            View Digital Specs
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Card 4: Merchandise Production -->
+        <div class="service-hub-card">
+          <div class="service-hub-card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.38 3.46L16 2.14 12 3.46 8 2.14 3.62 3.46A2 2 0 0 0 2 5.38v13.24a2 2 0 0 0 1.62 1.92l4.38-1.32 4 1.32 4-1.32 4.38 1.32A2 2 0 0 0 22 18.62V5.38a2 2 0 0 0-1.62-1.92z"></path>
+            </svg>
+          </div>
+          <h3 class="service-hub-card-title">Custom Merchandising</h3>
+          <p class="service-hub-card-desc">Comprehensive uniform contract manufacturing, custom packaging, tagging, folding, and multi-location bulk supply logistics.</p>
+          <a href="services-details.html#merchandise" class="service-hub-card-btn">
+            View Merchandising Specs
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
         </div>
       </div>
     </div>
@@ -259,26 +1742,49 @@
       <div class="footer-grid">
         <div>
           <a href="index.html" class="logo" style="margin-bottom: 20px;">
-            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent);">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 22V12M12 12c2.5 0 4-1.5 4-4s-1.5-4-4-4-4 1.5-4 4 1.5 4 4 4z"></path>
               <circle cx="12" cy="8" r="1"></circle>
               <path d="M20 12c-2-2-5-2-8 0s-6 2-8 0"></path>
             </svg>
-            <div class="logo-text" style="color: var(--color-light);">
+            <div class="logo-text">
               Embroidery & Apparel
-              <span style="color: rgba(255,255,255,0.6);">B2B & Custom Branding</span>
             </div>
           </a>
           <p class="footer-col-desc">
-            Professional apparel customization streamlining bulk uniform ordering, team wear production, and promotional products with speed and precision.
+            Professional apparel customization streamlining bulk uniform ordering, team wear production, and promotional
+            products with speed and precision.
           </p>
           <div class="social-links">
-            <a href="https://facebook.com" class="social-link" target="_blank" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-            <a href="https://instagram.com" class="social-link" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-            <a href="https://linkedin.com" class="social-link" target="_blank" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
-            <a href="https://twitter.com" class="social-link" target="_blank" aria-label="X"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
-            <a href="https://youtube.com" class="social-link" target="_blank" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
-            <a href="https://pinterest.com" class="social-link" target="_blank" aria-label="Pinterest"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="12" x2="22" y2="12"></line><line x1="12" y1="2" x2="12" y2="22"></line></svg></a>
+            <a href="https://facebook.com" class="social-link" target="_blank" aria-label="Facebook"><svg width="18"
+                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg></a>
+            <a href="https://instagram.com" class="social-link" target="_blank" aria-label="Instagram"><svg width="18"
+                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg></a>
+            <a href="https://linkedin.com" class="social-link" target="_blank" aria-label="LinkedIn"><svg width="18"
+                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg></a>
+            <a href="https://twitter.com" class="social-link" target="_blank" aria-label="X"><svg width="18" height="18"
+                viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg></a>
+            <a href="https://youtube.com" class="social-link" target="_blank" aria-label="YouTube"><svg width="18"
+                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                </path>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+              </svg></a>
           </div>
         </div>
         <div>
@@ -303,10 +1809,12 @@
         </div>
         <div>
           <h4 class="footer-col-title">Newsletter</h4>
-          <p class="newsletter-text">Subscribe to receive layout designs, fabric guides, and bulk corporate discount announcements.</p>
+          <p class="newsletter-text">Subscribe to receive layout designs, fabric guides, and bulk corporate discount
+            announcements.</p>
           <form class="newsletter-form" data-validate>
             <div class="form-group" style="margin-bottom:0; flex-grow:1;">
-              <input type="email" class="form-input newsletter-input" placeholder="Your corporate email" required aria-label="Email Address">
+              <input type="email" class="form-input newsletter-input" placeholder="Your corporate email" required
+                aria-label="Email Address">
               <span class="form-error-msg">Please enter a valid email</span>
             </div>
             <button type="submit" class="btn btn-primary" style="padding:12px 18px;">Join</button>
@@ -314,12 +1822,224 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 Embroidery & Custom Apparel Printing. All rights reserved. Made for professional merchandise procurement.</p>
+        <p>&copy; 2026 Embroidery & Custom Apparel Printing. All rights reserved. Made for professional merchandise
+          procurement.</p>
       </div>
     </div>
   </footer>
 
   <!-- Scripts -->
   <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const stepItems = document.querySelectorAll('.order-step-nav-item');
+      const panels = document.querySelectorAll('.order-step-panel');
+      const lines = document.querySelectorAll('.order-step-nav-line');
+
+      stepItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+          // Reset states
+          stepItems.forEach((el, i) => {
+            el.classList.remove('active');
+            if (i < index) {
+              el.classList.add('completed');
+            } else {
+              el.classList.remove('completed');
+            }
+          });
+          panels.forEach(panel => panel.classList.remove('active'));
+
+          // Activate clicked item
+          item.classList.add('active');
+          const stepNum = item.dataset.step;
+          const targetPanel = document.getElementById(`orderStep${stepNum}`);
+          if (targetPanel) {
+            targetPanel.classList.add('active');
+          }
+
+          // Animate line fills
+          lines.forEach((line, lineIdx) => {
+            if (lineIdx < index) {
+              line.style.background = 'var(--color-accent)';
+            } else {
+              line.style.background = 'var(--color-border)';
+            }
+          });
+        });
+      });
+
+      // Custom Spec Accordion Interaction
+      const specPanels = document.querySelectorAll('.spec-panel');
+      specPanels.forEach(panel => {
+        panel.addEventListener('click', () => {
+          specPanels.forEach(p => p.classList.remove('active'));
+          panel.classList.add('active');
+        });
+        panel.addEventListener('mouseenter', () => {
+          specPanels.forEach(p => p.classList.remove('active'));
+          panel.classList.add('active');
+        });
+      });
+
+      // B2B Configurator and Pricing Calculator Logic
+      const garmentBtns = document.querySelectorAll('.garment-btn');
+      const methodBtns = document.querySelectorAll('.method-btn');
+      const qtySlider = document.getElementById('qtySlider');
+      const qtyVal = document.getElementById('qtyVal');
+      const garmentPreview = document.getElementById('garmentPreview');
+      const logoMarker = document.getElementById('logoMarker');
+
+      const unitPriceEl = document.getElementById('unitPrice');
+      const setupFeeEl = document.getElementById('setupFee');
+      const totalPriceEl = document.getElementById('totalPrice');
+      const deliveryDaysEl = document.getElementById('deliveryDays');
+      const placementOptions = document.getElementById('placementOptions');
+
+      // State
+      let selectedGarment = 'polo';
+      let selectedMethod = 'embroidery';
+      let selectedPlacement = 'chest';
+      let selectedQty = 100;
+
+      // Pricing Parameters
+      const prices = {
+        garments: { polo: 15.00, jacket: 35.00, cap: 10.00 },
+        setups: { embroidery: 35.00, screen: 50.00, dtf: 15.00 }
+      };
+
+      // Marker Coordinates Map (Top & Left values based on garment & placement selection)
+      const markerCoordinates = {
+        polo: {
+          chest: { top: '40%', left: '38%' },
+          sleeve: { top: '44%', left: '63%' },
+          collar: { top: '25%', left: '50%' }
+        },
+        jacket: {
+          chest: { top: '42%', left: '37%' },
+          sleeve: { top: '46%', left: '68%' },
+          collar: { top: '20%', left: '50%' }
+        },
+        cap: {
+          front: { top: '50%', left: '50%' },
+          left: { top: '55%', left: '30%' },
+          back: { top: '45%', left: '70%' }
+        }
+      };
+
+      // Placements display names
+      const garmentPlacements = {
+        polo: [
+          { code: 'chest', name: 'Left Chest' },
+          { code: 'sleeve', name: 'Right Sleeve' },
+          { code: 'collar', name: 'Back Collar' }
+        ],
+        jacket: [
+          { code: 'chest', name: 'Left Chest' },
+          { code: 'sleeve', name: 'Right Sleeve' },
+          { code: 'collar', name: 'Back Collar' }
+        ],
+        cap: [
+          { code: 'front', name: 'Front Center' },
+          { code: 'left', name: 'Left Side' },
+          { code: 'back', name: 'Back Arch' }
+        ]
+      };
+
+      function updatePlacementsUI() {
+        const placements = garmentPlacements[selectedGarment];
+        placementOptions.innerHTML = '';
+        placements.forEach((item, idx) => {
+          const btn = document.createElement('button');
+          btn.className = `configurator-btn-select placement-btn ${idx === 0 ? 'active' : ''}`;
+          btn.dataset.placement = item.code;
+          btn.textContent = item.name;
+          btn.addEventListener('click', () => {
+            document.querySelectorAll('.placement-btn').forEach(el => el.classList.remove('active'));
+            btn.classList.add('active');
+            selectedPlacement = item.code;
+            updateMarkerPosition();
+          });
+          placementOptions.appendChild(btn);
+        });
+        // Default to first placement when switching garment
+        selectedPlacement = placements[0].code;
+        updateMarkerPosition();
+      }
+
+      function updateMarkerPosition() {
+        const coords = markerCoordinates[selectedGarment][selectedPlacement];
+        if (coords) {
+          logoMarker.style.top = coords.top;
+          logoMarker.style.left = coords.left;
+        }
+      }
+
+      function calculatePricing() {
+        const basePrice = prices.garments[selectedGarment];
+        const setupFee = prices.setups[selectedMethod];
+
+        // Quantity Discount Matrix
+        let qtyDiscount = 1.0;
+        if (selectedQty >= 24 && selectedQty < 50) qtyDiscount = 0.90; // 10% off
+        else if (selectedQty >= 50 && selectedQty < 100) qtyDiscount = 0.80; // 20% off
+        else if (selectedQty >= 100 && selectedQty < 250) qtyDiscount = 0.70; // 30% off
+        else if (selectedQty >= 250) qtyDiscount = 0.60; // 40% off
+
+        const unitPrice = basePrice * qtyDiscount;
+        const totalPrice = (unitPrice * selectedQty) + setupFee;
+
+        // Update UI
+        unitPriceEl.textContent = `$${unitPrice.toFixed(2)}`;
+        setupFeeEl.textContent = `$${setupFee.toFixed(2)}`;
+        totalPriceEl.textContent = `$${totalPrice.toFixed(2)}`;
+        qtyVal.textContent = selectedQty;
+
+        // Delivery calculation
+        if (selectedQty >= 250) {
+          deliveryDaysEl.textContent = "10 to 14 Days";
+        } else {
+          deliveryDaysEl.textContent = "7 to 10 Days";
+        }
+      }
+
+      // Action Handlers
+      garmentBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          garmentBtns.forEach(el => el.classList.remove('active'));
+          btn.classList.add('active');
+          selectedGarment = btn.dataset.garment;
+
+          // Image transition fade out-in
+          garmentPreview.style.opacity = 0;
+          setTimeout(() => {
+            garmentPreview.src = btn.dataset.img;
+            garmentPreview.style.opacity = 1;
+          }, 150);
+
+          updatePlacementsUI();
+          calculatePricing();
+        });
+      });
+
+      methodBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          methodBtns.forEach(el => el.classList.remove('active'));
+          btn.classList.add('active');
+          selectedMethod = btn.dataset.method;
+          calculatePricing();
+        });
+      });
+
+      qtySlider.addEventListener('input', (e) => {
+        selectedQty = parseInt(e.target.value);
+        calculatePricing();
+      });
+
+      // Initial execution
+      updatePlacementsUI();
+      calculatePricing();
+    });
+  </script>
 </body>
+
 </html>

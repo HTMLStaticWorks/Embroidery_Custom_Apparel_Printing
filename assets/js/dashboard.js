@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDragDrop();
   initSidebarToggle();
   initThemeToggle();
+  initRTLToggle();
   setGreeting();
   animateStats();
 });
@@ -95,6 +96,12 @@ function navigate(section) {
 
   currentSection = section;
 
+  // Close sidebar on mobile/tablet after navigation
+  const sidebar = document.getElementById('sidebar');
+  if (sidebar && window.innerWidth <= 1024) {
+    sidebar.classList.remove('open');
+  }
+
   // Breadcrumb
   const labels = {
     overview:'Dashboard', orders:'Bulk Orders', branding:'Branding Upload',
@@ -125,12 +132,25 @@ document.querySelectorAll('.nav-item[data-section]').forEach(item => {
 function initSidebarToggle() {
   const btn = document.getElementById('sidebarToggle');
   const sidebar = document.getElementById('sidebar');
-  if (!btn || !sidebar) return;
-  btn.addEventListener('click', () => {
-    sidebarCollapsed = !sidebarCollapsed;
-    sidebar.classList.toggle('collapsed', sidebarCollapsed);
-    btn.textContent = sidebarCollapsed ? '☰' : '☰';
-  });
+  const closeBtn = document.getElementById('sidebarClose');
+  if (!sidebar) return;
+
+  if (btn) {
+    btn.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) {
+        sidebar.classList.toggle('open');
+      } else {
+        sidebarCollapsed = !sidebarCollapsed;
+        sidebar.classList.toggle('collapsed', sidebarCollapsed);
+      }
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+    });
+  }
 }
 
 /* ============================================================
@@ -192,7 +212,7 @@ function initCharts() {
         }, {
           label: 'Orders',
           data: [14, 18, 16, 24, 22, 34, 0, 0, 0, 0, 0, 0],
-          borderColor: '#8b5cf6',
+          borderColor: '#dc2626',
           backgroundColor: 'transparent',
           borderWidth: 2,
           borderDash: [5, 4],
@@ -228,7 +248,7 @@ function initCharts() {
             callback: v => '$' + (v/1000) + 'K' }
           },
           y2: { position: 'right', grid: { display: false },
-            ticks: { color: '#8b5cf6', font: { size: 11 } }
+            ticks: { color: '#dc2626', font: { size: 11 } }
           }
         }
       }
@@ -244,7 +264,7 @@ function initCharts() {
         labels: ['In Production','Shipped','Pending','Delivered'],
         datasets: [{
           data: [7, 4, 3, 18],
-          backgroundColor: ['#3b82f6','#10b981','#f59e0b','#8b5cf6'],
+          backgroundColor: ['#3b82f6','#10b981','#f59e0b','#dc2626'],
           borderColor: isDark ? '#111827' : '#fff',
           borderWidth: 3,
           hoverOffset: 6,
@@ -314,7 +334,7 @@ function initCharts() {
           { label: 'Polo Shirts', data: [12000,15000,14000,22000,18000,17500],
             borderColor:'#3b82f6', backgroundColor: 'transparent', borderWidth:2, tension:0.4, pointRadius:3 },
           { label: 'Jackets', data: [8000,9000,7500,12000,11000,10500],
-            borderColor:'#8b5cf6', backgroundColor: 'transparent', borderWidth:2, tension:0.4, pointRadius:3 },
+            borderColor:'#dc2626', backgroundColor: 'transparent', borderWidth:2, tension:0.4, pointRadius:3 },
           { label: 'Caps & Hats', data: [5000,6000,5500,8000,7200,6800],
             borderColor:'#10b981', backgroundColor: 'transparent', borderWidth:2, tension:0.4, pointRadius:3 },
         ]
@@ -814,5 +834,34 @@ setInterval(() => {
   // Silently update "last updated" indicators if needed
 }, 60000);
 
-console.log('%c BrandCraft Pro Dashboard ','background:linear-gradient(135deg,#2563eb,#8b5cf6);color:#fff;font-size:14px;font-weight:700;padding:8px 14px;border-radius:6px;');
-console.log('%c Corporate Bulk Orders Management System v1.0 ','color:#2563eb;font-weight:600;');
+console.log('%c Embroidery & Apparel Dashboard ','background:linear-gradient(135deg,#2563eb,#dc2626);color:#fff;font-size:14px;font-weight:700;padding:8px 14px;border-radius:6px;');
+console.log('%c Corporate Bulk Orders Management System v1.0 ','color:#2563eb;font-weight:550;');
+
+/* ============================================================
+   RTL MODE TOGGLE
+   ============================================================ */
+function initRTLToggle() {
+  const toggleBtn = document.getElementById('rtlToggle');
+  if (!toggleBtn) return;
+
+  const currentDir = localStorage.getItem('dir') || 'ltr';
+  applyDirection(currentDir);
+
+  toggleBtn.addEventListener('click', () => {
+    const isRTL = document.body.getAttribute('dir') === 'rtl';
+    const nextDir = isRTL ? 'ltr' : 'rtl';
+    applyDirection(nextDir);
+    localStorage.setItem('dir', nextDir);
+  });
+}
+
+function applyDirection(dir) {
+  const toggleBtn = document.getElementById('rtlToggle');
+  if (dir === 'rtl') {
+    document.body.setAttribute('dir', 'rtl');
+    if (toggleBtn) toggleBtn.classList.add('rtl-active');
+  } else {
+    document.body.removeAttribute('dir');
+    if (toggleBtn) toggleBtn.classList.remove('rtl-active');
+  }
+}

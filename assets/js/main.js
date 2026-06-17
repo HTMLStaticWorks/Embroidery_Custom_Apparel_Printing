@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initCountdown();
   highlightActivePage();
   initHeroParallax();
+  initScrollToTop();
+  initTimelineLoop();
 });
 
 /**
@@ -21,6 +23,9 @@ function initNavbar() {
   const header = document.querySelector('.navbar-header');
   const hamburger = document.querySelector('.hamburger');
   const navMenu = document.querySelector('.nav-menu');
+  const controls = document.querySelector('.navbar-controls');
+  const darkModeToggle = document.getElementById('dark-mode-toggle');
+  const rtlToggle = document.getElementById('rtl-toggle');
 
   if (header) {
     window.addEventListener('scroll', () => {
@@ -44,12 +49,51 @@ function initNavbar() {
       }
     });
 
-    // Close menu when clicking navigation links on mobile
+    // Close menu when clicking navigation links on mobile (excluding dropdown toggles)
     document.querySelectorAll('.nav-link, .dropdown-item').forEach(link => {
       link.addEventListener('click', () => {
-        navMenu.classList.remove('open');
+        if (!link.classList.contains('dropdown-toggle')) {
+          navMenu.classList.remove('open');
+        }
       });
     });
+  }
+
+  function handleResponsiveControls() {
+    if (window.innerWidth <= 1024) {
+      if (darkModeToggle && rtlToggle && navMenu) {
+        let ctrlWrapper = navMenu.querySelector('.menu-controls-wrapper');
+        if (!ctrlWrapper) {
+          ctrlWrapper = document.createElement('li');
+          ctrlWrapper.className = 'menu-controls-wrapper';
+          navMenu.appendChild(ctrlWrapper);
+        }
+        if (!ctrlWrapper.contains(darkModeToggle)) {
+          ctrlWrapper.appendChild(darkModeToggle);
+        }
+        if (!ctrlWrapper.contains(rtlToggle)) {
+          ctrlWrapper.appendChild(rtlToggle);
+        }
+      }
+    } else {
+      if (darkModeToggle && rtlToggle && controls && hamburger) {
+        if (!controls.contains(darkModeToggle)) {
+          controls.insertBefore(darkModeToggle, hamburger);
+        }
+        if (!controls.contains(rtlToggle)) {
+          controls.insertBefore(rtlToggle, hamburger);
+        }
+        const ctrlWrapper = navMenu.querySelector('.menu-controls-wrapper');
+        if (ctrlWrapper) {
+          ctrlWrapper.remove();
+        }
+      }
+    }
+  }
+
+  if (darkModeToggle && rtlToggle && navMenu && controls && hamburger) {
+    handleResponsiveControls();
+    window.addEventListener('resize', handleResponsiveControls);
   }
 
   // Dropdown toggle logic
@@ -276,7 +320,6 @@ function initFAQAccordions() {
     header.addEventListener('click', () => {
       const item = header.closest('.faq-accordion-item');
       const content = item.querySelector('.faq-accordion-content');
-      const icon = header.querySelector('.faq-accordion-icon');
 
       const isOpen = item.classList.contains('open');
 
@@ -284,20 +327,17 @@ function initFAQAccordions() {
       document.querySelectorAll('.faq-accordion-item').forEach(otherItem => {
         if (otherItem !== item) {
           otherItem.classList.remove('open');
-          otherItem.querySelector('.faq-accordion-content').style.maxHeight = null;
-          const otherIcon = otherItem.querySelector('.faq-accordion-icon');
-          if (otherIcon) otherIcon.innerHTML = '+';
+          const otherContent = otherItem.querySelector('.faq-accordion-content');
+          if (otherContent) otherContent.style.maxHeight = null;
         }
       });
 
       if (isOpen) {
         item.classList.remove('open');
         content.style.maxHeight = null;
-        if (icon) icon.innerHTML = '+';
       } else {
         item.classList.add('open');
         content.style.maxHeight = content.scrollHeight + 'px';
-        if (icon) icon.innerHTML = '−';
       }
     });
   });
@@ -422,5 +462,252 @@ function initHeroParallax() {
     bg.style.transform = 'scale(1.05) translate(0px, 0px)';
     content.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
   });
+}
+
+/**
+ * 9. Scroll to Top Button
+ */
+function initScrollToTop() {
+  // Inject CSS styles
+  const style = document.createElement('style');
+  style.textContent = `
+    .scroll-to-top-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #dc2626;
+      color: #ffffff;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 16px rgba(220, 38, 38, 0.35);
+    }
+    .scroll-to-top-btn.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .scroll-to-top-btn:hover {
+      background: #b91c1c;
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(220, 38, 38, 0.45);
+    }
+    .scroll-to-top-btn:active {
+      transform: translateY(-2px) scale(0.98);
+    }
+    .scroll-to-top-btn svg {
+      transition: transform 0.3s ease;
+    }
+    .scroll-to-top-btn:hover svg {
+      transform: translateY(-2px);
+    }
+    [dir="rtl"] .scroll-to-top-btn {
+      right: auto;
+      left: 30px;
+    }
+    @media (max-width: 480px) {
+      .scroll-to-top-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 42px;
+        height: 42px;
+      }
+      [dir="rtl"] .scroll-to-top-btn {
+        right: auto;
+        left: 20px;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Create Button Element
+  const btn = document.createElement('button');
+  btn.className = 'scroll-to-top-btn';
+  btn.setAttribute('aria-label', 'Scroll to Top');
+  btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>';
+  document.body.appendChild(btn);
+
+  // Scroll Listener
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      btn.classList.add('show');
+    } else {
+      btn.classList.remove('show');
+    }
+  });
+
+  // Click Listener
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+/**
+ * 10. Interactive Process Timeline Active Loop Animation
+ */
+function initTimelineLoop() {
+  const timeline = document.querySelector('.timeline');
+  const items = document.querySelectorAll('.timeline-item');
+  const fillLine = document.querySelector('.timeline-line-fill');
+  const needle = document.querySelector('.timeline-needle');
+
+  if (!timeline || items.length === 0 || !fillLine) return;
+
+  let activeStep = 1;
+  const stepCount = items.length;
+  const duration = 5000; // 5 seconds per step
+  const intervalTime = 50; // Update progress bar every 50ms for buttery smooth movement
+  let elapsed = 0;
+  let isPaused = false;
+  let loopTimer = null;
+
+  function updateTimeline() {
+    items.forEach(item => {
+      const stepNum = parseInt(item.getAttribute('data-step'));
+      const progressFill = item.querySelector('.timeline-progress-fill');
+      
+      if (stepNum === activeStep) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+        if (progressFill) {
+          progressFill.style.width = '0%';
+        }
+      }
+    });
+
+    // Calculate dynamic line fill height up to the active step's center dot
+    const activeItem = timeline.querySelector(`.timeline-item[data-step="${activeStep}"]`);
+    if (activeItem) {
+      // Circle vertical offset is at activeItem.offsetTop + top (15px) + half height (10px) = 25px
+      const targetHeight = activeItem.offsetTop + 25;
+      fillLine.style.height = `${targetHeight}px`;
+
+      // Move needle tracker to active dot position
+      if (needle) {
+        needle.style.transform = `translateY(${targetHeight}px)`;
+      }
+    }
+  }
+
+  function loopStep() {
+    if (isPaused) return;
+
+    elapsed += intervalTime;
+    const activeItem = timeline.querySelector(`.timeline-item[data-step="${activeStep}"]`);
+    if (activeItem) {
+      const progressFill = activeItem.querySelector('.timeline-progress-fill');
+      if (progressFill) {
+        const pct = Math.min((elapsed / duration) * 100, 100);
+        progressFill.style.width = `${pct}%`;
+      }
+    }
+
+    if (elapsed >= duration) {
+      elapsed = 0;
+      // Reset current fill instantly before switching
+      const currentFill = activeItem ? activeItem.querySelector('.timeline-progress-fill') : null;
+      if (currentFill) currentFill.style.width = '0%';
+
+      activeStep++;
+      if (activeStep > stepCount) {
+        activeStep = 1;
+      }
+      updateTimeline();
+    }
+  }
+
+  // 1. Scroll-Triggered Entrance Animations (IntersectionObserver)
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    items.forEach(item => {
+      revealObserver.observe(item);
+    });
+  } else {
+    items.forEach(item => item.classList.add('visible'));
+  }
+
+  // 2. 3D Card Tilt Interaction
+  items.forEach(item => {
+    const card = item.querySelector('.timeline-content');
+    if (!card) return;
+
+    item.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+      const tiltX = -(y * 12).toFixed(2); // Tilt up to 12 degrees
+      const tiltY = (x * 12).toFixed(2);
+
+      card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.03)`;
+      card.style.boxShadow = '0 15px 35px rgba(220, 38, 38, 0.08), 0 3px 10px rgba(220, 38, 38, 0.04)';
+    });
+
+    item.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.boxShadow = '';
+    });
+  });
+
+  // Bind hover states to pause / resume the automated loop
+  items.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      isPaused = true;
+    });
+
+    item.addEventListener('mouseleave', () => {
+      isPaused = false;
+    });
+
+    // Click to jump straight to step
+    item.addEventListener('click', () => {
+      const selectedStep = parseInt(item.getAttribute('data-step'));
+      if (selectedStep !== activeStep) {
+        // Reset previous active step's progress fill
+        const prevActive = timeline.querySelector(`.timeline-item[data-step="${activeStep}"]`);
+        if (prevActive) {
+          const prevFill = prevActive.querySelector('.timeline-progress-fill');
+          if (prevFill) prevFill.style.width = '0%';
+        }
+
+        activeStep = selectedStep;
+        elapsed = 0;
+        updateTimeline();
+        
+        // Instantly update progress bar to 0% for the new step
+        const activeProgress = item.querySelector('.timeline-progress-fill');
+        if (activeProgress) activeProgress.style.width = '0%';
+      }
+    });
+  });
+
+  // Handle screen resize to dynamically recalculate heights correctly
+  window.addEventListener('resize', updateTimeline);
+
+  // Initialize
+  updateTimeline();
+  loopTimer = setInterval(loopStep, intervalTime);
 }
 

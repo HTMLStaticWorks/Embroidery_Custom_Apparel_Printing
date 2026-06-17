@@ -17,6 +17,129 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/dark-mode.css">
   <link rel="stylesheet" href="assets/css/rtl.css">
+  <style>
+    @keyframes heroTextReveal {
+      0% { opacity: 0; transform: translateY(25px); filter: blur(4px); letter-spacing: 0.05em; }
+      100% { opacity: 1; transform: translateY(0); filter: blur(0); letter-spacing: normal; }
+    }
+    .animated-hero-title { animation: heroTextReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+
+    /* Responsive Grid for Gallery Cards */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    /* Editor's Featured Selection Grid */
+    .featured-story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      background-color: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .section-title-wrapper-left {
+      text-align: left;
+      margin-left: 0;
+      max-width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      /* Stack grids one-by-one */
+      .gallery-grid {
+        grid-template-columns: 1fr !important;
+        gap: 30px;
+      }
+      
+      .featured-story-grid {
+        grid-template-columns: 1fr !important;
+        gap: 30px;
+        padding: 24px;
+        text-align: center;
+      }
+
+      .featured-story-grid div {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .featured-story-grid div div[style*="display: flex"] {
+        justify-content: center;
+      }
+
+      .featured-story-grid img {
+        margin: 0 auto;
+      }
+
+      /* Section Heading Center Alignment */
+      .section-title-wrapper-left {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      /* Cards Centering */
+      .card-item {
+        text-align: center;
+        align-items: center;
+      }
+      
+      .card-body {
+        align-items: center;
+        text-align: center;
+      }
+
+      .card-badge {
+        align-self: center !important;
+      }
+
+      .card-btn {
+        align-self: center !important;
+        width: 100%;
+        max-width: 280px;
+      }
+
+      /* Magazine style cards centering */
+      .mag-card {
+        text-align: center;
+        align-items: center;
+      }
+
+      .mag-card-body {
+        align-items: center;
+        text-align: center;
+      }
+
+      .mag-card-cta {
+        justify-content: center;
+      }
+
+      /* Eco-friendly custom section alignment */
+      .ecofriendly-grid {
+        text-align: center;
+      }
+      
+      .ecofriendly-grid h2,
+      .ecofriendly-grid h3 {
+        text-align: center;
+      }
+
+      .ecofriendly-grid ul {
+        text-align: left;
+        max-width: 450px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
 </head>
 <body>
 
@@ -31,7 +154,6 @@
         </svg>
         <div class="logo-text">
           Embroidery & Apparel
-          <span>B2B & Custom Branding</span>
         </div>
       </a>
       <nav class="navbar-nav">
@@ -72,29 +194,24 @@
     </div>
   </header>
 
-  <!-- Page Hero (Breadcrumb Header) - Section 1 -->
-  <section class="page-hero">
+  <!-- Page Hero - Section 1 -->
+  <section class="page-hero" style="padding: 220px 0 160px; text-align: center;">
     <div class="container">
-      <h1 class="page-hero-title">Design Gallery</h1>
-      <div class="breadcrumb">
-        <a href="index.html">Home</a>
-        <span class="breadcrumb-separator">/</span>
-        <span>Design Gallery</span>
-      </div>
+      <h1 class="page-hero-title animated-hero-title" style="margin-bottom: 0;">Design Gallery</h1>
     </div>
   </section>
 
   <!-- Section 2: Latest Articles -->
   <section class="section">
     <div class="container">
-      <div class="section-title-wrapper" style="text-align: left; margin-left: 0; max-width: 100%; margin-bottom: 40px;">
+      <div class="section-title-wrapper section-title-wrapper-left" style="margin-bottom: 40px;">
         <span class="section-subtitle">Featured Story</span>
         <h2 style="font-size: 2.25rem;">Editor's Top Selection</h2>
       </div>
-      <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; background-color: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--border-radius-lg); padding: 40px; box-shadow: var(--shadow-sm);">
+      <div class="featured-story-grid">
         <div>
           <span style="display: inline-block; background-color: rgba(220, 38, 38, 0.1); color: var(--color-accent); padding: 4px 10px; border-radius: var(--border-radius-sm); font-size: 0.75rem; font-weight: 550; margin-bottom: 16px; text-transform: uppercase;">Uniform Guide</span>
-          <h3 style="font-size: 1.85rem; margin-bottom: 16px; line-height: 1.3;"><a href="design-details.html">Ultimate Guide to B2B Uniform Sourcing & Compliance</a></h3>
+          <h3 style="font-size: 1.85rem; margin-bottom: 16px; line-height: 1.3;"><a href="design-details.html?id=b2b-sourcing">Ultimate Guide to B2B Uniform Sourcing & Compliance</a></h3>
           <p style="color: var(--color-text-muted); font-size: 1.05rem; margin-bottom: 24px; line-height: 1.7;">
             Equipping large regional workforces requires meeting strict fabric standards, coordinating split shipments, and managing recurring sizing changes. Read our step-by-step optimization blueprint.
           </p>
@@ -105,76 +222,386 @@
           </div>
         </div>
         <div>
-          <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=600&auto=format&fit=crop" alt="B2B uniform piles folded neatly" style="border-radius: var(--border-radius-md); width: 100%; aspect-ratio: 4/3; object-fit: cover;" loading="lazy">
+          <img src="assets/images/B2B Uniform Sourcing &amp; Compliance.png" alt="B2B Uniform Sourcing &amp; Compliance" style="border-radius: var(--border-radius-md); width: 100%; height: auto; object-fit: contain; display: block;" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 3: 4 Featured Blogs (4 Cards) -->
-  <section class="section" style="background-color: var(--color-bg-card); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+  <!-- Section 3: 4 Featured Blogs (4 Cards) - Premium Magazine Style -->
+  <style>
+    .mag-card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 1024px) { .mag-card-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px)  { .mag-card-grid { grid-template-columns: 1fr; } }
+
+    .mag-card {
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.35s cubic-bezier(.22,.61,.36,1), box-shadow 0.35s ease;
+    }
+    .mag-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.14);
+    }
+
+    /* Image panel with gradient overlay */
+    .mag-card-img {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+    }
+    .mag-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+    .mag-card:hover .mag-card-img img {
+      transform: scale(1.08);
+    }
+    .mag-card-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,0.55) 100%);
+      pointer-events: none;
+    }
+    .mag-card-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--color-accent);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 550;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 50px;
+      box-shadow: 0 2px 8px rgba(220,38,38,0.35);
+    }
+
+    /* Card body */
+    .mag-card-body {
+      padding: 22px 22px 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .mag-card-title {
+      font-size: 1.05rem;
+      font-weight: 550;
+      color: var(--color-primary);
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+    .mag-card-text {
+      font-size: 0.88rem;
+      color: var(--color-text-muted);
+      line-height: 1.65;
+      flex-grow: 1;
+      margin-bottom: 18px;
+    }
+    .mag-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.875rem;
+      font-weight: 550;
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: gap 0.25s ease, color 0.25s ease;
+    }
+    .mag-card-cta svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
+    }
+    .mag-card-cta:hover {
+      gap: 12px;
+      color: var(--color-accent-hover);
+    }
+    .mag-card-cta:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* Divider line above CTA */
+    .mag-card-divider {
+      height: 1px;
+      background: var(--color-border);
+      margin-bottom: 16px;
+    }
+  </style>
+
+  <section class="section" style="background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-card) 100%); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
     <div class="container">
       <div class="section-title-wrapper">
         <span class="section-subtitle">Essential Reading</span>
-        <h2 class="section-title">Featured Guides & Updates</h2>
+        <h2 class="section-title">Featured Guides &amp; Updates</h2>
         <p class="section-desc">Practical tips from our artwork design coordinators and embroidery technicians.</p>
       </div>
-      <div class="card-grid">
+      <div class="mag-card-grid">
+
         <!-- Card 1 -->
-        <div class="card-item">
-          <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=600&auto=format&fit=crop" alt="Premium custom shirts fabric close-up" loading="lazy">
+        <div class="mag-card">
+          <div class="mag-card-img">
+            <img src="assets/images/Polyester vs. Ringspun Cotton.png" alt="Polyester vs. Ringspun Cotton" loading="lazy">
+            <div class="mag-card-img-overlay"></div>
+            <span class="mag-card-badge">Fabrics</span>
           </div>
-          <div class="card-body">
-            <span class="card-badge">Fabrics</span>
-            <h3 class="card-title">Polyester vs. Ringspun Cotton</h3>
-            <p class="card-text">Learn how fabric blends impact thread density and printing adherence. Select the right blank for active environments.</p>
-            <a href="design-details.html" class="btn btn-outline btn-block card-btn">Read Article</a>
+          <div class="mag-card-body">
+            <h3 class="mag-card-title">Polyester vs. Ringspun Cotton</h3>
+            <p class="mag-card-text">Learn how fabric blends impact thread density and printing adherence. Select the right blank for active environments.</p>
+            <div class="mag-card-divider"></div>
+            <a href="design-details.html?id=polyester-cotton" class="mag-card-cta">
+              Read Fabric Guide
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="mag-card">
+          <div class="mag-card-img">
+            <img src="assets/images/Preparing Vector Art for Stitching.png" alt="Preparing Vector Art for Stitching" loading="lazy">
+            <div class="mag-card-img-overlay"></div>
+            <span class="mag-card-badge">Embroidery</span>
+          </div>
+          <div class="mag-card-body">
+            <h3 class="mag-card-title">Preparing Vector Art for Stitching</h3>
+            <p class="mag-card-text">A brief checklist for marketing designers converting high-res files into precise stitch coordinates.</p>
+            <div class="mag-card-divider"></div>
+            <a href="design-details.html?id=vector-art" class="mag-card-cta">
+              Read Digitization Guide
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="mag-card">
+          <div class="mag-card-img">
+            <img src="assets/images/Top 5 Corporate Merch Trends dress hd images.png" alt="Top 5 Corporate Merch Trends" loading="lazy">
+            <div class="mag-card-img-overlay"></div>
+            <span class="mag-card-badge">Design Trends</span>
+          </div>
+          <div class="mag-card-body">
+            <h3 class="mag-card-title">Top 5 Corporate Merch Trends</h3>
+            <p class="mag-card-text">From high-end utility backpacks to vintage distress printing, discover what teams actually want to wear.</p>
+            <div class="mag-card-divider"></div>
+            <a href="design-details.html?id=merch-trends" class="mag-card-cta">
+              Read Trends Guide
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="mag-card">
+          <div class="mag-card-img">
+            <img src="assets/images/Screen Printing Color Limitations.png" alt="Screen Printing Color Limitations" loading="lazy">
+            <div class="mag-card-img-overlay"></div>
+            <span class="mag-card-badge">Printing</span>
+          </div>
+          <div class="mag-card-body">
+            <h3 class="mag-card-title">Screen Printing Color Limitations</h3>
+            <p class="mag-card-text">A simple breakdown of how color count impacts bulk mesh screen setups and direct B2B pricing configurations.</p>
+            <div class="mag-card-divider"></div>
+            <a href="design-details.html?id=color-limitations" class="mag-card-cta">
+              Read Printing Guide
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Our Design Collection (6 Cards) -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title-wrapper">
+        <span class="section-subtitle">What We Offer</span>
+        <h2 class="section-title">Our Design Collection</h2>
+        <p class="section-desc">Explore the full range of custom printing and embroidery designs we offer for your brand and team.</p>
+      </div>
+      <div class="gallery-grid">
+        <!-- Card 1 -->
+        <div class="card-item" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-md);">
+          <div class="card-img-wrapper" style="margin-bottom: 0;">
+            <img src="assets/images/Screen Printing-1.png" alt="Screen Printing Design" loading="lazy">
+          </div>
+          <div class="card-body" style="padding: 20px;">
+            <span class="card-badge">Screen Printing</span>
+            <h3 class="card-title">Custom Screen Printing</h3>
+            <p class="card-text">High-opacity prints ideal for bulk orders. Perfect for bold logos and multi-color artwork on tees, polos, and workwear.</p>
+            <a href="design-details.html?id=screen-printing" class="btn btn-outline btn-block card-btn">View Screen Printing Design</a>
           </div>
         </div>
         <!-- Card 2 -->
-        <div class="card-item">
-          <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1605493744187-93b2143b6e17?q=80&w=600&auto=format&fit=crop" alt="Embroidery needles working" loading="lazy">
+        <div class="card-item" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-md);">
+          <div class="card-img-wrapper" style="margin-bottom: 0;">
+            <img src="assets/images/Direct To Film-1.png" alt="Direct To Film Design" loading="lazy">
           </div>
-          <div class="card-body">
-            <span class="card-badge">Embroidery</span>
-            <h3 class="card-title">Preparing Vector Art for Stitching</h3>
-            <p class="card-text">A brief checklist for marketing designers converting high-res files into stitch coordinates.</p>
-            <a href="design-details.html" class="btn btn-outline btn-block card-btn">Read Article</a>
+          <div class="card-body" style="padding: 20px;">
+            <span class="card-badge">DTF Printing</span>
+            <h3 class="card-title">Direct To Film Transfers</h3>
+            <p class="card-text">Vibrant, full-color transfers that bond directly to fabric. Excellent for detailed gradients and photorealistic designs.</p>
+            <a href="design-details.html?id=dtf-transfers" class="btn btn-outline btn-block card-btn">View DTF Transfers Design</a>
           </div>
         </div>
         <!-- Card 3 -->
-        <div class="card-item">
-          <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=600&auto=format&fit=crop" alt="Polo shirts colors swatches" loading="lazy">
+        <div class="card-item" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-md);">
+          <div class="card-img-wrapper" style="margin-bottom: 0;">
+            <img src="assets/images/Dye Sublimation-2.png" alt="Dye Sublimation Design" loading="lazy">
           </div>
-          <div class="card-body">
-            <span class="card-badge">Design Trends</span>
-            <h3 class="card-title">Top 5 Corporate Merch Trends</h3>
-            <p class="card-text">From high-end utility backpacks to vintage distress printing, discover what teams actually want to wear.</p>
-            <a href="design-details.html" class="btn btn-outline btn-block card-btn">Read Article</a>
+          <div class="card-body" style="padding: 20px;">
+            <span class="card-badge">Dye Sublimation</span>
+            <h3 class="card-title">Dye Sublimation Prints</h3>
+            <p class="card-text">All-over, edge-to-edge prints on polyester. Ideal for sportswear, team jerseys, and promotional merchandise.</p>
+            <a href="design-details.html?id=dye-sublimation" class="btn btn-outline btn-block card-btn">View Dye Sublimation Design</a>
           </div>
         </div>
         <!-- Card 4 -->
-        <div class="card-item">
-          <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1578587018452-892bacefd3f2?q=80&w=600&auto=format&fit=crop" alt="Screen print ink layering" loading="lazy">
+        <div class="card-item" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-md);">
+          <div class="card-img-wrapper" style="margin-bottom: 0;">
+            <img src="assets/images/Custom Polo Shirts.png" alt="Custom Polo Shirts" loading="lazy">
           </div>
-          <div class="card-body">
-            <span class="card-badge">Printing</span>
-            <h3 class="card-title">Screen Printing Color Limitations</h3>
-            <p class="card-text">A simple breakdown of how color count impacts bulk mesh screen setups and direct B2B pricing configurations.</p>
-            <a href="design-details.html" class="btn btn-outline btn-block card-btn">Read Article</a>
+          <div class="card-body" style="padding: 20px;">
+            <span class="card-badge">Custom Apparel</span>
+            <h3 class="card-title">Custom Polo Shirts</h3>
+            <p class="card-text">Premium branded polo shirts with embroidered logos or printed chest designs for corporate teams and events.</p>
+            <a href="design-details.html?id=polo-shirts" class="btn btn-outline btn-block card-btn">View Custom Polos Design</a>
+          </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="card-item" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-md);">
+          <div class="card-img-wrapper" style="margin-bottom: 0;">
+            <img src="assets/images/Premium Active Caps.png" alt="Premium Active Caps" loading="lazy">
+          </div>
+          <div class="card-body" style="padding: 20px;">
+            <span class="card-badge">Headwear</span>
+            <h3 class="card-title">Premium Active Caps</h3>
+            <p class="card-text">Structured and unstructured caps with custom embroidered or printed logos. Perfect for outdoor and team branding.</p>
+            <a href="design-details.html?id=active-caps" class="btn btn-outline btn-block card-btn">View Active Caps Design</a>
+          </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="card-item" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-md);">
+          <div class="card-img-wrapper" style="margin-bottom: 0;">
+            <img src="assets/images/Premium Corporate Merchandise.png" alt="Premium Corporate Merchandise" loading="lazy">
+          </div>
+          <div class="card-body" style="padding: 20px;">
+            <span class="card-badge">Merchandise</span>
+            <h3 class="card-title">Premium Corporate Merchandise</h3>
+            <p class="card-text">Branded corporate gifts, merchandise kits, and promotional items designed to leave a lasting impression.</p>
+            <a href="design-details.html?id=corporate-merch" class="btn btn-outline btn-block card-btn">View Corporate Merchandise Design</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 4: Industry Trends -->
+  <!-- Section 5: Uniform Dress Code (6 Cards) -->
+  <section class="section" style="background-color: var(--color-bg-card); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+    <div class="container">
+      <div class="section-title-wrapper">
+        <span class="section-subtitle">Industry Uniforms</span>
+        <h2 class="section-title">Uniform Dress Code Collections</h2>
+        <p class="section-desc">Tailored uniform solutions for every industry — from healthcare to hospitality, built to your exact dress code standards.</p>
+      </div>
+      <div class="gallery-grid" style="gap: 30px;">
+        <!-- Card 1 -->
+        <div class="card-item" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-md);">
+          <div class="card-img-wrapper" style="margin-bottom: 0;">
+            <img src="assets/images/Commercial Workwear.png" alt="Commercial Workwear Uniforms" loading="lazy">
+          </div>
+          <div class="card-body" style="padding: 20px;">
+            <span class="card-badge">Workwear</span>
+            <h3 class="card-title">Commercial Workwear</h3>
+            <p class="card-text">Durable, professional workwear for commercial teams. Designed for comfort and durability across long shifts and outdoor environments.</p>
+            <a href="design-details.html?id=workwear" class="btn btn-outline btn-block card-btn">Explore Commercial Workwear</a>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="card-item" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-md);">
+          <div class="card-img-wrapper" style="margin-bottom: 0;">
+            <img src="assets/images/Construction Safety.png" alt="Construction Safety Uniforms" loading="lazy">
+          </div>
+          <div class="card-body" style="padding: 20px;">
+            <span class="card-badge">Safety Wear</span>
+            <h3 class="card-title">Construction Safety Uniforms</h3>
+            <p class="card-text">High-visibility safety uniforms meeting industry compliance standards. Reflective panels, reinforced stitching, and custom branding.</p>
+            <a href="design-details.html?id=safety-uniforms" class="btn btn-outline btn-block card-btn">Explore Construction Safety</a>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="card-item" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-md);">
+          <div class="card-img-wrapper" style="margin-bottom: 0;">
+            <img src="assets/images/Culinary & Hospitality.png" alt="Culinary and Hospitality Uniforms" loading="lazy">
+          </div>
+          <div class="card-body" style="padding: 20px;">
+            <span class="card-badge">Hospitality</span>
+            <h3 class="card-title">Culinary &amp; Hospitality</h3>
+            <p class="card-text">Elegant, functional uniforms for chefs, waitstaff, and hotel teams. Available in custom colors, fabrics, and embroidered branding.</p>
+            <a href="design-details.html?id=hospitality" class="btn btn-outline btn-block card-btn">Explore Culinary & Hospitality</a>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="card-item" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-md);">
+          <div class="card-img-wrapper" style="margin-bottom: 0;">
+            <img src="assets/images/Education & Athletics.png" alt="Education and Athletics Uniforms" loading="lazy">
+          </div>
+          <div class="card-body" style="padding: 20px;">
+            <span class="card-badge">Education</span>
+            <h3 class="card-title">Education &amp; Athletics</h3>
+            <p class="card-text">Smart school uniforms and athletic kits tailored for academic institutions and sports teams. Moisture-wicking fabrics and custom logos.</p>
+            <a href="design-details.html?id=education" class="btn btn-outline btn-block card-btn">Explore Education & Athletics</a>
+          </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="card-item" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-md);">
+          <div class="card-img-wrapper" style="margin-bottom: 0;">
+            <img src="assets/images/Healthcare & Biotech.png" alt="Healthcare and Biotech Uniforms" loading="lazy">
+          </div>
+          <div class="card-body" style="padding: 20px;">
+            <span class="card-badge">Healthcare</span>
+            <h3 class="card-title">Healthcare &amp; Biotech</h3>
+            <p class="card-text">Medical scrubs, lab coats, and clinical workwear crafted from antimicrobial fabrics with embroidered department branding.</p>
+            <a href="design-details.html?id=healthcare" class="btn btn-outline btn-block card-btn">Explore Healthcare & Biotech</a>
+          </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="card-item" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-md);">
+          <div class="card-img-wrapper" style="margin-bottom: 0;">
+            <img src="assets/images/Technology & Corporate.png" alt="Technology and Corporate Uniforms" loading="lazy">
+          </div>
+          <div class="card-body" style="padding: 20px;">
+            <span class="card-badge">Corporate</span>
+            <h3 class="card-title">Technology &amp; Corporate</h3>
+            <p class="card-text">Sleek, modern corporate dress codes for tech firms and enterprises. Polos, jackets, and branded shirts for every department.</p>
+            <a href="design-details.html?id=corporate" class="btn btn-outline btn-block card-btn">Explore Technology & Corporate</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <section class="section">
-    <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+    <div class="container about-grid ecofriendly-grid">
       <div>
         <span class="section-subtitle">Market Forecast</span>
         <h2 style="font-size: 2.25rem; margin-bottom: 20px;">Eco-Friendly Custom Apparel Shifts</h2>
@@ -227,26 +654,25 @@
       <div class="footer-grid">
         <div>
           <a href="index.html" class="logo" style="margin-bottom: 20px;">
-            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent);">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 22V12M12 12c2.5 0 4-1.5 4-4s-1.5-4-4-4-4 1.5-4 4 1.5 4 4 4z"></path>
               <circle cx="12" cy="8" r="1"></circle>
               <path d="M20 12c-2-2-5-2-8 0s-6 2-8 0"></path>
             </svg>
-            <div class="logo-text" style="color: var(--color-light);">
+            <div class="logo-text">
               Embroidery & Apparel
-              <span style="color: rgba(255,255,255,0.6);">B2B & Custom Branding</span>
             </div>
           </a>
           <p class="footer-col-desc">
             Professional apparel customization streamlining bulk uniform ordering, team wear production, and promotional products with speed and precision.
           </p>
-          <div class="social-links">
+                    <div class="social-links">
             <a href="https://facebook.com" class="social-link" target="_blank" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
             <a href="https://instagram.com" class="social-link" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
             <a href="https://linkedin.com" class="social-link" target="_blank" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
-            <a href="https://twitter.com" class="social-link" target="_blank" aria-label="X"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+            <a href="https://twitter.com" class="social-link" target="_blank" aria-label="X"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
             <a href="https://youtube.com" class="social-link" target="_blank" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
-            <a href="https://pinterest.com" class="social-link" target="_blank" aria-label="Pinterest"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" y1="12" x2="22" y2="12"></line><line x1="12" y1="2" x2="12" y2="22"></line></svg></a>
           </div>
         </div>
         <div>
@@ -291,3 +717,4 @@
   <script src="assets/js/main.js"></script>
 </body>
 </html>
+

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Corporate Bulk Orders Dashboard — BrandCraft Pro</title>
-  <meta name="description" content="Manage bulk orders, track production, upload branding assets, and monitor shipping for your corporate orders at BrandCraft Pro." />
+  <title>Corporate Bulk Orders Dashboard — Embroidery & Apparel</title>
+  <meta name="description" content="Manage bulk orders, track production, upload branding assets, and monitor shipping for your corporate orders at Embroidery & Apparel." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -22,15 +22,19 @@
        SIDEBAR
        ══════════════════════════════════════════════════════ -->
   <aside class="sidebar" id="sidebar">
+    <button class="sidebar-close-btn" id="sidebarClose" aria-label="Close Sidebar">✕</button>
 
     <!-- Brand -->
-    <div class="sidebar-brand">
-      <div class="sidebar-brand-icon">🧵</div>
+    <a href="index.html" class="sidebar-brand" style="text-decoration: none;">
+      <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px; flex-shrink: 0;">
+        <path d="M12 22V12M12 12c2.5 0 4-1.5 4-4s-1.5-4-4-4-4 1.5-4 4 1.5 4 4 4z"></path>
+        <circle cx="12" cy="8" r="1"></circle>
+        <path d="M20 12c-2-2-5-2-8 0s-6 2-8 0"></path>
+      </svg>
       <div class="sidebar-brand-text">
-        <span class="brand-name">BrandCraft Pro</span>
-        <span class="brand-sub">Corporate Portal</span>
+        <span class="brand-name" style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 550; font-size: 13.5px; color: #fff; line-height: 1.2;">Embroidery &amp; Apparel</span>
       </div>
-    </div>
+    </a>
 
     <!-- Navigation -->
     <nav class="sidebar-nav">
@@ -95,6 +99,10 @@
 
     <!-- Sidebar Footer -->
     <div class="sidebar-footer">
+      <div class="nav-item" onclick="location.href='index.html'" style="margin: 0 0 16px 0; border: 1.5px solid rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.03);">
+        <span class="nav-icon">🚪</span>
+        <span class="nav-label">Logout</span>
+      </div>
       <div class="sidebar-user">
         <div class="user-avatar-sm">JM</div>
         <div class="sidebar-user-info">
@@ -114,40 +122,15 @@
     <!-- Top Navigation Bar -->
     <header class="topbar">
       <button class="topbar-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">☰</button>
-
-      <div class="topbar-breadcrumb">
-        <span>Portal</span>
-        <span class="crumb-sep">›</span>
-        <span class="crumb-current" id="breadcrumbCurrent">Dashboard</span>
+      <div class="topbar-welcome">
+        Welcome, <span class="user-name">James Mitchell</span> 👋
       </div>
 
       <div class="topbar-spacer"></div>
 
-      <div class="topbar-search">
-        <span class="search-icon">🔍</span>
-        <input type="text" placeholder="Search orders, products…" id="globalSearch" />
-      </div>
-
       <div class="topbar-actions">
-        <button class="theme-toggle" id="themeToggle" data-tooltip="Toggle Dark Mode" aria-label="Toggle Theme">🌙</button>
-
-        <button class="topbar-btn" data-tooltip="Messages" aria-label="Messages">
-          💬
-        </button>
-
-        <button class="topbar-btn" id="notifBell" data-tooltip="Notifications" aria-label="Notifications" onclick="navigate('notifications')">
-          🔔
-          <span class="notif-dot"></span>
-        </button>
-
-        <div class="topbar-user">
-          <div class="topbar-avatar">JM</div>
-          <div class="topbar-user-info">
-            <div class="tu-name">James Mitchell</div>
-            <div class="tu-role">Nexcore Solutions</div>
-          </div>
-          <span style="color:var(--text-muted);font-size:12px;">▾</span>
-        </div>
+        <button class="theme-toggle" id="rtlToggle" aria-label="Toggle Direction" title="">⇄</button>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme" title="">🌙</button>
       </div>
     </header>
 
@@ -1155,7 +1138,7 @@
               <div class="notif-content">
                 <div class="notif-title">System Announcement — New Features Available</div>
                 <div class="notif-desc">Bulk order export to PDF/Excel is now live. Reports section has been enhanced with new analytics.</div>
-                <div class="notif-time">Jun 8, 2025 · BrandCraft System</div>
+                <div class="notif-time">Jun 8, 2025 · Embroidery &amp; Apparel System</div>
               </div>
             </div>
 
@@ -1474,7 +1457,7 @@ Chicago, IL 60601, United States</textarea></div>
                 <div class="setting-row"><div class="setting-info"><div class="setting-title">Login Alerts</div><div class="setting-desc">Email me on new device logins</div></div><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div>
                 <div class="setting-row"><div class="setting-info"><div class="setting-title">Session Timeout</div><div class="setting-desc">Auto-logout after 30 minutes of inactivity</div></div><div class="toggle-switch" onclick="this.classList.toggle('on')"></div></div>
                 <div style="margin-top:20px;">
-                  <button class="btn btn-danger w-full" style="justify-content:center;">🚪 Log Out All Sessions</button>
+                  <button class="btn btn-danger w-full" onclick="location.href='index.html'" style="justify-content:center;">🚪 Log Out All Sessions</button>
                 </div>
               </div>
             </div>
@@ -1597,7 +1580,7 @@ Chicago, IL 60601, United States</textarea></div>
           <option>Viewer (Read-only)</option><option>Manager (Approve, Comment)</option><option>Admin (Full Access)</option>
         </select>
       </div>
-      <div class="form-group"><label class="form-label">Personal Message (optional)</label><textarea class="form-control" rows="3" placeholder="Hi, I'm inviting you to our BrandCraft Pro portal…"></textarea></div>
+      <div class="form-group"><label class="form-label">Personal Message (optional)</label><textarea class="form-control" rows="3" placeholder="Hi, I'm inviting you to our Embroidery &amp; Apparel portal…"></textarea></div>
     </div>
     <div class="modal-footer">
       <button class="btn btn-secondary" onclick="closeModal('inviteModal')">Cancel</button>

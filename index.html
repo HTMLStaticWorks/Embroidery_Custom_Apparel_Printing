@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/dark-mode.css">
   <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
 </head>
 
 <body>
@@ -37,7 +38,6 @@
         </svg>
         <div class="logo-text">
           Embroidery & Apparel
-          <span>B2B & Custom Branding</span>
         </div>
       </a>
       <nav class="navbar-nav">
@@ -59,13 +59,13 @@
         </ul>
       </nav>
       <div class="navbar-controls">
-        <button id="dark-mode-toggle" class="ctrl-btn" aria-label="Toggle Dark Mode">
+        <button id="dark-mode-toggle" class="ctrl-btn" aria-label="Toggle Dark Mode" title="">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
-        <button id="rtl-toggle" class="ctrl-btn" aria-label="Toggle Layout Direction">
+        <button id="rtl-toggle" class="ctrl-btn" aria-label="Toggle Layout Direction" title="">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 17H4M4 17l4-4M4 17l4 4M4 7h16M20 7l-4-4M20 7l-4 4" />
@@ -94,7 +94,7 @@
           We streamline B2B apparel production, custom branding, and team merchandise orders through a digital
           self-service setup. Save time, minimize error, and elevate your team's look.
         </p>
-        <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
+        <div class="hero-btns-group">
           <a href="pricing.html" class="btn btn-primary">View Pricing Plans</a>
           <a href="contact.html" class="btn btn-outline">Request Custom Quote</a>
         </div>
@@ -254,40 +254,62 @@
           quality control.</p>
       </div>
       <div class="timeline">
+        <!-- Animated progress thread line -->
+        <div class="timeline-line-fill"></div>
+
+        <!-- Gliding needle head tracker -->
+        <div class="timeline-needle">
+          <svg viewBox="0 0 24 40" fill="currentColor">
+            <path d="M11 0h2v26l-1 4-1-4V0zm1 22a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
+          </svg>
+        </div>
+
         <!-- Timeline Item 1 -->
-        <div class="timeline-item timeline-left">
+        <div class="timeline-item timeline-left" data-step="1">
           <div class="timeline-content">
             <span class="timeline-step">Step 01</span>
             <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Artwork Submission</h3>
             <p style="color: var(--color-text-muted); font-size: 0.95rem;">Upload your logo vector or artwork files
               directly. Our system handles raw vector assets and high-res source files instantly.</p>
+            <div class="timeline-progress-bar">
+              <div class="timeline-progress-fill"></div>
+            </div>
           </div>
         </div>
         <!-- Timeline Item 2 -->
-        <div class="timeline-item timeline-right">
+        <div class="timeline-item timeline-right" data-step="2">
           <div class="timeline-content">
             <span class="timeline-step">Step 02</span>
             <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Digital Proof Approval</h3>
             <p style="color: var(--color-text-muted); font-size: 0.95rem;">Review a real stitch preview mock-up
               including exact physical thread color suggestions (Pantone-matched) before sewing starts.</p>
+            <div class="timeline-progress-bar">
+              <div class="timeline-progress-fill"></div>
+            </div>
           </div>
         </div>
         <!-- Timeline Item 3 -->
-        <div class="timeline-item timeline-left">
+        <div class="timeline-item timeline-left" data-step="3">
           <div class="timeline-content">
             <span class="timeline-step">Step 03</span>
             <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Precision Embroidery</h3>
             <p style="color: var(--color-text-muted); font-size: 0.95rem;">Our computer-guided embroidery heads stitch
               the designs onto garments, utilizing premium poly-neon threads for wash stability.</p>
+            <div class="timeline-progress-bar">
+              <div class="timeline-progress-fill"></div>
+            </div>
           </div>
         </div>
         <!-- Timeline Item 4 -->
-        <div class="timeline-item timeline-right">
+        <div class="timeline-item timeline-right" data-step="4">
           <div class="timeline-content">
             <span class="timeline-step">Step 04</span>
             <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Quality QA & Fulfillment</h3>
             <p style="color: var(--color-text-muted); font-size: 0.95rem;">Every item is individually trimmed,
               steam-pressed, folded, and quality checked before final secure dispatch to your office.</p>
+            <div class="timeline-progress-bar">
+              <div class="timeline-progress-fill"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -362,9 +384,9 @@
 
   <!-- Section 6: Call To Action Banner -->
   <section class="section"
-    style="background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%); color: var(--color-light); overflow: hidden; position: relative;">
+    style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: #FFFFFF; overflow: hidden; position: relative;">
     <div class="container" style="text-align: center; max-width: 800px; position: relative; z-index: 2;">
-      <h2 style="color: var(--color-light); font-size: 2.5rem; margin-bottom: 20px;">Ready to Upgrade Your Company
+      <h2 style="color: #FFFFFF; font-size: 2.5rem; margin-bottom: 20px;">Ready to Upgrade Your Company
         Apparel?</h2>
       <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 35px; line-height: 1.6;">
         Set up a virtual sample or request a free fabric and color swatch book. Let our design experts digitize your
@@ -373,7 +395,7 @@
       <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
         <a href="contact.html" class="btn btn-primary">Request a Swatch Book</a>
         <a href="services.html" class="btn btn-outline"
-          style="border-color: rgba(255,255,255,0.2); color: var(--color-light);">Explore Custom Solutions</a>
+          style="border-color: rgba(255,255,255,0.2); color: #FFFFFF;">Explore Custom Solutions</a>
       </div>
     </div>
     <div
@@ -388,55 +410,25 @@
         <div>
           <a href="index.html" class="logo" style="margin-bottom: 20px;">
             <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent);">
+              stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 22V12M12 12c2.5 0 4-1.5 4-4s-1.5-4-4-4-4 1.5-4 4 1.5 4 4 4z"></path>
               <circle cx="12" cy="8" r="1"></circle>
               <path d="M20 12c-2-2-5-2-8 0s-6 2-8 0"></path>
             </svg>
-            <div class="logo-text" style="color: var(--color-light);">
+            <div class="logo-text">
               Embroidery & Apparel
-              <span style="color: rgba(255,255,255,0.6);">B2B & Custom Branding</span>
             </div>
           </a>
           <p class="footer-col-desc">
             Professional apparel customization streamlining bulk uniform ordering, team wear production, and promotional
             products with speed and precision.
           </p>
-          <div class="social-links">
-            <a href="https://facebook.com" class="social-link" target="_blank" aria-label="Facebook"><svg width="18"
-                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-              </svg></a>
-            <a href="https://instagram.com" class="social-link" target="_blank" aria-label="Instagram"><svg width="18"
-                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg></a>
-            <a href="https://linkedin.com" class="social-link" target="_blank" aria-label="LinkedIn"><svg width="18"
-                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                <rect x="2" y="9" width="4" height="12"></rect>
-                <circle cx="4" cy="4" r="2"></circle>
-              </svg></a>
-            <a href="https://twitter.com" class="social-link" target="_blank" aria-label="X"><svg width="18" height="18"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path
-                  d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
-                </path>
-              </svg></a>
-            <a href="https://youtube.com" class="social-link" target="_blank" aria-label="YouTube"><svg width="18"
-                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path
-                  d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
-                </path>
-                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
-              </svg></a>
-            <a href="https://pinterest.com" class="social-link" target="_blank" aria-label="Pinterest"><svg width="18"
-                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="2" y1="12" x2="22" y2="12"></line>
-                <line x1="12" y1="2" x2="12" y2="22"></line>
-              </svg></a>
+                    <div class="social-links">
+            <a href="https://facebook.com" class="social-link" target="_blank" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+            <a href="https://instagram.com" class="social-link" target="_blank" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+            <a href="https://linkedin.com" class="social-link" target="_blank" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+            <a href="https://twitter.com" class="social-link" target="_blank" aria-label="X"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="https://youtube.com" class="social-link" target="_blank" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
           </div>
         </div>
         <div>
