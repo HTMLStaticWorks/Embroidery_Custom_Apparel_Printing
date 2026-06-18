@@ -159,13 +159,13 @@ function initSidebarToggle() {
 function initThemeToggle() {
   const btn = document.getElementById('themeToggle');
   if (!btn) return;
-  const saved = localStorage.getItem('dashTheme') || 'light';
+  const saved = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   applyTheme(saved);
   btn.addEventListener('click', () => {
     const cur = document.documentElement.getAttribute('data-theme');
     const next = cur === 'dark' ? 'light' : 'dark';
     applyTheme(next);
-    localStorage.setItem('dashTheme', next);
+    localStorage.setItem('theme', next);
     updateChartsTheme(next);
   });
 }

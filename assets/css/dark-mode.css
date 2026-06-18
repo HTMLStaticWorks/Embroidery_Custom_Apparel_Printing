@@ -84,14 +84,14 @@ body.dark-mode .form-input:focus {
 }
 
 body.dark-mode .btn-outline {
-  border-color: var(--color-border);
-  color: var(--color-light);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 body.dark-mode .btn-outline:hover {
-  background-color: var(--color-light);
-  color: #0B1120;
-  border-color: var(--color-light);
+  background-color: var(--color-accent);
+  color: var(--color-light);
+  border-color: var(--color-accent);
 }
 
 /* Text selections & scrollbars in Dark Mode */

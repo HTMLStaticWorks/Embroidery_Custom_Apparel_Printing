@@ -179,14 +179,14 @@ img {
 
 .btn-outline {
   background-color: transparent;
-  border-color: var(--color-border);
-  color: var(--color-primary);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 .btn-outline:hover {
-  background-color: var(--color-primary);
+  background-color: var(--color-accent);
   color: var(--color-light);
-  border-color: var(--color-primary);
+  border-color: var(--color-accent);
   transform: translateY(-2px);
 }
 
@@ -1071,8 +1071,8 @@ body.dark-mode .timeline-progress-bar {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 40px 24px;
-    gap: 16px;
+    padding: 20px 24px;
+    gap: 8px;
     transition: var(--transition-smooth);
     box-shadow: var(--shadow-lg);
     overflow-y: auto;
@@ -1091,7 +1091,7 @@ body.dark-mode .timeline-progress-bar {
 
   .nav-link {
     font-size: 1.1rem;
-    padding: 12px 0;
+    padding: 8px 0;
     display: block;
     width: 100%;
     text-align: center;
@@ -1119,7 +1119,7 @@ body.dark-mode .timeline-progress-bar {
 
   .dropdown-item {
     font-size: 1rem;
-    padding: 10px 0;
+    padding: 8px 0;
     text-align: center;
     border-bottom: 1px solid var(--color-border);
     width: 100%;
@@ -1137,7 +1137,7 @@ body.dark-mode .timeline-progress-bar {
   .btn-login {
     width: 100%;
     margin-top: 8px;
-    padding: 12px 0;
+    padding: 8px 0;
     justify-content: center;
     text-align: center;
   }
@@ -1149,15 +1149,16 @@ body.dark-mode .timeline-progress-bar {
     align-items: center;
     gap: 16px;
     width: 100%;
-    padding: 16px 0;
+    padding: 8px 0;
     border-top: 1px solid var(--color-border);
-    margin-top: 12px;
+    margin-top: 8px;
     list-style: none;
   }
 }
 
 @media (max-width: 768px) {
-  .timeline::before {
+  .timeline::before,
+  .timeline-line-fill {
     left: 20px;
   }
 
@@ -1350,7 +1351,7 @@ body.dark-mode .timeline-progress-bar {
 }
 
 .hero-content-3d .section-subtitle {
-  color: #DC2626 !important;
+  color: #FF8F8F !important;
 }
 
 .hero-content-3d .btn-primary {
@@ -1465,6 +1466,12 @@ body.dark-mode .timeline-progress-bar {
   .about-grid-alt .story-image img {
     max-width: 100%;
     width: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .partnerships-stats {
+    justify-content: center;
   }
 }
 
