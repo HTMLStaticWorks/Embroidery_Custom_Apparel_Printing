@@ -85,7 +85,7 @@ body.dark-mode .form-input:focus {
 
 body.dark-mode .btn-outline {
   border-color: var(--color-accent);
-  color: var(--color-accent);
+  color: var(--color-light);
 }
 
 body.dark-mode .btn-outline:hover {
